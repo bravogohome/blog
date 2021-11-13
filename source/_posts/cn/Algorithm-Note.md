@@ -78,6 +78,11 @@ sticky: 999
 > 2. 发现其中存在重复操作，使用记忆化搜索/剪枝，尝试用哈希表将数据缓存下来
 > 3. 最后可以把递归转化成迭代形式
 
+------------------------------------------------------------------------
+
+### 理解二
+
+
 ### 练习
 > 给定一个数组nums，要求找出其中的连续子序列的最大和：  
 > > 输入：[3, -4, 2, -1, 2, 6, -5, 4]
@@ -86,5 +91,12 @@ sticky: 999
 > 
 > 题解：(python)
 > ```python
-> 
+>     def maxSubArray(self, nums) -> int:
+>        if len(nums) == 0:
+>            return 0
+>        dp = len(nums) * [0]
+>        dp[0] = nums[0]
+>        for i in range(1, len(nums)):
+>            dp[i] = max(dp[i - 1] + nums[i], nums[i])  # python 中 max 是函数
+>        return max(dp)
 > ```
