@@ -60,6 +60,13 @@
   --toggle-hover: rgba(0, 0, 0, .1);
   --webkit-scrollbar-track-color: rgb(34, 38, 49);
   --webkit-scrollbar-thumb-color: rgba(122, 125, 131, 0.5);
+  /* table */
+  --table-border-color: #ffffff;
+  --table-th-background-color: black;
+  --table-th-color: white;
+  --table-tr-background-color: lightgray;
+  --table-tr-hover-color: #eeeeee;
+  --table-tr-even-color: black;
 }
 
 .body--dark {
@@ -130,6 +137,13 @@
   --toggle-hover: rgba(255, 255, 255, .1);
   --webkit-scrollbar-track-color: white;
   --webkit-scrollbar-thumb-color: rgba(157, 165, 183, 0.4);
+  /* table */
+  --table-border-color: #222631;
+  --table-th-background-color: white;
+  --table-th-color: black;
+  --table-tr-background-color: #eeeeee;
+  --table-tr-hover-color: #6c7b8a;
+  --table-tr-even-color: #222631;
 }
 
 /* ================================================ Common Menu Start ======================================================= */
@@ -428,7 +442,6 @@ hr {
   --blockquote-color: gray;
   --post-container-a-color: #337ab7;
   --post-container-a-color-hover: #0085a1;
-  --table-border-color: #eee;
   /* tip */
   --tip-color: rgba(51, 51, 51, 0.9);
   /* share */
@@ -481,13 +494,8 @@ hr {
 .body--dark {
   --color-default: rgba(255, 255, 255, 0.8);
   --blockquote-color: #a3a3a3;
-  --post-container-a-color: #FFD700;
-  --post-container-a-color-hover: #F5DEB3;
-  /* a-红色
-  --post-container-a-color: #b5154b;
+  --post-container-a-color: #f93b3b;
   --post-container-a-color-hover: #e91e63;
-   */
-  --table-border-color: rgba(255, 255, 255, 0.8);
   /* tip */
   --tip-color: #f6f9fc;
   /* share */
@@ -558,8 +566,20 @@ blockquote {
   color: var(--color-default);
 }
 
-.table th, .table td {
-  border: 1px solid var(--table-border-color) !important;
+.table td {
+  border: 2px solid var(--table-border-color) !important;
+}
+.table th {
+  border: 2px solid var(--table-border-color) !important;
+  background-color: var(--table-th-background-color);
+  color: var(--table-th-color);
+} 
+tr:nth-child(even) {
+  background-color: var(--table-tr-background-color);
+  color: var(--table-tr-even-color);
+}
+tr:hover {
+  background-color: var(--table-tr-hover-color);
 }
 
 .post-container ul, .post-container ol {
