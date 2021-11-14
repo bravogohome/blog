@@ -101,10 +101,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="http://yoursite-url/cn/MarkDown-Base/">
+  <link rel="canonical" href="http://yoursite-url/cn/Algorithm/">
   <title>
     
-      MarkDown基础 - either play or die | 林共宏的个人博客
+      算法题库 - either play or die | 林共宏的个人博客
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -347,14 +347,16 @@
           <div class="post-heading">
             <div class="tags">
               
-              <a class="tag" href="/tags/#markdown" title="markdown">markdown</a>
+              <a class="tag" href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+              
+              <a class="tag" href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
               
             </div>
-            <h1>MarkDown基础</h1>
-            <h2 class="subheading">markdown的基本语法</h2>
+            <h1>算法题库</h1>
+            <h2 class="subheading">力扣每日一题</h2>
             <span class="meta">
               Posted by GoHomeLyn on
-              2021-11-02
+              2021-11-08
             </span>
 
 
@@ -362,11 +364,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">6</span> Minutes
+              Estimated Reading Time <span class="post-count">5</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">1.7k</span> In Total
+              Words <span class="post-count">1.3k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -428,248 +430,93 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="MarkDown介绍">MarkDown介绍</h2>
-<p>Markdown 是一种轻量级标记语言，它允许人们使用易读易写的纯文本格式编写文档。<br>
-Markdown 编写的文档后缀为 .md, .markdown。</p>
-<hr>
-<h2 id="MarkDown编写">MarkDown编写</h2>
-<h3 id="MarkDown标题">MarkDown标题</h3>
+        <h2 id="猜数字游戏">猜数字游戏</h2>
+<p>leetcode链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/bulls-and-cows">https://leetcode-cn.com/problems/bulls-and-cows</a></p>
 <blockquote>
-<p>markdown使用#号来标记标题<br>
-使用 # 号可表示 1-6 级标题，一级标题对应一个 # 号，二级标题对应两个 # 号，以此类推。</p>
-</blockquote>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 一级标题</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br><span class="line"><span class="section">#### 四级标题</span></span><br><span class="line"><span class="section">##### 五级标题</span></span><br><span class="line"><span class="section">###### 六级标题</span></span><br></pre></td></tr></table></figure>
-<p>效果如下图所示<br>
-<img src="title.png" alt="title_sample"></p>
-<hr>
-<h3 id="MarkDown格式">MarkDown格式</h3>
-<h4 id="段落的换行">段落的换行</h4>
-<p>markdown段落的换行在上一行后加上两个以上的空格后再换行即可。<br>
-或者直接在两段中添加一个空行。</p>
-<hr>
-<h4 id="字体">字体</h4>
-<p>markdown有以下几种字体：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">*斜体文本*</span></span><br><span class="line"><span class="emphasis">_斜体文本_</span></span><br><span class="line"><span class="strong">**粗体文本**</span></span><br><span class="line"><span class="strong">__粗体文本__</span></span><br><span class="line"><span class="strong">**<span class="emphasis">*粗斜体文本<span class="strong">**<span class="emphasis">*</span></span></span></span></span><br><span class="line"><span class="strong"><span class="emphasis"><span class="strong"><span class="emphasis"><span class="strong">__<span class="emphasis">_粗斜体文本<span class="strong">__<span class="emphasis">_</span></span></span></span></span></span></span></span></span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="分割线">分割线</h4>
-<p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**<span class="emphasis">*</span></span></span><br><span class="line"><span class="strong"><span class="emphasis"></span></span></span><br><span class="line"><span class="strong"><span class="emphasis">*</span> <span class="emphasis">* *</span></span></span><br><span class="line"><span class="strong"></span></span><br><span class="line"><span class="strong">**</span><span class="strong">**<span class="emphasis">*</span></span></span><br><span class="line"><span class="strong"><span class="emphasis"></span></span></span><br><span class="line"><span class="strong"><span class="emphasis">- - -</span></span></span><br><span class="line"><span class="strong"><span class="emphasis"></span></span></span><br><span class="line"><span class="strong"><span class="emphasis">----------</span></span></span><br></pre></td></tr></table></figure>
-<hr>
-<h4 id="删除线">删除线</h4>
-<p>如果段落上的文字要添加删除线，只需要在文字的两端加上两个波浪线“~~”即可，实例如下：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~删除的字~~</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>实现效果如下：<br>
-<s>删除的字</s></p>
-</blockquote>
-<hr>
-<h3 id="MarkDown列表">MarkDown列表</h3>
-<h4 id="有序列表">有序列表</h4>
-<blockquote>
-<p>有序列表使用数字加上 . 号来表示</p>
-</blockquote>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 第一项</span><br><span class="line"><span class="bullet">2.</span> 第二项</span><br><span class="line"><span class="bullet">3.</span> 第三项</span><br></pre></td></tr></table></figure>
-<h4 id="无序列表">无序列表</h4>
-<blockquote>
-<p>无序列表使用  *，-，+  号来表示</p>
-</blockquote>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> 第一项</span><br><span class="line"><span class="bullet">*</span> 第二项</span><br><span class="line"><span class="bullet">*</span> 第三项</span><br><span class="line"></span><br><span class="line"><span class="bullet">+</span> 第一项</span><br><span class="line"><span class="bullet">+</span> 第二项</span><br><span class="line"><span class="bullet">+</span> 第三项</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> 第一项</span><br><span class="line"><span class="bullet">-</span> 第二项</span><br><span class="line"><span class="bullet">-</span> 第三项</span><br></pre></td></tr></table></figure>
-<h4 id="列表嵌套">列表嵌套</h4>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 第一项：</span><br><span class="line"><span class="bullet">    -</span> 第一项嵌套的第一个元素</span><br><span class="line"><span class="bullet">    -</span> 第一项嵌套的第二个元素</span><br><span class="line"><span class="bullet">2.</span> 第二项：</span><br><span class="line"><span class="bullet">    -</span> 第二项嵌套的第一个元素</span><br><span class="line"><span class="bullet">    -</span> 第二项嵌套的第二个元素</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>实现效果如下：</p>
-</blockquote>
-<ol>
-<li>第一项：
+<p>你在和朋友一起玩 猜数字（Bulls and Cows）游戏，该游戏规则如下：<br>
+写出一个秘密数字，并请朋友猜这个数字是多少。朋友每猜测一次，你就会给他一个包含下述信息的提示：</p>
 <ul>
-<li>第一项嵌套的第一个元素</li>
-<li>第一项嵌套的第二个元素</li>
+<li>猜测数字中有多少位属于数字和确切位置都猜对了（称为 “Bulls”, 公牛），</li>
+<li>有多少位属于数字猜对了但是位置不对（称为 “Cows”, 奶牛）。也就是说，这次猜测中有多少位非公牛数字可以通过重新排列转换成公牛数字。</li>
 </ul>
-</li>
-<li>第二项：
+<p>给你一个秘密数字 secret 和朋友猜测的数字 guess ，请你返回对朋友这次猜测的提示。<br>
+提示的格式为 “xAyB” ，x 是公牛个数， y 是奶牛个数，A 表示公牛，B 表示奶牛。<br>
+请注意秘密数字和朋友猜测的数字都可能含有重复数字。</p>
+</blockquote>
+<h3 id="解题思路">解题思路</h3>
+<h4 id="模拟">模拟</h4>
+<p>根据题意，对于公牛，需要满足数字和确切位置都猜对。我们可以遍历<code>secret</code>和<code>guess</code>，统计满足<code>secret[i]=guess[i]</code>的下标个数，即为公牛的个数。</p>
+<p>对于奶牛，需要满足数字猜对但是位置不对。我们可以在<code>guess[i] ≠ secret[i]</code>时，分别统计<code>secret</code>和<code>guess</code>的各个字符的出现次数，记在两个长度为<code>10</code>的数组中。根据题目所述的「这次猜测中有多少位非公牛数字可以通过重新排列转换成公牛数字」，由于多余的数字无法匹配，对于0到9的每位数字，应取其在<code>secret</code>和<code>guess</code>中的出现次数的最小值。将每位数字出现次数的最小值累加，即为奶牛的个数。</p>
+<h5 id="复杂度分析">复杂度分析</h5>
 <ul>
-<li>第二项嵌套的第一个元素</li>
-<li>第二项嵌套的第二个元素</li>
-</ul>
+<li>
+<p>时间复杂度：<code>O(N)</code>，其中<code>N</code>是字符串 <code>secret</code> 的长度。</p>
 </li>
-</ol>
+<li>
+<p>空间复杂度：<code>O(C)</code>。需要常数个空间统计字符出现次数，由于我们统计的是数字字符，因此<code>C=10</code>。</p>
+</li>
+</ul>
+<h3 id="题解">题解</h3>
+<h4 id="Python">Python</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用两个数组两次遍历</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getHint</span>(<span class="params">self, secret: <span class="built_in">str</span>, guess: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line">        bulls = <span class="number">0</span></span><br><span class="line">        secretCount, guessCount = [<span class="number">0</span>] * <span class="number">10</span>, [<span class="number">0</span>] * <span class="number">10</span></span><br><span class="line">        <span class="keyword">for</span> s, g <span class="keyword">in</span> <span class="built_in">zip</span>(secret, guess):</span><br><span class="line">            <span class="keyword">if</span> s == g:</span><br><span class="line">                bulls += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                secretCount[<span class="built_in">int</span>(s)] += <span class="number">1</span></span><br><span class="line">                guessCount[<span class="built_in">int</span>(g)] += <span class="number">1</span></span><br><span class="line">        cows = <span class="built_in">sum</span>(<span class="built_in">min</span>(s, g) <span class="keyword">for</span> s, g <span class="keyword">in</span> <span class="built_in">zip</span>(secretCount, guessCount))</span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;<span class="subst">&#123;bulls&#125;</span>A<span class="subst">&#123;cows&#125;</span>B&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 改进版：使用一个数组一次遍历</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getHint</span>(<span class="params">self, secret: <span class="built_in">str</span>, guess: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span></span><br><span class="line">        bulls, cows = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        arr = [<span class="number">0</span>] * <span class="number">10</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(secret)):</span><br><span class="line">            <span class="keyword">if</span> secret[i] == guess[i]:</span><br><span class="line">                bulls += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 小于0说明之前guess中出现过相同的字符</span></span><br><span class="line">                <span class="keyword">if</span> arr[<span class="built_in">int</span>(secret[i])] &lt; <span class="number">0</span>:</span><br><span class="line">                    cows += <span class="number">1</span></span><br><span class="line">                arr[<span class="built_in">int</span>(secret[i])] += <span class="number">1</span></span><br><span class="line">                <span class="comment"># 大于0说明之前secret中出现过相同的字符</span></span><br><span class="line">                <span class="keyword">if</span> arr[<span class="built_in">int</span>(guess[i])] &gt; <span class="number">0</span>:</span><br><span class="line">                    cows += <span class="number">1</span></span><br><span class="line">                arr[<span class="built_in">int</span>(guess[i])] -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">f&#x27;<span class="subst">&#123;bulls&#125;</span>A<span class="subst">&#123;cows&#125;</span>B&#x27;</span></span><br></pre></td></tr></table></figure>
+<h4 id="C">C#</h4>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用两个数组两次遍历</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">GetHint</span>(<span class="params"><span class="built_in">string</span> secret, <span class="built_in">string</span> guess</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">int</span> bulls = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">int</span>[] secretCount = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="built_in">int</span>[] guessCount = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; secret.Length; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (secret[i] == guess[i]) &#123;</span><br><span class="line">                ++bulls;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                ++secretCount[secret[i] - <span class="string">&#x27;0&#x27;</span>];</span><br><span class="line">                ++guessCount[guess[i] - <span class="string">&#x27;0&#x27;</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">int</span> cows = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; ++i) &#123;</span><br><span class="line">            cows += Math.Min(secretCount[i], guessCount[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">$&quot;<span class="subst">&#123;bulls&#125;</span>A<span class="subst">&#123;cows&#125;</span>B&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 改进版：使用一个数组一次遍历</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Solution</span> &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="built_in">string</span> <span class="title">GetHint</span>(<span class="params"><span class="built_in">string</span> secret, <span class="built_in">string</span> guess</span>)</span> &#123;</span><br><span class="line">        <span class="built_in">int</span> bulls = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">int</span> cows = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">int</span>[] arr = <span class="keyword">new</span> <span class="built_in">int</span>[<span class="number">10</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; secret.Length; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (secret[i] == guess[i]) ++bulls;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// 小于0说明之前guess中出现过相同的字符</span></span><br><span class="line">                <span class="keyword">if</span> (arr[secret[i]-<span class="string">&#x27;0&#x27;</span>]++ &lt; <span class="number">0</span>) cows++;</span><br><span class="line">                <span class="comment">// 大于0说明之前secret中出现过相同的字符</span></span><br><span class="line">                <span class="keyword">if</span> (arr[guess[i]-<span class="string">&#x27;0&#x27;</span>]-- &gt; <span class="number">0</span>) cows++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">$&quot;<span class="subst">&#123;bulls&#125;</span>A<span class="subst">&#123;cows&#125;</span>B&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="MarkDown区块">MarkDown区块</h3>
-<p>Markdown 区块引用是在段落开头使用 &gt; 符号 ，然后后面紧跟一个空格符号：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 区块引用</span></span><br></pre></td></tr></table></figure>
-<p>显示效果如下：</p>
+<h2 id="猜数字大小Ⅱ">猜数字大小Ⅱ</h2>
+<p>leetcode链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/">https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/</a></p>
 <blockquote>
-<p>区块引用</p>
-</blockquote>
-<p>另外区块是可以嵌套的：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 最外层</span></span><br><span class="line"><span class="quote">&gt; &gt; 第一层嵌套</span></span><br><span class="line"><span class="quote">&gt; &gt; &gt; 第二层嵌套</span></span><br></pre></td></tr></table></figure>
-<p>显示效果如下：</p>
-<blockquote>
-<p>最外层</p>
-<blockquote>
-<p>第一层嵌套</p>
-<blockquote>
-<p>第二层嵌套</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>并且区块和列表是可以互相嵌套的：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 区块中使用列表</span></span><br><span class="line"><span class="quote">&gt; 1. 第一项</span></span><br><span class="line"><span class="quote">&gt; 2. 第二项</span></span><br><span class="line"><span class="quote">&gt;   + 第一项</span></span><br><span class="line"><span class="quote">&gt;   + 第二项</span></span><br><span class="line"><span class="quote">&gt;   + 第三项</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">1.</span> 第一项</span><br><span class="line"><span class="code">    &gt; 菜鸟教程</span></span><br><span class="line"><span class="code">    &gt; 学的不仅是技术更是梦想</span></span><br><span class="line"><span class="code">2. 第二项</span></span><br></pre></td></tr></table></figure>
-<p>显示效果如下：</p>
-<blockquote>
-<p>区块中嵌套列表</p>
-<ol>
-<li>第一项</li>
-<li>第二项</li>
-</ol>
+<p>我们正在玩一个猜数游戏，游戏规则如下：</p>
 <ul>
-<li>第一项</li>
-<li>第二项</li>
-<li>第三项</li>
+<li>我从 1 到 n 之间选择一个数字。</li>
+<li>你来猜我选了哪个数字。</li>
+<li>如果你猜到正确的数字，就会 赢得游戏 。</li>
+<li>如果你猜错了，那么我会告诉你，我选的数字比你的 更大或者更小 ，并且你需要继续猜数。</li>
+<li>每当你猜了数字 x 并且猜错了的时候，你需要支付金额为 x 的现金。如果你花光了钱，就会 输掉游戏。</li>
 </ul>
+<p>给你一个特定的数字 n ，返回能够 确保你获胜 的最小现金数，不管我选择那个数字 。</p>
 </blockquote>
-<ol>
-<li>第一项
-<blockquote>
-<p>列表中<br>
-嵌套区块</p>
-</blockquote>
-</li>
-<li>第二项</li>
-</ol>
+<h3 id="解题思路-2">解题思路</h3>
+<h4 id="动态规划">动态规划</h4>
+<h4 id="复杂度分析-2">复杂度分析</h4>
+<h3 id="题解-2">题解</h3>
+<h4 id="Python-2">Python</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="C-2">C#</h4>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="MarkDown代码">MarkDown代码</h3>
-<h4 id="函数">函数</h4>
-<p>可以使用反引号（`）包起一个函数或片段的代码：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">`scanf()`</span>函数</span><br></pre></td></tr></table></figure>
-<p>显示效果如下：<br>
-<code>scanf()</code>函数</p>
-<h4 id="代码区块">代码区块</h4>
-<p>markdown代码区块使用<strong>4个空格</strong>或者<strong>一个制表符（Tab）</strong></p>
-<p>也可以使用<code>```</code>包裹一段代码，并可以选择指定一种语言</p>
-<hr>
-<h3 id="MarkDown链接">MarkDown链接</h3>
-<p>链接使用方法如下：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">链接名称</span>](<span class="link">链接地址</span>)</span><br><span class="line"></span><br><span class="line">&lt;链接地址&gt;</span><br><span class="line"></span><br><span class="line">例如：</span><br><span class="line">[<span class="string">百度</span>](<span class="link">https://www.baidu.com</span>)</span><br><span class="line"><span class="xml">&lt;https://www.baidu.com&gt;</span></span><br></pre></td></tr></table></figure>
-<p>显示效果如下：</p>
+<h2 id="检测大写字母">检测大写字母</h2>
+<p>leetcode链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/detect-capital/">https://leetcode-cn.com/problems/detect-capital/</a></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.baidu.com">百度</a><br>
-<a target="_blank" rel="noopener" href="https://www.baidu.com">https://www.baidu.com</a></p>
+<p>我们定义，在以下情况时，单词的大写用法是正确的：</p>
+<ul>
+<li>全部字母都是大写，比如 “USA” 。</li>
+<li>单词中所有字母都不是大写，比如 “leetcode” 。</li>
+<li>如果单词不只含有一个字母，只有首字母大写， 比如 “Google” 。</li>
+</ul>
+<p>给你一个字符串 word 。如果大写用法正确，返回 true ；否则，返回 false 。</p>
 </blockquote>
-<p>使用引脚指向链接地址：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">这个链接用 1 作为网址变量 [<span class="string">Google</span>][<span class="symbol">1</span>]</span><br><span class="line">这个链接用 &#x27;baidu&#x27; 作为网址变量 [<span class="string">Baidu</span>][<span class="symbol">baidu</span>]</span><br><span class="line">然后在文档的结尾为变量赋值（网址）</span><br><span class="line"></span><br><span class="line">  [1]: http://www.google.com/</span><br><span class="line">  [baidu]: https://www.baidu.com/</span><br></pre></td></tr></table></figure>
-<p>显示效果如下：</p>
-<blockquote>
-<p>这个链接用 1 作为网址变量 <a target="_blank" rel="noopener" href="http://www.google.com/">Google</a><br>
-这个链接用 ‘baidu’ 作为网址变量 <a target="_blank" rel="noopener" href="https://www.baidu.com/">Baidu</a><br>
-然后在文档的结尾为变量赋值（网址）</p>
-</blockquote>
-<hr>
-<h3 id="MarkDown图片">MarkDown图片</h3>
-<p>图片的语法格式如下：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">alt 属性文本</span>](<span class="link">图片地址 &quot;可选标题&quot;</span>)</span><br><span class="line"></span><br><span class="line">![<span class="string">screenshot</span>](<span class="link">/url/img/...</span>)</span><br></pre></td></tr></table></figure>
-<p>Markdown 还没有办法指定图片的高度与宽度，如果你需要的话，你可以使用普通的 <code>&lt;img&gt;</code> 标签。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;url&quot;</span> <span class="attr">width</span>=<span class="string">&quot;50%&quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
-<hr>
-<h3 id="MarkDown表格">MarkDown表格</h3>
-<p>Markdown 制作表格使用<code>|</code>来分隔不同的单元格，使用<code>-</code>来分隔表头和其他行。</p>
-<p>语法格式如下：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">|  表头   | 表头  |</span><br><span class="line">|  ----  | ----  |</span><br><span class="line">| 单元格  | 单元格 |</span><br><span class="line">| 单元格  | 单元格 |</span><br></pre></td></tr></table></figure>
-<p>以上代码显示结果如下：</p>
-<table>
-<thead>
-<tr>
-<th>表头</th>
-<th>表头</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-<tr>
-<td>单元格</td>
-<td>单元格</td>
-</tr>
-</tbody>
-</table>
-<p>我们可以设置表格的对齐方式：</p>
-<blockquote>
-<p><code>-:</code> 设置内容和标题栏居右对齐。<br>
-<code>:-</code> 设置内容和标题栏居左对齐。<br>
-<code>:-:</code> 设置内容和标题栏居中对齐。</p>
-</blockquote>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 左对齐 | 右对齐 | 居中对齐 |</span><br><span class="line">| :-----| ----: | :----: |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br><span class="line">| 单元格 | 单元格 | 单元格 |</span><br></pre></td></tr></table></figure>
-<p>显示效果如下：</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">左对齐</th>
-<th style="text-align:right">右对齐</th>
-<th style="text-align:center">居中对齐</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">单元格</td>
-<td style="text-align:right">单元格</td>
-<td style="text-align:center">单元格</td>
-</tr>
-<tr>
-<td style="text-align:left">单元格</td>
-<td style="text-align:right">单元格</td>
-<td style="text-align:center">单元格</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="MarkDown-Html元素">MarkDown Html元素</h3>
-<p>不在 Markdown 涵盖范围之内的标签，都可以直接在文档里面用 HTML 撰写。</p>
-<p>目前支持的 HTML 元素有：<code>&lt;kbd&gt;</code> <code>&lt;b&gt;</code> <code>&lt;i&gt;</code> <code>&lt;em&gt;</code> <code>&lt;sup&gt;</code> <code>&lt;sub&gt;</code> <code>&lt;br&gt;</code>等 ，如：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">使用 <span class="tag">&lt;<span class="name">kbd</span>&gt;</span>Ctrl<span class="tag">&lt;/<span class="name">kbd</span>&gt;</span>+<span class="tag">&lt;<span class="name">kbd</span>&gt;</span>Alt<span class="tag">&lt;/<span class="name">kbd</span>&gt;</span>+<span class="tag">&lt;<span class="name">kbd</span>&gt;</span>Del<span class="tag">&lt;/<span class="name">kbd</span>&gt;</span> 打开任务管理器</span><br></pre></td></tr></table></figure>
-<p>显示结果为：<br>
-使用 <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>Del</kbd> 打开任务管理器</p>
-<hr>
-<h3 id="MarkDown转义">MarkDown转义</h3>
-<p>Markdown 使用了很多特殊符号来表示特定的意义，如果需要显示特定的符号则需要使用转义字符，Markdown 使用反斜杠转义特殊字符：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**文本加粗**</span> </span><br><span class="line">\<span class="emphasis">*\*</span> 正常显示星号 \<span class="emphasis">*\*</span></span><br></pre></td></tr></table></figure>
-<p>显示效果如下：</p>
-<blockquote>
-<p><strong>文本加粗</strong><br>
-** 正常显示星号 **</p>
-</blockquote>
-<p>Markdown 支持以下这些符号前面加上反斜杠来帮助插入普通的符号：</p>
-<blockquote>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">\   反斜线</span><br><span class="line">`   反引号</span><br><span class="line"><span class="bullet">*</span>   星号</span><br><span class="line"><span class="emphasis">_   下划线</span></span><br><span class="line"><span class="emphasis">&#123;&#125;  花括号</span></span><br><span class="line"><span class="emphasis">[]  方括号</span></span><br><span class="line"><span class="emphasis">()  小括号</span></span><br><span class="line"><span class="emphasis">#   井字号</span></span><br><span class="line"><span class="emphasis">+   加号</span></span><br><span class="line"><span class="emphasis">-   减号</span></span><br><span class="line"><span class="emphasis">.   英文句点</span></span><br><span class="line"><span class="emphasis">!   感叹号</span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="MarkDown公式"><s>MarkDown公式</s></h3>
-<p>当你需要在编辑器中插入数学公式时，可以使用两个美元符 $$ 包裹 TeX 或 LaTeX 格式的数学公式来实现。提交后，问答和文章页会根据需要加载 Mathjax 对数学公式进行渲染。如：</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\mathbf&#123;V&#125;<span class="emphasis">_1 \times \mathbf&#123;V&#125;_</span>2 =  \begin&#123;vmatrix&#125; </span><br><span class="line">\mathbf&#123;i&#125; &amp; \mathbf&#123;j&#125; &amp; \mathbf&#123;k&#125; \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial u&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial u&#125; &amp; 0 \\</span><br><span class="line">\frac&#123;\partial X&#125;&#123;\partial v&#125; &amp;  \frac&#123;\partial Y&#125;&#123;\partial v&#125; &amp; 0 \\</span><br><span class="line">\end&#123;vmatrix&#125;</span><br><span class="line">$&#123;$tep1&#125;&#123;\style&#123;visibility:hidden&#125;&#123;(x+1)(x+1)&#125;&#125;</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
-<p>显示效果如下：</p>
-<blockquote>
-<p>$$<br>
-\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}<br>
-\mathbf{i} &amp; \mathbf{j} &amp; \mathbf{k} \<br>
-\frac{\partial X}{\partial u} &amp;  \frac{\partial Y}{\partial &gt; u} &amp; 0 \<br>
-\frac{\partial X}{\partial v} &amp;  \frac{\partial Y}{\partial &gt; v} &amp; 0 \<br>
-\end{vmatrix}<br>
-${$tep1}{\style{visibility:hidden}{(x+1)(x+1)}}<br>
-$$</p>
-</blockquote>
-
+<h3 id="解题思路-3">解题思路</h3>
+<h4 id=""></h4>
+<h4 id="复杂度分析-3">复杂度分析</h4>
+<h3 id="题解-3">题解</h3>
+<h4 id="Python-3">Python</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detectCapitalUse</span>(<span class="params">self, word: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">        <span class="keyword">return</span> word.islower() <span class="keyword">or</span> word.isupper() <span class="keyword">or</span> word.istitle()</span><br></pre></td></tr></table></figure>
+<h4 id="C-3">C#</h4>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
           <li class="previous">
-            <a href="/cn/Python-Note/" data-toggle="tooltip" data-placement="top" title="Python学习笔记">&larr; Previous Post</a>
+            <a href="/cn/Algorithm-Note/" data-toggle="tooltip" data-placement="top" title="算法笔记">&larr; Previous Post</a>
           </li>
           
           
           <li class="next">
-            <a href="/cn/hexo-for-building-blog/" data-toggle="tooltip" data-placement="top" title="使用Hexo搭建博客">Next Post &rarr;</a>
+            <a href="/cn/Unity-Study-Note/" data-toggle="tooltip" data-placement="top" title="Unity学习笔记">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -718,7 +565,7 @@ $$</p>
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=MarkDown基础&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/MarkDown-Base/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=算法题库&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/Algorithm/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -753,7 +600,7 @@ $$</p>
       repo: 'commentRepo',
       owner: 'bravogohome',
       admin: 'bravogohome',
-      id: 'Tue Nov 02 2021 14:36:17 GMT+0800', // Ensure uniqueness and length less than 50
+      id: 'Mon Nov 08 2021 11:04:24 GMT+0800', // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
       perPage: 10,
       pagerDirection: 'last',
@@ -806,7 +653,7 @@ $$</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MarkDown%E4%BB%8B%E7%BB%8D"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">MarkDown介绍</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#MarkDown%E7%BC%96%E5%86%99"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">MarkDown编写</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E6%A0%87%E9%A2%98"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">MarkDown标题</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E6%A0%BC%E5%BC%8F"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">MarkDown格式</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%AE%B5%E8%90%BD%E7%9A%84%E6%8D%A2%E8%A1%8C"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">段落的换行</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%AD%97%E4%BD%93"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">字体</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%86%E5%89%B2%E7%BA%BF"><span class="toc-nav-number">2.2.3.</span> <span class="toc-nav-text">分割线</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%A0%E9%99%A4%E7%BA%BF"><span class="toc-nav-number">2.2.4.</span> <span class="toc-nav-text">删除线</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E5%88%97%E8%A1%A8"><span class="toc-nav-number">2.3.</span> <span class="toc-nav-text">MarkDown列表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%9C%89%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-nav-number">2.3.1.</span> <span class="toc-nav-text">有序列表</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="toc-nav-number">2.3.2.</span> <span class="toc-nav-text">无序列表</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%88%97%E8%A1%A8%E5%B5%8C%E5%A5%97"><span class="toc-nav-number">2.3.3.</span> <span class="toc-nav-text">列表嵌套</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E5%8C%BA%E5%9D%97"><span class="toc-nav-number">2.4.</span> <span class="toc-nav-text">MarkDown区块</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E4%BB%A3%E7%A0%81"><span class="toc-nav-number">2.5.</span> <span class="toc-nav-text">MarkDown代码</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-nav-number">2.5.1.</span> <span class="toc-nav-text">函数</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BB%A3%E7%A0%81%E5%8C%BA%E5%9D%97"><span class="toc-nav-number">2.5.2.</span> <span class="toc-nav-text">代码区块</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E9%93%BE%E6%8E%A5"><span class="toc-nav-number">2.6.</span> <span class="toc-nav-text">MarkDown链接</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E5%9B%BE%E7%89%87"><span class="toc-nav-number">2.7.</span> <span class="toc-nav-text">MarkDown图片</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E8%A1%A8%E6%A0%BC"><span class="toc-nav-number">2.8.</span> <span class="toc-nav-text">MarkDown表格</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown-Html%E5%85%83%E7%B4%A0"><span class="toc-nav-number">2.9.</span> <span class="toc-nav-text">MarkDown Html元素</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E8%BD%AC%E4%B9%89"><span class="toc-nav-number">2.10.</span> <span class="toc-nav-text">MarkDown转义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#MarkDown%E5%85%AC%E5%BC%8F"><span class="toc-nav-number">2.11.</span> <span class="toc-nav-text">MarkDown公式</span></a></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%8C%9C%E6%95%B0%E5%AD%97%E6%B8%B8%E6%88%8F"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">猜数字游戏</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">解题思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%A8%A1%E6%8B%9F"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">模拟</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="toc-nav-number">1.1.1.1.</span> <span class="toc-nav-text">复杂度分析</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">题解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Python"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Python</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#C"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">C#</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%8C%9C%E6%95%B0%E5%AD%97%E5%A4%A7%E5%B0%8F%E2%85%A1"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">猜数字大小Ⅱ</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-2"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">解题思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="toc-nav-number">2.1.1.</span> <span class="toc-nav-text">动态规划</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-2"><span class="toc-nav-number">2.1.2.</span> <span class="toc-nav-text">复杂度分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="toc-nav-number">2.2.</span> <span class="toc-nav-text">题解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Python-2"><span class="toc-nav-number">2.2.1.</span> <span class="toc-nav-text">Python</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#C-2"><span class="toc-nav-number">2.2.2.</span> <span class="toc-nav-text">C#</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%A3%80%E6%B5%8B%E5%A4%A7%E5%86%99%E5%AD%97%E6%AF%8D"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">检测大写字母</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF-3"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">解题思路</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link"><span class="toc-nav-number">3.1.1.</span> <span class="toc-nav-text"></span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90-3"><span class="toc-nav-number">3.1.2.</span> <span class="toc-nav-text">复杂度分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%A2%98%E8%A7%A3-3"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">题解</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Python-3"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">Python</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#C-3"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">C#</span></a></li></ol></li></ol></li></ol>
         
         </div>
       </aside>
@@ -829,7 +676,9 @@ $$</p>
           </h5>
           <div class="tags">
             
-            <a class="tag" href="/tags/#markdown" title="markdown">markdown</a>
+            <a class="tag" href="/tags/#Algorithm" title="Algorithm">Algorithm</a>
+            
+            <a class="tag" href="/tags/#Leetcode" title="Leetcode">Leetcode</a>
             
           </div>
         </section>
