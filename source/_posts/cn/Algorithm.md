@@ -334,6 +334,63 @@ class Solution:
 
 -------------------------------------------------------------------
 
+## 最大单词长度乘积
+leetcode链接：<https://leetcode-cn.com/problems/maximum-product-of-word-lengths/>
+
+> 给定一个字符串数组 words，找到 length(word[i]) * length(word[j]) 的最大值，并且这两个单词不含有公共字母。你可以认为每个单词只包含小写字母。如果不存在这样的两个单词，返回 0。
+  
+示例：  
+> 
+> **输入**：["abcw","baz","foo","bar","xtfn","abcdef"]  
+> **输出**：16   
+> **解释**：  
+> "abcw", "xtfn"  
+> 4 * 4 = 16   
+
+
+
+### 解题思路
+#### 暴力遍历
+遍历每一对字符串，如果这对不含有公共字母，则计算length(word[i]) * length(word[j]) 并得到最大值。
+
+##### 复杂度分析
++ 时间复杂度： 
++ 空间复杂度： 
+
+#### 位运算
+详见力扣题解：<https://leetcode-cn.com/problems/maximum-product-of-word-lengths/solution/zui-da-dan-ci-chang-du-cheng-ji-by-leetc-lym9/>
+
+### 题解
+#### `Python`
+```python
+def maxProduct(self, words: List[str]) -> int:
+    result = 0
+    for i in range(len(words)-1):
+        wordset = set(words[i])
+        # wordset = set()
+        # for x in words[i]:
+        #     wordset.add(x)
+        # 使用上面代码代替时内存消耗会小0.2-0.3MB，原因未知，待以后深掘。
+        for j in range(i + 1, len(words)):
+            flag = 0
+            for x in words[j]:
+                if x in wordset:  # 这一对字符含有公共字母
+                    flag = 1
+                    break
+            # 这一对字符不含有公共字母
+            if flag == 0 and len(words[i]) * len(words[j]) > result:  # 这一对不含有公共字母
+                result = len(words[i]) * len(words[j])
+    return result
+```
+
+#### `C#`
+```csharp
+
+```
+
+
+-------------------------------------------------------------------
+
 ## new problem
 leetcode链接：<>
 
