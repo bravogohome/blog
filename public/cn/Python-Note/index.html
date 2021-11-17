@@ -362,11 +362,11 @@
             <!-- WordCount start -->
             <div class="blank_box"></div>
             <span class="meta">
-              Estimated Reading Time <span class="post-count">2</span> Minutes
+              Estimated Reading Time <span class="post-count">8</span> Minutes
             </span>
             <div class="blank_box"></div>
             <span class="meta">
-              Words <span class="post-count">575</span> In Total
+              Words <span class="post-count">2k</span> In Total
             </span>
             <div class="blank_box"></div>
             <!-- WordCount end -->
@@ -429,76 +429,176 @@
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
         <blockquote>
-<p>Python3和Python2在部分使用上有区别，详情请参见官方文档<br>
-本文使用的是<code>Python3</code></p>
+<p>Python3和Python2在部分使用上有区别，详情请参见官方文档<br>本文使用的是<code>Python3</code></p>
 </blockquote>
-<h2 id="python安装">python安装</h2>
-<ol>
-<li>访问<a target="_blank" rel="noopener" href="https://www.python.org/">Python官网</a>并下载Python<br>
-windows下载地址<a target="_blank" rel="noopener" href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a><br>
-安装完成后打开命令提示符窗口输入<code>python</code>查看是否安装成功。</li>
+<h2 id="python安装"><a href="#python安装" class="headerlink" title="python安装"></a>python安装</h2><ol>
+<li>访问<a target="_blank" rel="noopener" href="https://www.python.org/">Python官网</a>并下载Python<br>windows下载地址<a target="_blank" rel="noopener" href="https://www.python.org/downloads/windows/">https://www.python.org/downloads/windows/</a><br>安装完成后打开命令提示符窗口输入<code>python</code>查看是否安装成功。  </li>
 <li>配置环境变量</li>
-<li>安装IDE/编辑器:vscode
-<ul>
+<li>安装IDE/编辑器:vscode  <ul>
 <li>Pycharm</li>
-<li>Rider</li>
+<li>Rider </li>
 </ul>
 </li>
 <li>创建py文件</li>
 </ol>
-<h2 id="python语法">python语法</h2>
-<h3 id="变量赋值">变量赋值</h3>
-<p>使用等号为变量赋值；</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2.0</span></span><br><span class="line">c = <span class="string">&quot;str&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="python语法"><a href="#python语法" class="headerlink" title="python语法"></a>python语法</h2><h3 id="变量赋值"><a href="#变量赋值" class="headerlink" title="变量赋值"></a>变量赋值</h3><p>使用等号为变量赋值：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span></span><br><span class="line">b = <span class="number">2.0</span></span><br><span class="line">c = <span class="string">&quot;str&quot;</span></span><br></pre></td></tr></table></figure>
 <p>也可以同时为多个变量赋值：</p>
-<h2 id="code￼1"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = b = c = <span class="number">1</span>      </span><br><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2.0</span>, <span class="string">&quot;str&quot;</span>  </span><br></pre></td></tr></table></figure></h2>
-<h2 id="Python基本数据类型">Python基本数据类型</h2>
-<p>Python中的变量不需要声明。每个变量在使用前都必须赋值，<strong>变量赋值以后该变量才会被创建</strong>。<br>
-在Python中，变量就是变量，它“没有类型”，数据类型指的是<strong>变量所指的内存中对象的类型</strong>。<br>
-等号（=）运算符左边的是一个变量名，等号（=）运算符右边的是将存储在变量的值。</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = b = c = <span class="number">1</span>   <span class="comment"># 从左到右依次赋值   </span></span><br><span class="line">a, b, c = <span class="number">1</span>, <span class="number">2.0</span>, <span class="string">&quot;str&quot;</span>   <span class="comment"># 分别赋值</span></span><br></pre></td></tr></table></figure>
+<hr>
+<h2 id="Python基本数据类型"><a href="#Python基本数据类型" class="headerlink" title="Python基本数据类型"></a>Python基本数据类型</h2><p>Python中的变量不需要声明。每个变量在使用前都必须赋值，<strong>变量赋值以后该变量才会被创建</strong>。<br>在Python中，变量就是变量，它“没有类型”，数据类型指的是<strong>变量所指的内存中对象的类型</strong>。<br>等号（=）运算符左边的是一个变量名，等号（=）运算符右边的是将存储在变量的值。 </p>
+<blockquote>
+<p>一个变量可以通过赋值指向不同类型的对象。</p>
+</blockquote>
 <p>python中有六个标准的数据类型：</p>
 <ul>
-<li><a href="#Number%E6%95%B0%E5%AD%97">Number</a></li>
-<li><a href="#Tuple%E5%85%83%E7%BB%84">Tuple</a></li>
-<li><a href="#String%E5%AD%97%E7%AC%A6%E4%B8%B2">String</a></li>
-<li><a href="#List%E5%88%97%E8%A1%A8">List</a></li>
-<li><a href="#Set%E9%9B%86%E5%90%88">Set</a></li>
-<li><a href="#Dictionary%E5%AD%97%E5%85%B8">Dictionary</a></li>
+<li><a href="#Number数字">Number</a></li>
+<li><a href="#Tuple元组">Tuple</a></li>
+<li><a href="#String字符串">String</a></li>
+<li><a href="#List列表">List</a></li>
+<li><a href="#Set集合">Set</a></li>
+<li><a href="#Dictionary字典">Dictionary</a></li>
 </ul>
-<p>其中<code>不可变</code>的数据类型为： <code>Number</code>、<code>Tuple</code>、<code>String</code><br>
-<code>可变</code>的数据类型为： <code>List</code>、<code>Set</code>、<code>Dictionary</code></p>
+<p>其中<code>不可变</code>的数据类型为： <code>Number</code>、<code>Tuple</code>、<code>String</code><br><code>可变</code>的数据类型为： <code>List</code>、<code>Set</code>、<code>Dictionary</code></p>
 <p>在解释这六个数据类型前，有两个方法需要介绍：</p>
-<h3 id="type-和-isinstance"><code>type()</code> 和 <code>isinstance()</code></h3>
-<p>Python内置的 <strong>type()</strong> 函数可以用来查询变量所指的对象类型。<br>
-type()函数有两个重载方法：</p>
+<h3 id="type-和-isinstance"><a href="#type-和-isinstance" class="headerlink" title="type() 和 isinstance()"></a><code>type()</code> 和 <code>isinstance()</code></h3><p>Python内置的 <strong>type()</strong> 函数可以用来查询变量所指的对象类型。<br>type()函数有两个重载方法：  </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type(object) -&gt; type # the object&#x27;s type</span><br><span class="line">type(name, bases, dict) -&gt; object # a new type object</span><br></pre></td></tr></table></figure>
-<p>如果只有一个参数则返回对象的类型，三个参数返回新的类型对象。</p>
-<p>而**isinstance()**函数用来判断一个对象是否是一个已知的类型。<br>
-使用方法：</p>
+<p>如果只有一个参数则返回对象的类型，三个参数返回新的类型对象。  </p>
+<p>而 <strong>isinstance()</strong> 函数用来判断一个对象是否是一个已知的类型。<br>使用方法：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isinstance(object, classinfo) -&gt; bool</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>参数：</p>
 <ul>
-<li>object - 实例对象</li>
-<li>classinfo - 可以是直接或间接类名、基本类型或者由它们组成的元组</li>
+<li>object - 实例对象  </li>
+<li>classinfo - 可以是直接或间接类名、基本类型或者由它们组成的元组<blockquote>
+<p>classinfo为基本类型时,可以是<code>int</code>，<code>float</code>，<code>bool</code>，<code>complex</code>，<code>str</code>(字符串)，<code>list</code>，<code>dict</code>(字典)，<code>set</code>，<code>tuple</code>。<br>要注意的是，classinfo 的字符串是 <code>str</code> 而不是 <code>string</code>，字典也是简写 <code>dict</code>。</p>
+</blockquote>
+</li>
 </ul>
+</blockquote>
+<h4 id="isinstance-与-type-区别："><a href="#isinstance-与-type-区别：" class="headerlink" title="isinstance() 与 type() 区别："></a>isinstance() 与 type() 区别：</h4><p>type() 不会认为子类是一种父类类型，<code>不考虑</code><strong>继承</strong>关系。<br>isinstance() 会认为子类是一种父类类型，<code>考虑</code><strong>继承</strong>关系。<br>如果要判断两个类型是否相同推荐使用<code>isinstance()</code>。  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 示例代码</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span>(<span class="params">A</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">a = A()</span><br><span class="line">b = B()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">isinstance</span>(a,A))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">isinstance</span>(b,A))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(b))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(a)==A)</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(b)==A)</span><br></pre></td></tr></table></figure>
+<p>以上代码的输出结果为：  </p>
 <blockquote>
-<p>classinfo为基本类型时,可以是<code>int，float，bool，complex，str(字符串)，list，dict(字典)，set，tuple</code>。<br>
-要注意的是，classinfo 的字符串是 str 而不是 string，字典也是简写 dict。</p>
+<p>True<br>True  </p>
+<p><class '\_\_main__.A'>  </p>
+<p><class '\_\_main__.B'><br>True<br>False  </p>
 </blockquote>
-</blockquote>
-<h3 id="Number数字">Number数字</h3>
-<p>python数字类型包括：<code>整型int</code>、<code>浮点型float</code>、<code>布尔型bool</code>、<code>复数型complex</code>。</p>
+<h3 id="Number数字"><a href="#Number数字" class="headerlink" title="Number数字"></a>Number数字</h3><p>数字类型是不允许改变的，这就意味着如果改变数字数据类型的值，将重新分配内存空间。</p>
+<p>python数字类型包括：<code>整型int</code>、<code>浮点型float</code>、<code>布尔型bool</code>、<code>复数型complex</code>。  </p>
 <blockquote>
 <p>其中在Python3中，只有一种整数类型int，表示为长整型，没有Python2中的Long</p>
 </blockquote>
-<h3 id="Tuple元组">Tuple元组</h3>
-<h3 id="String字符串">String字符串</h3>
-<h3 id="List列表">List列表</h3>
-<h3 id="Set集合">Set集合</h3>
-<h3 id="Dictionary字典">Dictionary字典</h3>
+<h4 id="具体类型"><a href="#具体类型" class="headerlink" title="具体类型"></a>具体类型</h4><h5 id="int"><a href="#int" class="headerlink" title="int"></a>int</h5><p>int通常被称为是整型或整数，是正或负整数，不带小数点。Python3 整型是没有限制大小的，可以当作“Long”长整型使用，所以 Python3 没有 Python2 的 Long 类型。<br>除了用正常的十进制数，我们还可以使用十六进制或八进制数来代表整数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>number = <span class="number">0xA0F</span> <span class="comment"># 十六进制</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>number</span><br><span class="line"><span class="number">2575</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>number=<span class="number">0o37</span> <span class="comment"># 八进制</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>number</span><br><span class="line"><span class="number">31</span></span><br></pre></td></tr></table></figure>
+<h5 id="float"><a href="#float" class="headerlink" title="float"></a>float</h5><p>浮点型由整数部分与小数部分组成，浮点型也可以使用科学计数法表示（2.5e2 = 2.5 x 102 = 250）<br>以下变量都表示为float类型：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>number1 = <span class="number">0.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>number2 = <span class="number">13.10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>number3 = <span class="number">1.2e2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>number4 = <span class="number">2.5e+3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>number5 = <span class="number">9.</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>number6 = -<span class="number">2.1E-5</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Python对<strong>绝对值小于</strong><code>0.0001</code>的浮点数使用科学计数法显示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.0001</span></span><br><span class="line"><span class="number">0.0001</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.00001</span></span><br><span class="line"><span class="number">1e-05</span></span><br></pre></td></tr></table></figure></p>
+<p>另一个临界点是<code>1e+16</code>:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1000000000000000.0</span>  </span><br><span class="line"><span class="number">1000000000000000.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10000000000000000.0</span> </span><br><span class="line"><span class="number">1e+16</span></span><br></pre></td></tr></table></figure></p>
+<p>float的正常最多位为16位小数，比如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1</span> / <span class="number">3.0</span></span><br><span class="line"><span class="number">0.3333333333333333</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.9999999999999999</span> </span><br><span class="line"><span class="number">10.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.999999999999999</span> </span><br><span class="line"><span class="number">9.999999999999998</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.99999999999999</span></span><br><span class="line"><span class="number">9.99999999999999</span></span><br></pre></td></tr></table></figure></p>
+<p>这里和临界点外有关的数据运算将会产生数据精度和数据损失的相关问题:<a href="#精度问题">python float 精度问题</a>  </p>
+</blockquote>
+<h5 id="bool"><a href="#bool" class="headerlink" title="bool"></a>bool</h5><p>bool用来表示真假的状态，<code>True</code>表示真，<code>False</code>表示假，注意<code>区分大小写</code>。<br>Python3中，bool是int的<code>子类</code>；  </p>
+<blockquote>
+<p>在 Python2 中是没有布尔型的，它用数字 0 表示 False，用 1 表示 True。</p>
+</blockquote>
+<p><em>True</em> 和 <em>False</em> 可以和数字相加，<code>True==1</code> <code>False==0</code>会返回<strong><em>True</em></strong>，但可以通过<code>is</code>来判断类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">issubclass</span>(<span class="built_in">bool</span>, <span class="built_in">int</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">True</span>==<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span>==<span class="number">0</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">True</span>+<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="literal">False</span>+<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">1</span> <span class="keyword">is</span> <span class="literal">True</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">0</span> <span class="keyword">is</span> <span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>以上代码的输出结果为：  </p>
+<blockquote>
+<p>True<br>True<br>True<br>2<br>1<br>False<br>False</p>
+<p>注意：从Python3.8开始，使用<strong><em>is</em></strong>和<strong><em>is not</em></strong>运算符时，会抛出<code>SyntaxWarning: &quot;is&quot; with a literal. Did you mean &quot;==&quot;?</code>语法警告信息。</p>
+</blockquote>
+<h5 id="complex"><a href="#complex" class="headerlink" title="complex"></a>complex</h5><p>复数由实数部分和虚数部分构成，可以用a + bj,或者complex(a,b)表示， 复数的实部a和虚部b都是浮点型。</p>
+<h4 id="数值运算"><a href="#数值运算" class="headerlink" title="数值运算"></a>数值运算</h4><p>Python 解释器可以作为一个简单的计算器，您可以在解释器里输入一个表达式，它将输出表达式的值。<br>表达式的语法很直白： <code>+</code>加法, <code>-</code>减法, <code>*</code>乘法, <code>/</code>除法, <code>//</code>整除, <code>%</code>取余, <code>**</code>乘方/幂</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 解释器形式,非解释器需要在表达式外加上print函数才能在输出到终端显示</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span> + <span class="number">4</span> <span class="comment"># 加法</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">4.3</span> - <span class="number">2</span> <span class="comment"># 减法</span></span><br><span class="line"><span class="number">2.3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span> * <span class="number">7</span>  <span class="comment"># 乘法</span></span><br><span class="line"><span class="number">21</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> / <span class="number">4</span>  <span class="comment"># 除法，得到一个浮点数</span></span><br><span class="line"><span class="number">0.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> // <span class="number">4</span> <span class="comment"># 除法，得到一个整数</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">17</span> % <span class="number">3</span> <span class="comment"># 取余</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> ** <span class="number">5</span> <span class="comment"># 乘方/幂</span></span><br><span class="line"><span class="number">32</span></span><br></pre></td></tr></table></figure>
+<p>在混合运算中，Python会把整型转换成浮点数后参加运算。<br>比如，整除返回的不一定是整数类型，它和分母分子的数据类型有关：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">7</span>//<span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">7.0</span>//<span class="number">2</span></span><br><span class="line"><span class="number">3.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">7</span>/<span class="number">2.0</span></span><br><span class="line"><span class="number">3.0</span></span><br></pre></td></tr></table></figure>
+<h4 id="数字类型转换"><a href="#数字类型转换" class="headerlink" title="数字类型转换"></a>数字类型转换</h4><p>Python各数字类型间支持互相转换。<br>Python的数字类型转化和创建都可以直接将<strong><em>数据类型作为函数名</em></strong>即可。  </p>
+<p>注意强制类型转换可能会导致<strong><em>数据损失</em></strong>。  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="number">1.2</span>)</span><br><span class="line"><span class="number">1</span>   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">int</span>(<span class="number">2.0</span>) </span><br><span class="line"><span class="number">2</span>   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">float</span>(<span class="number">1</span>) </span><br><span class="line"><span class="number">1.0</span> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">float</span>(<span class="number">1.1</span>)</span><br><span class="line"><span class="number">1.1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bool</span>(<span class="number">1</span>) </span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bool</span>(<span class="number">0</span>)</span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bool</span>(<span class="number">2</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bool</span>(-<span class="number">1</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">bool</span>(<span class="literal">True</span>)</span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">complex</span>(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">(<span class="number">1</span>+<span class="number">2j</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">complex</span>(<span class="number">2</span>)</span><br><span class="line">(<span class="number">2</span>+<span class="number">0j</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">complex</span>(<span class="number">1.2</span>,<span class="literal">True</span>)</span><br><span class="line">(<span class="number">1.2</span>+<span class="number">1j</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="相关函数"><a href="#相关函数" class="headerlink" title="相关函数"></a>相关函数</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数</th>
+<th style="text-align:left">返回值 / 描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><a href="#abs">abs()</a></td>
+<td style="text-align:left">返回数字的<code>绝对值</code>，如<code>abs(-10)</code>返回<code>10</code>，如果参数是一个复数，则返回它的大小</td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#ceil">ceil()</a></td>
+<td style="text-align:left">返回数字的<code>向上取整</code>的整数值，如<code>math.ceil(2.1)</code>返回<code>5</code></td>
+</tr>
+<tr>
+<td style="text-align:center"><a href="#exp">exp()</a></td>
+<td style="text-align:left">返回e的x次幂(e^x)，如math.exp(1)返回2.718281828459045</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="相关常量"><a href="#相关常量" class="headerlink" title="相关常量"></a>相关常量</h4><h3 id="Tuple元组"><a href="#Tuple元组" class="headerlink" title="Tuple元组"></a>Tuple元组</h3><h3 id="String字符串"><a href="#String字符串" class="headerlink" title="String字符串"></a>String字符串</h3><h3 id="List列表"><a href="#List列表" class="headerlink" title="List列表"></a>List列表</h3><h3 id="Set集合"><a href="#Set集合" class="headerlink" title="Set集合"></a>Set集合</h3><h3 id="Dictionary字典"><a href="#Dictionary字典" class="headerlink" title="Dictionary字典"></a>Dictionary字典</h3><!-- TODO: _变量 -->
+<!-- TODO: del删除对象 引用 -->
+<hr>
+<!-- TODO  函数汇总-->
+<h2 id="Python内置函数"><a href="#Python内置函数" class="headerlink" title="Python内置函数"></a>Python内置函数</h2><h3 id="abs"><a href="#abs" class="headerlink" title="abs()"></a>abs()</h3><p>abs()函数返回数字的绝对值，如果参数是一个复数，则返回它的大小。  </p>
+<p>语法：  </p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">abs</span>(x)</span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong>  </p>
+<ul>
+<li><code>x</code> : 数值表达式，可以是int,float,bool,complex</li>
+</ul>
+<p><strong>返回值：</strong><br>返回对应参数的类型，注意如果是复数返回的是其模。</p>
+</blockquote>
+<p>用例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">abs</span>(-<span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">abs</span>(-<span class="number">1.0</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">abs</span>(<span class="number">3</span>+<span class="number">4j</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">abs</span>(<span class="literal">False</span>))</span><br></pre></td></tr></table></figure></p>
+<p>以上代码运行后的输出结果为：  </p>
+<blockquote>
+<p>1<br>1.0<br>5.0<br>0</p>
+</blockquote>
+<hr>
+<hr>
+<h2 id="Python-math-函数"><a href="#Python-math-函数" class="headerlink" title="Python math 函数"></a>Python math 函数</h2><h3 id="ceil"><a href="#ceil" class="headerlink" title="ceil()"></a>ceil()</h3><p>xxxxxxxxxx</p>
+<p>语法：  </p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong>  </p>
+<ul>
+<li>x :  </li>
+</ul>
+<p><strong>返回值：</strong>  </p>
+</blockquote>
+<p>用例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>以上代码运行后的输出结果为：  </p>
+<blockquote>
+<p>1</p>
+</blockquote>
+<hr>
+<h3 id="exp"><a href="#exp" class="headerlink" title="exp()"></a>exp()</h3><p>xxxxxxxxxx</p>
+<p>语法：  </p>
+<blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>参数说明：</strong>  </p>
+<ul>
+<li>x :  </li>
+</ul>
+<p><strong>返回值：</strong>  </p>
+</blockquote>
+<p>用例：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>以上代码运行后的输出结果为：  </p>
+<blockquote>
+<p>1</p>
+</blockquote>
+<hr>
 <!-- TODO：新建文章记录错误 -->
-<h2 id="Python常见错误">Python常见错误</h2>
+<h2 id="Python常见错误"><a href="#Python常见错误" class="headerlink" title="Python常见错误"></a>Python常见错误</h2><h3 id="精度问题"><a href="#精度问题" class="headerlink" title="精度问题"></a>精度问题</h3><p>Python的float的两个临界点会转换科学计数法表示，是精度问题出现的原因：  </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10000000000000001.0</span> </span><br><span class="line"><span class="number">1e+16</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10000000000000001.0</span> - <span class="number">1</span></span><br><span class="line"><span class="number">1e+16</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10000000000000001.0</span> - <span class="number">2</span> </span><br><span class="line"><span class="number">9999999999999998.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10000000000000002.0</span> - <span class="number">2</span> </span><br><span class="line"><span class="number">1e+16</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10000000000000003.0</span> - <span class="number">2</span> </span><br><span class="line"><span class="number">1.0000000000000002e+16</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.9999999999999999</span> </span><br><span class="line"><span class="number">10.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.999999999999999</span> </span><br><span class="line"><span class="number">9.999999999999998</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.99999999999999</span></span><br><span class="line"><span class="number">9.99999999999999</span></span><br></pre></td></tr></table></figure>
+<p>解决精度问题的方法是使用<code>decimal</code>包</p>
 
 
         <hr>
@@ -648,11 +748,7 @@ type()函数有两个重载方法：</p>
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#python%E5%AE%89%E8%A3%85"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">python安装</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#python%E8%AF%AD%E6%B3%95"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">python语法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">变量赋值</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#code%EF%BF%BC1"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">1
-2
-a &#x3D; b &#x3D; c &#x3D; 1      
-a, b, c &#x3D; 1, 2.0, &quot;str&quot;  
-</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Python%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Python基本数据类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#type-%E5%92%8C-isinstance"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">type() 和 isinstance()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Number%E6%95%B0%E5%AD%97"><span class="toc-nav-number">4.2.</span> <span class="toc-nav-text">Number数字</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Tuple%E5%85%83%E7%BB%84"><span class="toc-nav-number">4.3.</span> <span class="toc-nav-text">Tuple元组</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#String%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">4.4.</span> <span class="toc-nav-text">String字符串</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#List%E5%88%97%E8%A1%A8"><span class="toc-nav-number">4.5.</span> <span class="toc-nav-text">List列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Set%E9%9B%86%E5%90%88"><span class="toc-nav-number">4.6.</span> <span class="toc-nav-text">Set集合</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Dictionary%E5%AD%97%E5%85%B8"><span class="toc-nav-number">4.7.</span> <span class="toc-nav-text">Dictionary字典</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Python%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Python常见错误</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#python%E5%AE%89%E8%A3%85"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">python安装</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#python%E8%AF%AD%E6%B3%95"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">python语法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8F%98%E9%87%8F%E8%B5%8B%E5%80%BC"><span class="toc-nav-number">2.1.</span> <span class="toc-nav-text">变量赋值</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Python%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Python基本数据类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#type-%E5%92%8C-isinstance"><span class="toc-nav-number">3.1.</span> <span class="toc-nav-text">type() 和 isinstance()</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#isinstance-%E4%B8%8E-type-%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-nav-number">3.1.1.</span> <span class="toc-nav-text">isinstance() 与 type() 区别：</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Number%E6%95%B0%E5%AD%97"><span class="toc-nav-number">3.2.</span> <span class="toc-nav-text">Number数字</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%85%B7%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="toc-nav-number">3.2.1.</span> <span class="toc-nav-text">具体类型</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#int"><span class="toc-nav-number">3.2.1.1.</span> <span class="toc-nav-text">int</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#float"><span class="toc-nav-number">3.2.1.2.</span> <span class="toc-nav-text">float</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#bool"><span class="toc-nav-number">3.2.1.3.</span> <span class="toc-nav-text">bool</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#complex"><span class="toc-nav-number">3.2.1.4.</span> <span class="toc-nav-text">complex</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E5%80%BC%E8%BF%90%E7%AE%97"><span class="toc-nav-number">3.2.2.</span> <span class="toc-nav-text">数值运算</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E6%95%B0%E5%AD%97%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-nav-number">3.2.3.</span> <span class="toc-nav-text">数字类型转换</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%9B%B8%E5%85%B3%E5%87%BD%E6%95%B0"><span class="toc-nav-number">3.2.4.</span> <span class="toc-nav-text">相关函数</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E7%9B%B8%E5%85%B3%E5%B8%B8%E9%87%8F"><span class="toc-nav-number">3.2.5.</span> <span class="toc-nav-text">相关常量</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Tuple%E5%85%83%E7%BB%84"><span class="toc-nav-number">3.3.</span> <span class="toc-nav-text">Tuple元组</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#String%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-nav-number">3.4.</span> <span class="toc-nav-text">String字符串</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#List%E5%88%97%E8%A1%A8"><span class="toc-nav-number">3.5.</span> <span class="toc-nav-text">List列表</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Set%E9%9B%86%E5%90%88"><span class="toc-nav-number">3.6.</span> <span class="toc-nav-text">Set集合</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Dictionary%E5%AD%97%E5%85%B8"><span class="toc-nav-number">3.7.</span> <span class="toc-nav-text">Dictionary字典</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Python%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Python内置函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#abs"><span class="toc-nav-number">4.1.</span> <span class="toc-nav-text">abs()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Python-math-%E5%87%BD%E6%95%B0"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">Python math 函数</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ceil"><span class="toc-nav-number">5.1.</span> <span class="toc-nav-text">ceil()</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#exp"><span class="toc-nav-number">5.2.</span> <span class="toc-nav-text">exp()</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Python%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"><span class="toc-nav-number">6.</span> <span class="toc-nav-text">Python常见错误</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E7%B2%BE%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="toc-nav-number">6.1.</span> <span class="toc-nav-text">精度问题</span></a></li></ol></li></ol>
         
         </div>
       </aside>

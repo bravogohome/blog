@@ -13,6 +13,7 @@ categories:
 - Algorithm
 sticky: 999
 ---
+
 ## 猜数字游戏
 leetcode链接：<https://leetcode-cn.com/problems/bulls-and-cows>
 
@@ -33,11 +34,10 @@ leetcode链接：<https://leetcode-cn.com/problems/bulls-and-cows>
 
 ##### 复杂度分析
 + 时间复杂度：` O(N) `，其中` N `是字符串 ` secret ` 的长度。
-
 + 空间复杂度：` O(C) `。需要常数个空间统计字符出现次数，由于我们统计的是数字字符，因此` C=10 `。  
 
 ### 题解
-#### Python
+#### `Python`
 ```python
 # 使用两个数组两次遍历
 class Solution:
@@ -53,6 +53,7 @@ class Solution:
         cows = sum(min(s, g) for s, g in zip(secretCount, guessCount))
         return f'{bulls}A{cows}B'
 ```
+
 ```python
 # 改进版：使用一个数组一次遍历
 class Solution:
@@ -73,7 +74,8 @@ class Solution:
                 arr[int(guess[i])] -= 1
         return f'{bulls}A{cows}B'
 ```
-#### C#
+
+#### `C#`
 ```csharp
 // 使用两个数组两次遍历
 public class Solution {
@@ -97,6 +99,7 @@ public class Solution {
     }
 }
 ```
+
 ```csharp
 // 改进版：使用一个数组一次遍历
 public class Solution {
@@ -136,15 +139,16 @@ leetcode链接：<https://leetcode-cn.com/problems/guess-number-higher-or-lower-
 ### 解题思路
 #### 动态规划
 
-#### 复杂度分析
+##### 复杂度分析
 
 
 ### 题解
-#### Python
+#### `Python`
 ```python
 
 ```
-#### C#
+
+#### `C#`
 ```csharp
 
 ```
@@ -165,17 +169,18 @@ leetcode链接：<https://leetcode-cn.com/problems/detect-capital/>
 ### 解题思路
 #### 
 
-#### 复杂度分析
+##### 复杂度分析
 
 
 ### 题解
-#### Python
+#### `Python`
 ```python
 class Solution:
     def detectCapitalUse(self, word: str) -> bool:
         return word.islower() or word.isupper() or word.istitle()
 ```
-#### C#
+
+#### `C#`
 ```csharp
 
 ```
@@ -190,15 +195,30 @@ leetcode链接：<https://leetcode-cn.com/problems/map-sum-pairs/>
 > + void insert(String key, int val) 插入 key-val 键值对，字符串表示键 key ，整数表示值 val 。如果键 key 已经存在，那么原来的键值对将被替代成新的键值对。
 > + int sum(string prefix) 返回所有以该前缀 prefix 开头的键 key 的值的总和。
 
+示例：
+> **输入**：  
+> ["MapSum", "insert", "sum", "insert", "sum"]  
+> [[], ["apple", 3], ["ap"], ["app", 2], ["ap"]]  
+> **输出**：  
+> [null, null, 3, null, 5]  
+> **解释**：  
+> MapSum mapSum = new MapSum();   
+> mapSum.insert("apple", 3);    
+> mapSum.sum("ap");           // return 3 (apple = 3)    
+> mapSum.insert("app", 2);      
+> mapSum.sum("ap");           // return 5 (apple + app = 3 + 2 = 5)
+
 
 ### 解题思路
-#### 
+#### 暴力扫描
+将所有的key-val键值存储，在需要搜索给定前缀的和时，依次搜索所有键值，如果key以prefix为前缀，把对应的val累加并返回。
 
-#### 复杂度分析
-
+##### 复杂度分析
++ 时间复杂度： insert操作为`O(1)`。 sum操作为`O(NM)`，其中N是插入的key的数目，M是给定前缀prefix的长度。
++ 空间复杂度： `O(NM)`，其中 NN 是插入的key的数目，MM是字符串key的最大长度。
 
 ### 题解
-#### Python
+#### `Python`
 ```python
 class MapSum:
     def __init__(self):
@@ -211,10 +231,140 @@ class MapSum:
         sum = 0
         for key in self.mapsum.keys():
             if key.find(prefix) == 0:
+            # 或者 key.startswith(prefix):
                 sum += self.mapsum[key]
         return sum
 ```
-#### C#
+
+#### `C#`
 ```csharp
 
 ```
+
+-------------------------------------------------------------------
+
+## 灯泡开关
+leetcode链接：<https://leetcode-cn.com/problems/bulb-switcher/>
+
+> 初始时有 n 个灯泡处于关闭状态。第一轮，你将会打开所有灯泡。接下来的第二轮，你将会每两个灯泡关闭一个。  
+> 第三轮，你每三个灯泡就切换一个灯泡的开关（即，打开变关闭，关闭变打开）。第 i 轮，你每 i 个灯泡就切换一个灯泡的开关。直到第 n 轮，你只需要切换最后一个灯泡的开关。  
+> 找出并返回 n 轮后有多少个亮着的灯泡。
+  
+示例：  
+> ![灯泡开关示例](bulbswitcher.jpg)
+> 
+> **输入**：n = 3
+> **输出**：1 
+> **解释**：
+> 初始时, 灯泡状态 [关闭, 关闭, 关闭].
+> 第一轮后, 灯泡状态 [开启, 开启, 开启].
+> 第二轮后, 灯泡状态 [开启, 关闭, 开启].
+> 第三轮后, 灯泡状态 [开启, 关闭, 关闭]. 
+> 
+> 你应该返回 1，因为只有一个灯泡还亮着。
+
+
+
+### 解题思路
+#### 数学
+如果我们将所有的灯泡从左到右依次编号为 1,2,⋯,n，那么可以发现：
+
+在第 i 轮时，我们会将所有编号为 i 的倍数的灯泡进行切换。
+
+因此，对于第 k 个灯泡，它被切换的次数恰好就是 `k 的约数个数`。
+
+如果 k 有偶数个约数，那么最终第 k 个灯泡的状态为暗；如果 k 有奇数个约数，那么最终第 k 个灯泡的状态为亮。
+
+对于 k 而言，如果它有约数 x，那么一定有约数`x/k`。因此只要当 `x^2≠k` 时，约数都是「成对」出现的。这就说明，只有当 k 是「`完全平方数`」时，它才会有奇数个约数，否则一定有偶数个约数。
+
+因此我们只需要找出 1,2,⋯,n 中的完全平方数的个数即可，答案即为"`n的平方根并向下取整`".
+
+
+##### 复杂度分析
++ 时间复杂度： `O(1)`
++ 空间复杂度： `O(1)`
+
+### 题解
+#### `Python`
+```python
+class Solution:
+    # 暴力、n = 10000时超出时间限制
+    # def bulbSwitch(self, n: int) -> int:
+    #     stats = [1] * n
+    #     for i in range(1,n):
+    #         for j in range(len(stats)):
+    #             if (j+1)%(i+1)==0:
+    #                 stats[j]*=-1
+    #     return stats.count(1)
+    
+    # 模拟，n = 9999999时超出时间限制
+    # def bulbSwitch(self, n: int) -> int:
+    #     stats = set()
+    #     for i in range(1,n):
+    #         dir = [(i + 1) * x for x in range(1, n // (i + 1) + 1)]
+    #         for j in dir:
+    #             if j in stats:
+    #                 stats.remove(j)
+    #             else:
+    #                 stats.add(j)
+    #     return n-len(stats)
+
+    # 计算变化次数，99999时超出时间限制
+    # def bulbSwitch(self, n: int) -> int:
+    #     if n < 1: return 0
+    #     count = 1
+    #     for i in range(1,n):
+    #         changetimes = 0  # 变化次数
+    #         for j in range(1,(i+1)//2+1):
+    #             if (i+1)%j==0:
+    #                 changetimes += 1
+    #         count += ((changetimes+1)%2)
+    #     return count
+
+
+    # 数学，变化次数为奇数的，最终为暗，为偶数的，变化为亮，只有完全平方数才会变化为亮，最终变为求完全平方数的个数
+    def bulbSwitch(self, n: int) -> int:
+        return int(sqrt(n))
+```
+
+#### `C#`
+```csharp
+
+```
+
+-------------------------------------------------------------------
+
+## new problem
+leetcode链接：<>
+
+> 
+  
+示例：  
+> 
+> 
+> **输入**：
+> **输出**：
+> **解释**：
+> 
+> 
+
+
+
+### 解题思路
+#### 
+
+##### 复杂度分析
++ 时间复杂度： 
++ 空间复杂度： 
+
+### 题解
+#### `Python`
+```python
+
+```
+
+#### `C#`
+```csharp
+
+```
+
