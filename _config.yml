@@ -120,9 +120,9 @@ featured-condition-size: 0    # A tag will be featured if the size of it is more
 gitalk:
   owner: bravogohome              # 'GitHub repo owner'
   admin: bravogohome              # 'GitHub repo'
-  repo: commentRepo               # ['GitHub repo owner and collaborators, only these guys can initialize github issues']
-  clientID: eaab3f23ce81602a19ef  # 'GitHub Application Client ID'
-  clientSecret: 0977c1a20b5fe7494bd2de424b645a46e592ef64  # 'GitHub Application Client Secret'
+  repo: blog               # ['GitHub repo owner and collaborators, only these guys can initialize github issues']
+  clientID: 2a23efc0400d073a4bd5  # 'GitHub Application Client ID'
+  clientSecret: 2506647e2fb70013341974043134b565abb75bf7  # 'GitHub Application Client Secret'
   perPage: 10                     # Pagination size, with maximum 100.
   pagerDirection: last            # Comment sorting direction, available values are last and first.
   createIssueManually: false      # By default, Gitalk will create a corresponding github issue for your every single page automatically when the logined user is belong to the admin users. You can create it manually by setting this option to true
