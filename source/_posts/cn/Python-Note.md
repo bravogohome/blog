@@ -847,13 +847,309 @@ print(f"{x+1=}")
 
 ### List列表
 
+List是Python中被频繁使用的数据类型，列表的元素可以存储不同的数据类型，甚至可以包含列表元组等。  
+列表是可变的数据类型，即其内的数据可以被改变。  
+
+#### 创建列表
+创建列表的方式有两种：
++ 使用方括号`[]`创建
++ 使用`list()`函数创建
+
+```python
+lst1 = [1,"7",2.589,(1,"2")]
+lst2 = []
+
+seq = (1,5,9,"7")
+lst3 = list(seq)
+
+print(lst1,type(lst1))
+print(lst2,type(lst2))
+print(lst3,type(lst3))
+```
+以上代码的运行结果为：  
+> [1, '7', 2.589, (1, '2')] \<class 'list'>
+> [] \<class 'list'>
+> [1, 5, 9, '7'] \<class 'list'>
+
+#### 列表的索引和截取
+
+因为列表也是一个序列，所以我们可以使用[`切片运算符`](#切片运算符)来进行索引和截取：  
+
+***索引***
+```python
+list_test = [1, 5, 6, 7, 11, 3]
+
+# 正向索引
+print(list_test[2])   # 读取第3个元素 / 读取索引为2的元素
+# 逆向索引
+print(list_test[-1])   # 读取倒数第1个元素
+```
+以上代码的输出结果为：  
+> 6  
+> 3
+
+***截取***
+```python
+list_test =  [6, 8, 9, 7, 2, 23, 1, 1, 13]
+print(list_test)
+
+# 截取
+print(list_test[1:])     # 截取列表从索引为1的元素开始后的所有元素
+print(list_test[1:3])    # 截取列表索引区间[1,3)，即第二到第三个元素间的片段
+print(list_test[1:-1])    # 截取列表第二到倒数第二个元素间的片段
+print(list_test[1:-1:2])   # 从1到-1索引元素方向，按每次索引递增步长的趋势截取，此时步长为2，即隔位截取
+print(list_test[1:-1:-1])  # 从1到-1索引元素方向，按每次索引递增步长=-1的趋势截取，很明显此时无截取片段
+print(list_test[-1:1:-1])   # 从-1到1索引元素方向，按每次索引递增步长=-1的趋势截取，即为反向截取
+print(list_test[-1::-1])   # 第二个参数为空，表示移动到列表末尾
+```
+以上代码的运行结果为：  
+> [6, 8, 9, 7, 2, 23, 1, 1, 13]  
+> [8, 9, 7, 2, 23, 1, 1, 13]  
+> [8, 9]  
+> [8, 9, 7, 2, 23, 1, 1]  
+> [8, 7, 23, 1]  
+> []  
+> [13, 1, 1, 23, 2, 7, 9]   
+> [13, 1, 1, 23, 2, 7, 9, 8, 6]   
+
+#### 修改列表元素
+
+因为列表属于可变的数据类型，所以其元素可以修改：  
+```python
+lst = [1,5,6]
+lst[1] = 7
+print(lst)
+```
+以上代码的输出结果为：  
+> [1,7,6]
+
+***使用del***删除列表元素：  
+```python
+lst = [1,4]
+del lst[0]
+print(lst)
+```
+以上代码的输出结果为：  
+> [4]
+
+#### 列表运算
+
+列表运算满足[序列运算规则](#序列运算)：  
+
+***`+运算`***
+
+```python
+print([2, 6, 9, 8, 2] + [1, 6, 11])
+```
+
+以上代码的输出结果为：  
+> [2, 6, 9, 8, 2, 1, 6, 11]
+
+***`*运算`***
+
+```python
+print(["a", "b"] * 4)
+```
+
+以上代码的输出结果为：  
+> ['a', 'b', 'a', 'b', 'a', 'b', 'a', 'b']
+
+
+***`in运算`***
+
+```python
+print(5 in [1,2,6,4,6,5])
+```
+
+以上代码的运行结果为：  
+> True
+
+***`切片运算`***
+见上文的[列表的索引和截取](#列表的索引和截取)
+
+#### 常用函数
+
+| 序号 | 方法 | 返回值/描述 |
+| :-: | :--: | :---------- |
+| 1 | [len()](#len) | 返回列表的`长度` |
+| 2 | [max()](#max) | 返回列表的`最大的元素` |
+| 3 | [min()](#min) | 返回列表的`最小的元素` |
+|  | ----- | ***列表操作 方法*** |
+| 1 | [reverse()](#reverse) | `lst.reverse()`,`反向列表`中元素 |
+| 2 | [append()](#append) | `lst.append(obj)`,在lst列表`末尾添加`新的对象obj |
+| 3 | [pop()](#pop) | `lst.pop(index=-1)`,`移除列表中的一个元素`（默认最后一个元素），并且返回该元素的值 |
+| 4 | [count()](#count) | `lst.count(obj)`,统计obj`元素`在列表lst中`出现的次数` |
+| 5 | [extend()](#extend) | `lst.extend(seq)`,在lst`列表末尾`一次性`追加另一个序列`seq中的多个值（用新列表扩展原来的列表） |
+| 6 | [index()](#index) | `lst.index(obj)`,从lst列表中找出obj值的`第一个匹配项的索引`位置 |
+| 7 | [remove()](#remove) | `lst.remove(obj)`,`移除`列表中某个值的`第一个匹配项` |
+| 8 | [insert()](#insert) | `lst.insert(index,obj)`,将对象obj`插入列表指定索引位置` |
+| 9 | [sort()](#sort) | `lst.sort(key=None,reverse=False)`,对原列表进行`排序` |
+| 10 | [clear()](#clear) | `lst.clear()`,`清空列表` |
+| 11 | [copy()](#copy) | `lst.copy()`,`复制列表` |
+
+<!-- TODO: list常用函数 -->
+
 ************************************
 
 ### Set集合
 
+集合（set）是一个无序的不重复元素序列。  
+在Python中是可变的数据结构之一。
+
+#### 创建集合
+可以使用大括号 `{ }` 或者 `set()` 函数创建集合  
+> 注意：创建一个空集合必须用 set() 而不是 { }，因为 { } 是用来创建一个空字典。
+
+基本功能是进行成员关系测试和删除重复元素。
+
+```python
+set1 = {1,5,6}
+set2 = set([1,2,63,7,5,1])
+
+print(set1)
+print(set2)
+```
+以上代码的输出结果为：  
+> {1, 5, 6}
+> {1, 2, 5, 7, 63}
+
+#### 操作集合
+##### 添加元素
+```python
+set1 = {1,5,9,8}
+
+set1.add(2)
+print(set1)
+
+set1.add(1)
+print(set1)
+
+set1.update({11,13})
+print(set1)
+
+set1.update(['1','2'],['3','4'])
+print(set1)
+```
+以上代码的运行结果为：  
+> {1, 2, 5, 8, 9}  
+> {1, 2, 5, 8, 9}  
+> {1, 2, 5, 8, 9, 11, 13}  
+> {1, 2, 5, '3', 8, 9, 11, 13, '4', '2', '1'}  
+
+##### 移除元素
+```python
+set1 = {3,6,8,9,2,7}
+set1.remove(3)
+print(set1)
+
+set1.discard('4')   # 使用discard移除不存在的元素不会发生错误
+print(set1)
+
+x = set1.pop()
+print(x)
+print(set1)
+
+set1.remove('4')  # 使用remove移除不存在的元素会发生错误
+```
+以上代码的输出结果为：  
+> {2, 6, 7, 8, 9}
+> {2, 6, 7, 8, 9}
+> 2
+> {6, 7, 8, 9}
+> Traceback (most recent call last)
+> g:\Codes\Python\algorithm\test.py in <module>
+> ----> set1.remove('4')
+> 
+> KeyError: '4'
+
+#### 集合运算
+
+***`数学集合运算`***
+
+```python
+a = set('abracadabra')
+b = set('alacazam')
+print(a)
+print(b)
+print(f"a-b = {a-b}")   # 差集
+print(f"a|b = {a|b}")   # 并集
+print(f"a&b = {a&b}")   # 交集
+print(f"a^b = {a^b}")   # 异或集
+```
+
+以上代码的输出结果为：  
+> {'a', 'b', 'd', 'r', 'c'}
+> {'a', 'c', 'l', 'm', 'z'}
+> a-b = {'r', 'd', 'b'}
+> a-b = {'a', 'b', 'd', 'r', 'c', 'l', 'm', 'z'}
+> a-b = {'c', 'a'}
+> a-b = {'l', 'b', 'd', 'r', 'm', 'z'}
+
+***`in运算`***
+```python
+print(3 in {3,5})
+```
+以上代码的输出结果为：  
+> True
+
+#### 常用函数
+
+
+| 序号 | 方法 | 返回值/描述 |
+| :-: | :--: | :---------- |
+|  | [add()](#add) | `set1.add(x)`为集合`添加元素`x |
+|  | [clear()](#clear) | `set1.clear()` `清空集合`中的所有元素 |
+|  | [copy()](#copy) | `set1.copy()`返回一个集合的`拷贝` |
+|  | [difference()](#difference) | `set1.difference(set2)`返回多个`集合的差集`,即包含在set1，但不在set2的元素集 |
+|  | [difference_update()](#difference_update) | `set1.difference_update(set2)`用于`移除两个集合中都存在的元素` |
+|  | [discard()](#discard) | `set1.discard(value)` 用于`移除指定的集合元素` |
+|  | [intersection()](#intersection) | `set1.intersection(set2[,...])` 返回集合的`交集` |
+|  | [intersection_update()](#intersection_update) | `set1.intersection_update(set2[,...])` 用于将`交集更新`到原集合中 |
+|  | [isdisjoint()](#isdisjoint) | `set1.sidisjoint(set2)` 判断两个集合`是否包含相同的元素`，如果没有返回 True，否则返回 False |
+|  | [issubset()](#issubset) | `set1.issubset(set2)` 判断指定集合`是否为`该方法参数集合的`子集`。 |
+|  | [issuperset()](#issuperset) | `set1.issuperset(set2)` 判断指定集合`是否为`该方法参数集合的`父集`。 |
+|  | [pop()](#pop) | `set1.pop()` 用于`随机移除`一个元素。 |
+|  | [remove()](#remove) | `set1.remove(x)` `移除指定元素` |
+|  | [symmetric_difference()](#symmetric_difference) | `set1.symmetric_difference(set2)` 返回两个集合中`不重复的元素集合`，即会移除两个集合中都存在的元素 |
+|  | [symmetric_difference_update()](#symmetric_difference_update) | `set1.symmetric_difference_update(set2)` 返回两个集合中`不重复的元素集合并更新至原集合` |
+|  | [union()](#union) | `set1.union(set2)` 返回两个集合的`并集` |
+|  | [update()](#update) | `set1.update(x)` 给集合`添加元素` | 
+
+<!-- TODO： set常用函数 -->
+
+
 ************************************
 
 ### Dictionary字典
+
+> 列表是有序的对象集合，字典是无序的对象集合。两者之间的区别在于：字典当中的元素是通过键来存取的，而不是通过偏移存取。
+
+字典是一种映射类型，字典用 { } 标识，它是一个无序的 键(key) : 值(value) 的集合。
+
+`键(key)必须使用不可变类型。`
+
+在同一个字典中，键(key)必须是唯一的。
+
+#### 创建字典
+
+创建字典的方法有两种：  
++ 使用花括号`{}`创建
++ 使用`dict()`方法创建
+
+```python
+dict1 = {"1": "2", "code": "3", 1: 5}
+
+# 直接从键值对序列中构建字典
+dict2 = dict([('Baidu', 1), ('Google', 2), ('Taobao', 3)])
+dict3 = dict(Baidu=1, Google=2, Taobao=3)
+
+# 使用推导式创建字典
+dict4 = {x: x**2 for x in (2, 4, 6)}
+
+# 创建空字典
+dict = {}
+dict = dict()
+```
 
 ************************************
 
