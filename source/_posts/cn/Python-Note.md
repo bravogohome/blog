@@ -1109,26 +1109,25 @@ print(3 in {3,5})
 
 #### 常用函数
 
-
 | 序号 | 方法 | 返回值/描述 |
 | :-: | :--: | :---------- |
-|  | [add()](#add) | `set1.add(x)`为集合`添加元素`x |
-|  | [clear()](#clear) | `set1.clear()` `清空集合`中的所有元素 |
-|  | [copy()](#copy) | `set1.copy()`返回一个集合的`拷贝` |
-|  | [difference()](#difference) | `set1.difference(set2)`返回多个`集合的差集`,即包含在set1，但不在set2的元素集 |
-|  | [difference_update()](#difference_update) | `set1.difference_update(set2)`用于`移除两个集合中都存在的元素` |
-|  | [discard()](#discard) | `set1.discard(value)` 用于`移除指定的集合元素` |
-|  | [intersection()](#intersection) | `set1.intersection(set2[,...])` 返回集合的`交集` |
-|  | [intersection_update()](#intersection_update) | `set1.intersection_update(set2[,...])` 用于将`交集更新`到原集合中 |
-|  | [isdisjoint()](#isdisjoint) | `set1.sidisjoint(set2)` 判断两个集合`是否包含相同的元素`，如果没有返回 True，否则返回 False |
-|  | [issubset()](#issubset) | `set1.issubset(set2)` 判断指定集合`是否为`该方法参数集合的`子集`。 |
-|  | [issuperset()](#issuperset) | `set1.issuperset(set2)` 判断指定集合`是否为`该方法参数集合的`父集`。 |
-|  | [pop()](#pop) | `set1.pop()` 用于`随机移除`一个元素。 |
-|  | [remove()](#remove) | `set1.remove(x)` `移除指定元素` |
-|  | [symmetric_difference()](#symmetric_difference) | `set1.symmetric_difference(set2)` 返回两个集合中`不重复的元素集合`，即会移除两个集合中都存在的元素 |
-|  | [symmetric_difference_update()](#symmetric_difference_update) | `set1.symmetric_difference_update(set2)` 返回两个集合中`不重复的元素集合并更新至原集合` |
-|  | [union()](#union) | `set1.union(set2)` 返回两个集合的`并集` |
-|  | [update()](#update) | `set1.update(x)` 给集合`添加元素` | 
+| 1 | [add()](#add) | `set1.add(x)`为集合`添加元素`x |
+| 2 | [clear()](#clear) | `set1.clear()` `清空集合`中的所有元素 |
+| 3 | [copy()](#copy) | `set1.copy()`返回一个集合的`拷贝` |
+| 4 | [difference()](#difference) | `set1.difference(set2)`返回多个`集合的差集`,即包含在set1，但不在set2的元素集 |
+| 5 | [difference_update()](#difference_update) | `set1.difference_update(set2)`用于`移除两个集合中都存在的元素` |
+| 6 | [discard()](#discard) | `set1.discard(value)` 用于`移除指定的集合元素` |
+| 7 | [intersection()](#intersection) | `set1.intersection(set2[,...])` 返回集合的`交集` |
+| 8 | [intersection_update()](#intersection_update) | `set1.intersection_update(set2[,...])` 用于将`交集更新`到原集合中 |
+| 9 | [isdisjoint()](#isdisjoint) | `set1.sidisjoint(set2)` 判断两个集合`是否包含相同的元素`，如果没有返回 True，否则返回 False |
+| 10 | [issubset()](#issubset) | `set1.issubset(set2)` 判断指定集合`是否为`该方法参数集合的`子集`。 |
+| 11 | [issuperset()](#issuperset) | `set1.issuperset(set2)` 判断指定集合`是否为`该方法参数集合的`父集`。 |
+| 12 | [pop()](#pop) | `set1.pop()` 用于`随机移除`一个元素。 |
+| 13 | [remove()](#remove) | `set1.remove(x)` `移除指定元素` |
+| 14 | [symmetric_difference()](#symmetric_difference) | `set1.symmetric_difference(set2)` 返回两个集合中`不重复的元素集合`，即会移除两个集合中都存在的元素 |
+| 15 | [symmetric_difference_update()](#symmetric_difference_update) | `set1.symmetric_difference_update(set2)` 返回两个集合中`不重复的元素集合并更新至原集合` |
+| 16 | [union()](#union) | `set1.union(set2)` 返回两个集合的`并集` |
+| 17 | [update()](#update) | `set1.update(x)` 给集合`添加元素` | 
 
 <!-- TODO： set常用函数 -->
 
@@ -1163,9 +1162,126 @@ dict3 = dict(Baidu=1, Google=2, Taobao=3)
 dict4 = {x: x**2 for x in (2, 4, 6)}
 
 # 创建空字典
-dict = {}
-dict = dict()
+dict5 = {}
+dict6 = dict()
+
+print(dict1)
+print(dict2)
+print(dict3)
+print(dict4)
+print(dict5)
+print(dict6)
+
 ```
+
+以上代码的输出结果为：  
+> {'1': '2', 'code': '3', 1: 5}  
+> {'Baidu': 1, 'Google': 2, 'Taobao': 3}  
+> {'Baidu': 1, 'Google': 2, 'Taobao': 3}  
+> {2: 4, 4: 16, 6: 36}  
+> {}  
+> {}  
+
+#### 字典操作
+
+***`访问值`***
+要访问字典的值只需要将键值填入字典后的方括号中：  
+```Python
+dict1 = {'a':1,'b':2}
+print(dict1['a'])
+```
+以上代码的输出结果为：  
+> 1
+
+如果访问的键值不存在，则会返回错误：  
+```python
+dict1 = {'a':1,'b':2}
+print(dict1['c'])
+```
+以上代码的输出结果为：  
+> KeyError                                  Traceback (most recent call last)
+> test.py in \<module>
+>       1 dict1 = {'a':1,'b':2}
+> ----> 2 print(dict1['c'])
+> 
+> KeyError: 'c'
+
+***`修改/创建值`***
+要修改字典的值，直接将对应的键值修改即可：  
+```python
+dict1 = {'a':1,'b':2}
+dict1['a'] = 3
+print(dict1['a'])
+```
+以上代码的输出结果为：  
+> 3  
+
+如果该键不存在，则将直接创建这个键值对：  
+```python
+dict1 = {'a':1,'b':2}
+dict1['c'] = 3
+print(dict1)
+```
+以上代码的输出结果为：  
+> {'a': 1, 'b': 2, 'c': 3}
+
+***`删除值`***
+```python
+dict1 = {"a": 1, "b": 2, "c": 3}
+
+# 删除键
+del dict1['a']
+print(dict1)
+
+# 清空字典
+dict1.clear()
+print(dict1)
+
+# 删除字典
+del dict1
+print(dict1)
+```
+以上代码的输出结果为：  
+> {'b': 2, 'c': 3}  
+> {}  
+> \----------------------------------------------------   
+> NameError                                 Traceback (most recent call last)
+> test.py in \<module>
+>      11 # 删除字典
+>      12 del dict1
+> ---> 13 print(dict1)
+> 
+> NameError: name 'dict1' is not defined
+
+***`in运算`***
+判断key是否在字典中已存在.
+```Python
+dict1 ={'k':1}
+print('a' in dict1)
+```
+以上代码的输出结果为： 
+> False
+
+
+#### 常用函数
+
+
+| 序号 | 方法 | 返回值/描述 |
+| :-: | :--: | :---------- |
+| 1 | [len()](#len) | `len(dict)` 求字典的`键值对个数` |
+| 2 | [clear()](#clear) | `dict.clear()` `清空字典` |
+| 3 | [copy()](#copy) | `dict.copy()` 返回一个字典的`浅复制` |
+| 4 | [fromkeys()](#fromkeys) | `dict.fromkeys(seq[,val])` 返回一个新字典，以序列seq中元素做字典的键，val为字典所有键对应的初始值，默认为None |
+| 5 | [get()](#get) | `dict.get(key,default=None)` 返回`指定键的值`，如果`键不在字典中返回` default 设置的`默认值` |
+| 6 | [items()](#items) | `dict.items()` 以列表返回一个视图对象 |
+| 7 | [keys()](#keys) | `dict.keys()` 返回一个键视图对象 |
+| 8 | [values()](#values) | `dict.values()` 返回一个值视图对象 |
+| 9 | [setdefault()](#setdefault) | `dict.setdefault()` 和get()类似, 但如果`键不存在于字典中`，将会`添加键`并将`值设为default` |
+| 10 | [update()](#update) | `dict.update(dict2)` 把字典dict2的键/值对更新到dict里 |
+| 11 | [pop()](#pop) | `dict.pop(key[,default])` 删除字典给定键 key 所对应的值，`返回值为被删除的值`。key值必须给出。 否则，返回default值。 |
+| 12 | [popitem()](#popitem) | `dict.popitem()` 随机返回并删除字典中的最后一对键和值。 |
+
+<!-- TODO:dict常用函数 -->
 
 ************************************
 
