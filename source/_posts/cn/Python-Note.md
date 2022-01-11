@@ -25,7 +25,60 @@ windows下载地址<https://www.python.org/downloads/windows/>
     + Rider 
 4. 创建py文件
 
-## python语法
+## python基本语法
+
+### 编码
+
+### 标识符
+
++ 第一个字符必须是字母表中字母或下划线 _ 。
++ 标识符的其他的部分由字母、数字和下划线组成。
++ 标识符对大小写敏感。
++ 非关键字
+
+> 在 Python 3 中，可以用中文作为变量名，非 ASCII 标识符也是允许的了。
+
+***********************************
+
+### 语句
+
+Python中通常一行表示一个语句，末尾不需加上分号";".
+
+```python
+print("hello world")
+```
+
+***`多行语句`***
+
+Python 通常是一行写完一条语句，但如果语句很长，我们可以使用反斜杠` \ `来实现多行语句，例如：
+```py
+total = item_one + \
+        item_two + \
+        item_three
+```
+
+但在 [], {}, 或 () 中的多行语句，`不需要使用反斜杠 \` ，例如：
+```py
+total = ['item_one', 'item_two', 'item_three',
+        'item_four', 'item_five']
+```
+
+***`空行`***
+函数之间或类的方法之间用空行分隔，表示一段新的代码的开始。类和函数入口之间也用一行空行分隔，以突出函数入口的开始。  
+空行与代码缩进不同，空行并不是 Python 语法的一部分。书写时不插入空行，Python 解释器运行也不会出错。但是空行的作用在于分隔两段不同功能或含义的代码，便于日后代码的维护或重构。  
+
+> 空行也是程序代码的一部分。
+
+***`同行多条语句`***
+
+Python 可以在同一行中使用多条语句，语句之间使用分号 ; 分割 ：
+
+```py
+c = 5; print("a"); print("b"); print(c)
+```
+
+**********************************
+
 ### 变量赋值
 
 使用等号为变量赋值：
@@ -39,9 +92,101 @@ c = "str"
 也可以同时为多个变量赋值：
 
 ```py
-a = b = c = 1   # 从左到右依次赋值   
+a = b = c = 1   # 从右到左依次赋值   
 a, b, c = 1, 2.0, "str"   # 分别赋值
 ```
+
+***********************************
+
+### 关键字
+
+关键字又叫保留字，它不能作为任何标识符名称，Python的标准库提供了一个keyword模块，可以输出当前版本的所有关键字：  
+
+```python 
+import keyword
+
+print(keyword.kwlist)
+```
+以上代码的输出结果为（版本Python 3.9.8）：  
+> ['False', 'None', 'True', '\_\_peg\_parser\_\_', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+
+***********************************
+
+### 注释
+
+***`单行注释`***
+Python的单行注释使用`#`号：  
+```python
+# 单行注释
+a = 1  # 注释
+```
+
+***`多行注释`***
+Python的多行注释使用` ''' ` 或 ` """ `:  
+```python
+'''
+多行
+注释
+1
+'''
+
+"""
+多行注释
+2
+"""
+
+```
+
+*************************
+
+### 代码块
+
+和其他语言不同，Python使用缩进表示不同的代码块，而不需要使用大括号<kbd>{}</kbd>。  
+缩进的空格数是可变的，但是同一个代码块的语句必须包含相同的缩进空格数。  
+
+```python
+if True:
+    print ("True")
+else:
+    print ("False")
+```
+
+如果同一代码块的缩进空格数不一致，会导致运行错误：  
+
+```python
+if True:
+    print ("True")
+else:
+    print ("False")
+  print("error")
+```
+以上代码的输出结果为：  
+>   File "\<tokenize>", line 5
+>     print("error")
+>     ^
+> IndentationError: unindent does not match any outer indentation level
+
+***********************************
+
+### 输入输出
+
+Python的内置函数[input()](#input)和[print()](#print)分别表示输入和输出:  
+
+```python
+input("\n\n按下 enter 键后退出。")
+
+print("输出")
+print("print默认是换行的，如果不需要换行需要在后面参数加上end=''",end = '')
+```
+
+*******************************
+
+### 导入import
+在 python 用 `import` 或者 `from...import` 来导入相应的模块。
+将整个模块(somemodule)导入，格式为： `import somemodule`
+从某个模块中导入某个函数,格式为： `from somemodule import somefunction`
+从某个模块中导入多个函数,格式为： `from somemodule import firstfunc, secondfunc, thirdfunc`
+将某个模块中的全部函数导入，格式为： `from somemodule import *`
 
 ************************************************************
 
@@ -705,6 +850,15 @@ print(r"\n jh\nj")
 以上代码的运行结果为：  
 > row string
 > \n jh\nj
+
+##### 级联
+
+Python按字面意义级联字符串，如 "this " "is " "string" 会被自动转换为 this is string。
+```python
+print("this " "is " "string")
+```
+以上代码的输出结果为：  
+> this is string
 
 ##### %格式
 %格式化的基本用法是将一个值插入到一个有字符串格式符的位置中。  
