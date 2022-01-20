@@ -28,6 +28,7 @@ windows下载地址<https://www.python.org/downloads/windows/>
 ## python基本语法
 
 ### 编码
+<!-- TODO: 编码 -->
 
 ### 标识符
 
@@ -195,6 +196,11 @@ print("print默认是换行的，如果不需要换行需要在后面参数加�
 从某个模块中导入某个函数,格式为： `from somemodule import somefunction`
 从某个模块中导入多个函数,格式为： `from somemodule import firstfunc, secondfunc, thirdfunc`
 将某个模块中的全部函数导入，格式为： `from somemodule import *`
+
+***************************
+
+### 解释器
+<!-- TODO: 解释器 -->
 
 ************************************************************
 
@@ -1558,6 +1564,8 @@ Python的运算符可以分为以下几类：
 | `in not in` | 成员运算符 |
 | `not and or` | 逻辑运算符 |
 
+**************************************
+
 ## Python条件控制
 
 Python条件控制使用if、elif和else关键字,一般流程图如下： 
@@ -1604,6 +1612,8 @@ if (<expr>):
 else:
     # ……
 ```
+
+*************************************
 
 ## Python循环语句
 
@@ -1674,6 +1684,7 @@ break和continue在循环中的作用如下图：
 > break 语句可以跳出 for 和 while 的循环体。如果你从 for 或 while 循环中终止，任何对应的循环 else 块将不执行。  
 > continue 语句被用来告诉 Python 跳过当前循环块中的剩余语句，然后继续进行下一轮循环。
 
+*****************************************
 
 ## Python序列sequence
 
@@ -1684,9 +1695,107 @@ break和continue在循环中的作用如下图：
 #### in运算
 #### 切片运算符
 
+***************************************
+
+## Python迭代器与生成器
+
+### 迭代器iterator
+迭代是访问集合元素的一种方式。  
+迭代器是一个可以记住遍历的位置的对象。 
+迭代器对象从集合的第一个元素开始访问，直到所有的元素被访问完结束。迭代器只能往前`不会后退`。   
+
+迭代器有两个基本的方法：`iter()` 和 `next()`。  
+iter()用于创建迭代器对象，next()用于控制迭代器前进。  
+字符串，列表或元组对象都可用于创建迭代器：  
+```python
+lst = [1,5,6,4,7,8]
+it = iter(lst)   # 创建迭代器对象
+print(type(it))
+print(next(it))  # 输出迭代器的下一个元素
+print(next(it))
+```
+以上代码的输出结果为：  
+> \<class 'list_iterator'>
+> 1
+> 5
+
+迭代器对象可以使用常规for语句进行遍历：  
+```python
+lst = [1,2,3,4,5]
+it = iter(lst)
+for i in it:
+    print(x, end=" ")
+```
+以上代码的输出结果为：  
+> 1 2 3 4 5 
+
+#### 自定义迭代器
+把一个类作为一个迭代器使用需要在类中实现两个方法 \_\_iter\_\_() 与 \_\_next\_\_() 。  
+如果你已经了解面向对象编程，就知道类都有一个构造函数，Python 的构造函数为 \_\_init\_\_(), 它会在对象初始化的时候执行。有关面向对象编程请看：[Python面向对象](#Python面向对象)  
+`__iter__()` 方法返回一个特殊的迭代器对象， 这个迭代器对象实现了 \_\_next\_\_() 方法并通过 StopIteration 异常标识迭代的完成。  
+`__next__()` 方法会返回下一个迭代器对象。  
+
+> ***`StopIteration`***
+> StopIteration 异常用于标识迭代的完成，防止出现无限循环的情况，在 \_\_next\_\_() 方法中我们可以设置在完成指定循环次数后触发 StopIteration 异常来结束迭代。 
+
+以下实例将创建一个返回数字的迭代器，初始值为 1，逐步递增 1：  
+```python
+class MyNumbers:
+  def __iter__(self):
+    self.a = 1
+    return self
+ 
+  def __next__(self):
+    if self.a <= 20:    # 设置循环上限
+      x = self.a
+      self.a += 1
+      return x
+    else:
+      raise StopIteration
+ 
+myclass = MyNumbers()
+myiter = iter(myclass)
+ 
+for x in myiter:
+  print(x, end=" ")
+```
+执行输出结果为：  
+> 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 
+
+****************************
+
+### 生成器generator
+
+在Python中，使用了`yield`的函数被称为生成器。  
+跟普通函数不同的是，生成器是一个返回迭代器的函数，只能用于迭代操作，更简单点理解生成器就是一个迭代器。  
+在调用生成器运行的过程中，每次遇到 yield 时函数会`暂停并保存当前所有的运行信息`，***返回 yield 的值***, 并在下一次执行 next() 方法时从当前位置继续运行。  
+
+以下实例使用生成器实现斐波那契数列：  
+```python
+def fibonacci(n): # 生成器函数 - 斐波那契
+    a, b, counter = 0, 1, 0
+    while True:
+        if (counter > n): 
+            return
+        yield a
+        a, b = b, a + b
+        counter += 1
+f = fibonacci(10) # f 是一个迭代器，由生成器返回生成
+ 
+while True:
+    try:
+        print (next(f), end=" ")
+    except StopIteration:
+        break
+```
+以上代码的输出结果为：  
+> 0 1 1 2 3 5 8 13 21 34 55
 
 *****************************************************
+## Python函数
 
+
+***********************
 
 <!-- TODO: _变量 -->
 <!-- TODO: del删除对象 引用 -->
