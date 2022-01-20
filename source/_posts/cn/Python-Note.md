@@ -116,6 +116,7 @@ import keyword
 
 print(keyword.kwlist)
 ```
+
 以上代码的输出结果为（版本Python 3.9.8）：  
 > ['False', 'None', 'True', '\_\_peg\_parser\_\_', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 
@@ -169,8 +170,9 @@ else:
     print ("False")
   print("error")
 ```
+
 以上代码的输出结果为：  
->   File "\<tokenize>", line 5
+>   File "&lt;tokenize>", line 5
 >     print("error")
 >     ^
 > IndentationError: unindent does not match any outer indentation level
@@ -278,8 +280,8 @@ print(type(b)==A)
 以上代码的输出结果为：  
 > True  
 > True  
-> \<class '\_\_main__.A'>  
-> \<class '\_\_main__.B'>  
+> &lt;class '\_\_main__.A'>  
+> &lt;class '\_\_main__.B'>  
 > True  
 > False  
 
@@ -724,8 +726,9 @@ python中没有传统的单字符char类型，在Python中单字符也作为字�
 ```python
 print(type('a'))
 ```
+
 以上代码的输出结果为：  
-> \<class 'str'>
+> &lt;class 'str'>
 
 
 还可以使用三引号`( """ 或 '''  )`来创建多行字符串  
@@ -1040,9 +1043,9 @@ lst4 = [x**2 for x in (4,5,9,8,11) if x <= 10]
 print(lst4)
 ```
 以上代码的运行结果为：  
-> [1, '7', 2.589, (1, '2')] \<class 'list'>
-> [] \<class 'list'>
-> [1, 5, 9, '7'] \<class 'list'>
+> [1, '7', 2.589, (1, '2')] &lt;class 'list'>
+> [] &lt;class 'list'>
+> [1, 5, 9, '7'] &lt;class 'list'>
 > [16, 25, 81, 64]
 
 #### 列表的索引和截取
@@ -1368,7 +1371,7 @@ print(dict1['c'])
 ```
 以上代码的输出结果为：  
 > KeyError                                  Traceback (most recent call last)
-> test.py in \<module>
+> test.py in &lt;module>
 >       1 dict1 = {'a':1,'b':2}
 > ----> 2 print(dict1['c'])
 > 
@@ -1414,7 +1417,7 @@ print(dict1)
 > {}  
 > \----------------------------------------------------   
 > NameError                                 Traceback (most recent call last)
-> test.py in \<module>
+> test.py in &lt;module>
 >      11 # 删除字典
 >      12 del dict1
 > ---> 13 print(dict1)
@@ -1715,7 +1718,7 @@ print(next(it))  # 输出迭代器的下一个元素
 print(next(it))
 ```
 以上代码的输出结果为：  
-> \<class 'list_iterator'>
+> &lt;class 'list_iterator'>
 > 1
 > 5
 
