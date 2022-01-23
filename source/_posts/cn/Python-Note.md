@@ -1071,6 +1071,36 @@ print(lst4)
 > [1, 5, 9, '7'] &lt;class 'list'>
 > [16, 25, 81, 64]
 
+#### 列表的嵌套
+
+列表是可以嵌套的：  
+```python
+matrix = [
+    [1,2,5],
+    [2,7,8],
+    [4,5,6,7,9],
+    [2,9,7,11]
+]
+```
+
+若要访问该列表的元素只需逐层访问即可：  
+```python
+print(matrix[2][0])
+
+for row in matrix:
+    for e in row:
+        print(e, end=" ")
+    print()
+```
+
+以上代码的输出结果为：  
+> 4  
+> 1 2 5  
+> 2 7 8   
+> 4 5 6 7 9   
+> 2 9 7 11 
+
+
 #### 列表的索引和截取
 
 因为列表也是一个序列，所以我们可以使用[`切片运算符`](#切片运算符)来进行索引和截取：  
@@ -1127,14 +1157,25 @@ print(lst)
 > [1,7,6]
 
 ***使用del***删除列表元素：  
+
+使用del可以根据索引删除一个元素或者一个切割
+
 ```python
-lst = [1,4]
+lst = [1,4,5,9,8,3,1,2,0,11]
 del lst[0]
+print(lst)
+
+del lst[1:-3:2]
+print(lst)
+
+del lst[:]
 print(lst)
 ```
 
 以上代码的输出结果为：  
-> [4]
+> [4, 5, 9, 8, 3, 1, 2, 0, 11]  
+> [4, 9, 3, 2, 0, 11]  
+> []
 
 #### 列表运算
 
@@ -1170,6 +1211,46 @@ print(5 in [1,2,6,4,6,5])
 
 ***`切片运算`***
 见上文的[列表的索引和截取](#列表的索引和截取)
+
+#### 列表遍历
+
+列表遍历将使用[循环语句](#Python循环语句).
+
+<!--TODO: enumerate()  -->
+
+> 使用[enumerate()](#enumerate)函数可以得到索引和对应值
+
+```py
+lst = [1,2,7,3,6,4]
+
+for i in lst:
+    print(i,end=" ")
+
+for i,value in enumerate(lst):
+    print(i,value)
+```
+
+以上代码的运行结果为：  
+> 1 2 7 3 6 4
+> 1 2
+> 2 7
+> 3 3
+> 4 6
+> 5 4
+
+<!--TODO: zip()  -->
+如果要同时遍历多个列表，可以使用[zip()](#zip)函数：  
+```python
+questions = ['name', 'quest', 'favorite color']
+answers = ['lancelot', 'the holy grail', 'blue']
+for q, a in zip(questions, answers):
+    print('What is your {0}?  It is {1}.'.format(q, a))
+```
+
+以上代码的输出结果为：  
+> What is your name?  It is lancelot.  
+> What is your quest?  It is the holy grail.  
+> What is your favorite color?  It is blue.
 
 #### 常用函数
 
@@ -1986,8 +2067,8 @@ f(10, 20, 30, 40, 50, f=60)           # e 必须使用关键字参数的形式
 ```
 ****************************************
 
-<!-- TODO: Python推导式 -->
 ## Python推导式
+
 Python的推导式应用于简化规律的列表或元组等序列的创建：  
 每个推导式都在 for 之后跟一个表达式，然后有零到多个 for 或 if 子句。返回结果是一个根据表达从其后的 for 和 if 上下文环境中生成出来的序列。  
 > 需要注意的是，使用括号的元组推导式创建后得到的对象是生成器generator对象，需要进一步转换。
@@ -2041,11 +2122,201 @@ print(lst)
 > [1, 2, 3, 4]
 > ['3.1', '3.14', '3.142', '3.1416', '3.14159']
 
-
 ***********************
 
+## Python模块
+
+模块是一个包含所有你定义的函数和变量的文件，其后缀名是.py。  
+模块可以被别的程序引入，以使用该模块中的函数等功能。这也是使用 python 标准库的方法。
+
+下面是一个使用 python 标准库中模块的例子。
+```python 
+import sys
+ 
+print('命令行参数如下:')
+for i in sys.argv:
+   print(i)
+
+print('\n\nPython 路径为：', sys.path, '\n')
+```
+
+> + import sys 引入 python 标准库中的 sys.py 模块；这是引入某一模块的方法。  
+> + sys.argv 是一个包含命令行参数的列表。  
+> + sys.path 包含了一个 Python 解释器自动查找所需模块的路径的列表。  
+
+### import语句
+
+想使用 Python 源文件，只需在另一个源文件里执行 import 语句，语法如下：  
+```python
+import module1[,module2...]
+```
+
+当解释器遇到import语句，如果模块在当前的搜索路径就会被导入。  
+
+下面是自定义模块的使用:  
+这里先定义一个模块  
+```python
+# file_name:  test_module.py
+
+def function(a,b):
+    return a+b
+
+print('file_name: test_module.py')
+```
+然后再其他文件里导入
+```python
+# file_name:  test.py
+
+import test_module
+
+print('file_name: test.py')
+
+print(test_module.function(1,2))     # 使用模块定义的方法
+```
+
+以上代码的运行结果为：    
+> file_name: test_module.py
+> file_name: test.py
+> 3
+
+可以看到，在导入模块的时候会自动运行一遍模块的代码。并且我们可以调用模块内定义的函数。  
+
+并且一个模块只会被导入一次，不管你执行了多少次import。这样可以防止导入模块被一遍又一遍地执行。  
+![模块只会被导入一次，执行一次](module-1.png)
+
+> 当我们使用import语句的时候，Python解释器是怎么找到对应的文件的呢？  
+这就涉及到Python的搜索路径，搜索路径是由一系列目录名组成的，Python解释器就依次从这些目录中去寻找所引入的模块。    
+这看起来很像环境变量，事实上，也可以通过定义环境变量的方式来确定搜索路径。  
+搜索路径是在Python编译或安装的时候确定的，安装新的库应该也会修改。  
+搜索路径被存储在sys模块中的path变量，我们可以直接在终端输出查看搜索路径：  
+```python
+import sys
+
+print(sys.path)
+```
+
+以上代码的输出结果为：  
+> ['g:\\Codes\\Python\\testpy', 'c:\\Users\\Administrator\\.vscode\\extensions\\ms-toolsai.jupyter-2021.11.1001550889\\pythonFiles', 'c:\\Users\\Administrator\\.vscode\\extensions\\ms-toolsai.jupyter-2021.11.1001550889\\pythonFiles\\lib\\python', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39\\python39.zip', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39\\DLLs', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39\\lib', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39', '', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\win32', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\win32\\lib', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\Pythonwin', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\IPython\\extensions', 'C:\\Users\\Administrator\\.ipython']
+
+sys.path 输出是一个列表，其中第一项是当前目录。  
+
+如果你打算经常使用一个函数，你可以把它赋给一个本地的名称：  
+```python
+import test_module
+
+fun = test_module.function
+
+print(fun(1,2))
+```
+
+### from...import语句
+
+Python 的 from 语句让你从模块中导入一个指定的部分到当前命名空间中，语法如下：  
+```Python
+from modname import name1[, name2[, ... nameN]]
+```
+这个声明不会把整个模块导入到当前的命名空间中，它只会将某模块里的某个成员（函数、变量）引入进来。 
+ 
+而如果要把一个模块所有成员导入当前的命名空间中，语法如下：  
+```python
+from modname import *
+```
+
+这提供了一个简单的方法来导入一个模块中的所有项目。但是那些由单一下划线（_）开头的名字不在此例，如'\_a'此类。
+然而这种声明不该被过多地使用。因为引入的其它来源的命名，很可能覆盖了已有的定义。
+
+### 深入模块
+
+前面我们知道了模块在第一次被导入的时候会被解释器自动执行一遍代码。  
+我们一般使用这些可执行代码来初始化模块。  
+每个模块有各自独立的符号表，在模块内部为所有的函数当作全局符号表来使用。  
+所以，模块的作者可以放心大胆的在模块内部使用这些全局变量，而不用担心把其他用户的全局变量搞混。  
+从另一个方面，当你确实知道你在做什么的话，你也可以通过 `modname.itemname` 这样的表示法来访问模块内的函数。  
+
+但是需要注意：  
+> 在导入其他模块的命名时，要注意和本空间的冲突，因为引入的其它来源的命名，很可能覆盖了已有的定义。  
+
+### __name__属性
+
+一个模块被另一个程序第一次引入时，其主程序将运行。如果我们想在模块被引入时，模块中的某一程序块不执行，我们可以用\_\_name\_\_属性来使该程序块仅在该模块自身运行时执行。  
+> 注意是前后`两个下划线`
+
+```python
+# file_name:  test_module.py
+if __name__ == '__main__':
+    print('test_module_main')
+else:
+    print('file_name: test_module.py')
+```
+
+每个模块都有一个\_\_name\_\_属性，当其值是'\_\_main\_\_'时，表明该模块自身在运行，否则是被引入。
+
+### dir()函数
+
+内置的函数 [`dir()`](#dir) 可以找到模块内定义的所有名称。以一个字符串列表的形式返回:  
+```python
+import test_module,sys
+print(dir(test_module))
+print(dir(sys))
+```
+
+以上代码的输出结果为：  
+> ['\_\_builtins\_\_', '\_\_cached\_\_', '\_\_doc\_\_', '\_\_file\_\_', '\_\_loader\_\_', '\_\_name\_\_', '\_\_package\_\_', '\_\_spec\_\_', 'function']  
+> ['\_\_breakpointhook\_\_', '\_\_displayhook\_\_', '\_\_doc\_\_', '\_\_excepthook\_\_', '\_\_interactivehook\_\_', '\_\_loader\_\_', '\_\_name\_\_', '\_\_package\_\_', '\_\_spec\_\_', '\_\_stderr\_\_', '\_\_stdin\_\_', '\_\_stdout\_\_', '\_\_unraisablehook\_\_', '\_base\_executable', '\_clear\_type\_cache', '\_current\_frames', '\_debugmallocstats', '\_enablelegacywindowsfsencoding', '\_framework', '\_getframe', '\_git', '\_home', '\_xoptions', 'addaudithook', 'api\_version', 'argv', 'audit', 'base_exec_prefix', 'base_prefix', 'breakpointhook', 'builtin_module_names', 'byteorder', 'call_tracing', 'copyright', 'displayhook', 'dllhandle', 'dont_write_bytecode', 'exc_info', 'excepthook', 'exec_prefix', 'executable', 'exit', 'flags', 'float_info', 'float_repr_style', 'get_asyncgen_hooks', 'get_coroutine_origin_tracking_depth', 'getallocatedblocks', 'getdefaultencoding', 'getfilesystemencodeerrors', 'getfilesystemencoding', 'getprofile', 'getrecursionlimit', 'getrefcount', 'getsizeof', 'getswitchinterval', 'gettrace', 'getwindowsversion', 'hash_info', 'hexversion', 'implementation', 'int_info', 'intern', 'is_finalizing', 'maxsize', 'maxunicode', 'meta_path', 'modules', 'path', 'path_hooks', 'path_importer_cache', 'platform', 'platlibdir', 'prefix', 'ps1', 'ps2', 'ps3', 'pycache_prefix', 'set_asyncgen_hooks', 'set_coroutine_origin_tracking_depth', 'setprofile', 'setrecursionlimit', 'setswitchinterval', 'settrace', 'stderr', 'stdin', 'stdout', 'thread_info', 'unraisablehook', 'version', 'version_info', 'warnoptions', 'winver']
+
+如果没有给定参数，那么 dir() 函数会罗列出当前定义的所有名称:
+```Python
+print(dir())
+```
+
+> ['\_\_annotations\_\_', '\_\_builtins\_\_', '\_\_cached\_\_', '\_\_doc\_\_', '\_\_file\_\_', '\_\_loader\_\_', '\_\_name\_\_', '\_\_package\_\_', '\_\_spec\_\_']
+
+### 其他模块
+
+除了本章使用到的自定义模块和sys模块，Python还有其他的一些内置模块，可以查看[Python库参考文档](#Python库参考文档)。  
+
+有些模块直接被构建在解析器里，这些虽然不是一些语言内置的功能，但是他却能很高效的使用，甚至是系统级调用也没问题。  
+这些组件会根据不同的操作系统进行不同形式的配置，比如 winreg 这个模块就只会提供给 Windows 系统。  
+应该注意到这有一个特别的模块 sys ，它内置在每一个 Python 解析器中。变量 sys.ps1 和 sys.ps2 定义了主提示符和副提示符所对应的字符串:  
+```python
+import sys
+print(sys.ps1)
+print(sys.ps2)
+```
+
+### 包
+
+包是一种管理 Python 模块命名空间的形式，采用"点模块名称"。  
+比如一个模块的名称是 A.B， 那么他表示一个包 A中的子模块 B 。  
+就好像使用模块的时候，你不用担心不同模块之间的全局变量相互影响一样，采用点模块名称这种形式也不用担心不同库之间的模块重名的情况。  
+
+在导入一个包的时候，Python 会根据 sys.path 中的目录来寻找这个包中包含的子目录。  
+目录只有包含一个叫做 \_\_init\_\_.py 的文件才会被认作是一个包，主要是为了避免一些滥俗的名字（比如叫做 string）不小心的影响搜索路径中的有效模块。
+最简单的情况，放一个空的 :file:\_\_init\_\_.py就可以了。  
+当然这个文件中也可以包含一些初始化代码或者为（将在后面介绍的） __all__变量赋值。  
+
+注意当使用 from package import item 这种形式的时候，对应的 item 既可以是包里面的子模块（子包），或者包里面定义的其他名称，比如函数，类或者变量。  
+import 语法会首先把 item 当作一个包定义的名称，如果没找到，再试图按照一个模块去导入。如果还没找到，抛出一个 :exc:ImportError 异常。  
+反之，如果使用形如 import item.subitem.subsubitem 这种导入形式，除了最后一项，都必须是包，而最后一项则可以是模块或者是包，但是不可以是类，函数或者变量的名字。  
+
+如果我们使用 from sound.effects import * 会发生什么呢？  
+Python 会进入文件系统，找到这个包里面所有的子模块，然后一个一个的把它们都导入进来。  
+但这个方法在 Windows 平台上工作的就不是非常好，因为 Windows 是一个不区分大小写的系统。  
+在 Windows 平台平台上，我们无法确定一个叫做 ECHO.py 的文件导入为模块是 echo 还是 Echo，或者是 ECHO。  
+为了解决这个问题，我们只需要提供一个精确包的索引。  
+导入语句遵循如下规则：如果包定义文件 \_\_init\_\_.py 存在一个叫做 \_\_all\_\_ 的列表变量，那么在使用 from package import * 的时候就把这个列表中的所有名字作为包内容导入。  
+作为包的作者，可别忘了在更新包之后保证 \_\_all\_\_ 也更新了啊。  
+\_\_all\_\_是一个存储模块名字符串的列表。  
+
+*************************************
+
+## Python输入输出
+
+
+
+*************************
+
 <!-- TODO: _变量 -->
-<!-- TODO: del删除对象 引用 -->
 
 
 ## Python内置函数
