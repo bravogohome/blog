@@ -2352,6 +2352,8 @@ hello, world
 "(32.5, 40000, ('Go', 'Python'))"
 ```
 
+关于str()和repr()的更多区别请参见[str()和repr()的区别](str()和repr()的区别)
+
 其他关于字符串格式化内容请参见: [字符串格式化](#字符串格式化)
 
 ### 读取输入
@@ -2487,9 +2489,175 @@ vscode选择右下角的编码格式改变：
 ![vscode选择编码-3](vscode-3.png)
 ![文字乱码解决](solute.png)
 
+还有一种解决办法是在我们在用代码创建时，可以选择编码类型，在这里选择想要的编码：  
+```python
+f = open(r"testpy\test.txt", "w", encoding="utf-8")
+# ...
+f.close()
+```
+
+
 关于上面实例使用的文件对象的方法，请看下节。  
 
 ### 文件对象的方法
+<!-- TODO: 文件对象方法 -->
+
+#### [`read()`](#read)
+
+为了读取一个文件的内容，调用 f.read(size), 这将读取一定数目的数据, 然后作为字符串或字节对象返回。  
+size 是一个可选的数字类型的参数。 当 size 被忽略了或者为负, 那么该文件的所有内容都将被读取并且返回。  
+
+```python
+import traceback
+
+f = None
+
+try:
+    f = open(r"testpy\test.txt", "w")
+    f.write("写入字符串")
+    f.close()
+except:
+    traceback.print_exc()
+
+try:
+    f = open(r"testpy\test.txt", "r")
+    print(f.read(2))
+    print(f.read(1))
+    f.close()
+except:
+    traceback.print_exc()
+
+```
+以上代码的输出结果为：  
+> 写入  
+> 字
+
+可以看到同一个文件对象read()读取的时候是接续读取而不是重头读取  
+> 这是因为read()同时会向后移动指针size个字符.
+
+但是这时候有人又有问题了：  
+```python
+import traceback
+
+f = None
+
+try:
+    f = open(r"testpy\test.txt", "w")
+    f.write("写入字符串")
+    f.close()
+except:
+    traceback.print_exc()
+
+try:
+    f = open(r"testpy\test.txt", "a+")
+    print(f.read(2))
+    f.close()
+except:
+    traceback.print_exc()
+
+```
+
+这个时候他说a+模式不是用于读写吗？为什么我这样写没有输出呢？
+> 这个是因为read()方法读取的是当前指针后面的size个字符并返回，而a+模式的指针初始在文件末尾，所以读取不到任何字符。
+
+如果你打开文件的方式没有读的权限，那么会报出以下的错误：  
+```python
+import traceback
+
+f = None
+
+try:
+    f = open(r"testpy\test.txt", "w")
+    print(f.read())
+    f.close()
+except:
+    traceback.print_exc()
+
+```
+> Traceback (most recent call last): 
+>   File "g:\Codes\Python\algorithm\testpy\quick.py", line 18, in &lt;module>  
+>     print(f.read())
+> io.UnsupportedOperation: not readable
+
+#### [`readline()`](#readline)
+f.readline() 会从文件中读取单独的一行。换行符为 '\n'。f.readline() 如果返回一个空字符串, 说明已经已经读取到最后一行。
+
+```python
+import traceback
+
+f = None
+
+try:
+    f = open(r"testpy\test2.txt", "a", encoding="utf-8")
+    f.write("写入字符串1\n")
+    f.close()
+except:
+    traceback.print_exc()
+
+try:
+    f = open(r"testpy\test2.txt", "r", encoding="utf-8")
+    print(repr(f.readline()))
+    print(repr(f.readline()))
+    f.close()
+except:
+    traceback.print_exc()
+
+```
+
+以上代码的输出结果为：  
+> '写入字符串\n'  
+> '写入字符串1\n'  
+
+可以看到调用readline()和read()一样都会向后移动指针
+
+还可以使用迭代文件对象的方式遍历每一行：  
+```python
+import traceback
+
+f = None
+
+try:
+    with open(r"testpy\test2.txt", "r", encoding="utf-8") as f:
+        for line in f:
+            print(line, end="")
+except:
+    traceback.print_exc()
+
+```
+
+以上代码的输出结果为：  
+> 写入字符串  
+> 写入字符串1
+
+#### [`readlines()`](#readlines)
+
+f.readlines() 将返回该文件中包含的所有行。  
+如果设置可选参数 sizehint, 则读取指定长度的字节, 并且将这些字节按行分割。
+
+```python
+import traceback
+
+f = None
+
+try:
+    f = open(r"testpy\test2.txt", "r", encoding="utf-8")
+    print(f.readlines())
+    f.close()
+except:
+    traceback.print_exc()
+
+```
+
+以上代码的输出结果为：  
+> ['写入字符串\n', '写入字符串1']
+
+#### [`write()`](#write)
+
+
+#### [`tell()`](#tell)
+#### [`seek()`](#seek)
+#### [`close()`](#close)
+
 
 
 *************************
@@ -3745,3 +3913,7 @@ Python的float的两个临界点会转换科学计数法表示，是精度问题
 本质还是和浮点数的精度有关。在机器中浮点数不一定能精确表达，因为换算成一串 1 和 0 后可能是无限位数的，机器已经做出了截断处理。那么在机器中保存的2.675这个数字就比实际数字要小那么一点点。这一点点就导致了它离 2.67 要更近一点点，所以保留两位小数时就近似到了 2.67。 
  <!-- TODO:round精度问题补全  -->
 更多请见：<https://www.runoob.com/w3cnote/python-round-func-note.html>
+
+*************************************
+
+### str()和repr()的区别
