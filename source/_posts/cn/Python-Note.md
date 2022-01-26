@@ -3020,6 +3020,113 @@ b'This is te'
             text-align :center;
             white-space: nowrap;">
 
+[closerange()](#closerange)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+fd = os.open("./test.txt",os.O_RDONLY)
+os.closerange(fd,fd)
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+关闭所有文件描述符，从 fd_low (包含) 到 fd_high (不包含), 错误会忽略
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[dup()](#dup)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+# 打开文件
+fd = os.open("foo.txt", os.O_RDWR | os.O_CREAT)
+# 复制文件描述符
+d_fd = os.dup(fd)
+# 使用复制的文件描述符写入文件
+os.write(d_fd, "This is test".encode())
+# 关闭文件
+os.closerange(fd, d_fd)
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+复制文件描述符 fd
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[dup2()](#dup2)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+将一个文件描述符 fd 复制到另一个 fd2
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[fdopen()](#fdopen)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+通过文件描述符 fd 创建一个文件对象，并返回这个文件对象
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
 [chflags()](#chflags)
 </td>
 <td style = "vertical-align : middle;">
@@ -3084,6 +3191,102 @@ b'This is te'
 </td>
 <td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
 更改当前进程的根目录为指定的目录，在Unix中有效
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[fchdir()](#fchdir)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+通过文件描述符改变当前工作目录，在Unix中有效
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[fchmod()](#fchmod)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+改变一个文件的访问权限，该文件由参数fd指定，参数mode是Unix下的文件访问权限，在Unix中有效
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[fchown()](#fchown)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+修改一个文件的所有权，这个函数修改一个文件的用户ID和用户组ID，该文件由文件描述符fd指定，在Unix中有效
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[fdatasync()](#fdatasync)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+强制将文件写入磁盘，该文件由文件描述符fd指定，但是不强制更新文件的状态信息。在Unix中有效
 </td>
 </tr>
 
