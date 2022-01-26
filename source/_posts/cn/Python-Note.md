@@ -3108,7 +3108,10 @@ os.closerange(fd, d_fd)
 <td style = "vertical-align : middle;">
 
 ```python
-
+# os.fdopen()
+# 用于通过文件描述符 fd 创建一个文件对象，并返回这个文件对象。
+# 该方法是内置函数 open() 的别名;
+# 可以接收一样的参数，唯一的区别是 fdopen() 的第一个参数必须是整型。
 ```
 </td>
 <td style = "vertical-align : middle;">
@@ -3127,22 +3130,46 @@ os.closerange(fd, d_fd)
             text-align :center;
             white-space: nowrap;">
 
-[chflags()](#chflags)
+[stat()](#stat)
 </td>
-<td style = "vertical-align : middle;">
+<td style = "vertical-align : middle;" rowspan = "3">
 
 ```python
+import os
 
+path = "./testpy/test.txt"
+
+print(os.stat(path))
+
+info = os.lstat(path)
+
+print(info)
+print(f"st_uid = {info.st_uid}")
+
+fd = os.open(path, os.O_RDWR)
+info = os.fstat(fd)
+
+print(info)
+os.close(fd)
 ```
 </td>
-<td style = "vertical-align : middle;">
+<td style = "vertical-align : middle;" rowspan = "3">
 
 ```python
-
+os.stat_result(st_mode=33206, st_ino=1407374883563448, 
+st_dev=2427623123, st_nlink=1, st_uid=0, st_gid=0, st_size=0, 
+st_atime=1642992982, st_mtime=1642992982, st_ctime=1642908751)
+os.stat_result(st_mode=33206, st_ino=1407374883563448, 
+st_dev=2427623123, st_nlink=1, st_uid=0, st_gid=0, st_size=0, 
+st_atime=1642992982, st_mtime=1642992982, st_ctime=1642908751)
+st_uid = 0
+os.stat_result(st_mode=33206, st_ino=1407374883563448, 
+st_dev=2427623123, st_nlink=1, st_uid=0, st_gid=0, st_size=0, 
+st_atime=1642992982, st_mtime=1642992982, st_ctime=1642908751)
 ```
 </td>
 <td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
-设置路径的标记为数字标记,只支持在 Unix 下使用。
+获取path指定的路径的信息，功能等同于C API中的stat()系统调用。
 </td>
 </tr>
 
@@ -3151,22 +3178,10 @@ os.closerange(fd, d_fd)
             text-align :center;
             white-space: nowrap;">
 
-[chown()](#chown)
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
+[lstat()](#lstat)
 </td>
 <td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
-更改文件所有者,只支持在 Unix 下使用。
+像stat(),但是没有软链接
 </td>
 </tr>
 
@@ -3175,22 +3190,10 @@ os.closerange(fd, d_fd)
             text-align :center;
             white-space: nowrap;">
 
-[chroot()](#chroot)
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
+[fstat()](#fstat)
 </td>
 <td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
-更改当前进程的根目录为指定的目录，在Unix中有效
+返回文件描述符fd的状态，像stat()。
 </td>
 </tr>
 
@@ -3199,7 +3202,7 @@ os.closerange(fd, d_fd)
             text-align :center;
             white-space: nowrap;">
 
-[fchdir()](#fchdir)
+[fsync()](#fsync)
 </td>
 <td style = "vertical-align : middle;">
 
@@ -3214,81 +3217,10 @@ os.closerange(fd, d_fd)
 ```
 </td>
 <td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
-通过文件描述符改变当前工作目录，在Unix中有效
+强制将文件描述符为fd的文件写入硬盘。
 </td>
 </tr>
 
-<tr>
-<td style = "vertical-align : middle;
-            text-align :center;
-            white-space: nowrap;">
-
-[fchmod()](#fchmod)
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
-</td>
-<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
-改变一个文件的访问权限，该文件由参数fd指定，参数mode是Unix下的文件访问权限，在Unix中有效
-</td>
-</tr>
-
-<tr>
-<td style = "vertical-align : middle;
-            text-align :center;
-            white-space: nowrap;">
-
-[fchown()](#fchown)
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
-</td>
-<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
-修改一个文件的所有权，这个函数修改一个文件的用户ID和用户组ID，该文件由文件描述符fd指定，在Unix中有效
-</td>
-</tr>
-
-<tr>
-<td style = "vertical-align : middle;
-            text-align :center;
-            white-space: nowrap;">
-
-[fdatasync()](#fdatasync)
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
-</td>
-<td style = "vertical-align : middle;">
-
-```python
-
-```
-</td>
-<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
-强制将文件写入磁盘，该文件由文件描述符fd指定，但是不强制更新文件的状态信息。在Unix中有效
-</td>
-</tr>
 
 </tbody>
 </table>
