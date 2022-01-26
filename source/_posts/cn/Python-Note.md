@@ -476,7 +476,7 @@ True
 | 3 | [round()](#round) | 给定浮点数和保留位数，返回浮点数的`四舍五入`值，如`round(3.526,2)`返回3.53。**其实准确的说是保留值将保留到离上一位更近的一端。** |
 | 4 | [abs()](#abs) | 返回数字的`绝对值`，如`abs(-10)`返回`10`，如果参数是一个复数，则返回它的大小 |
 
-##### [Python的math模块](#Python-math模块)  
+##### [Python的math模块](#Python-math模块方法)  
 | 序号 | 函数 | 返回值 / 描述  |
 | :-: |:--: | :------------ |
 | 1 | [fabs()](#fabs) | fabs也返回数字的`绝对值`，相较abs()更具局限性，只作用于浮点型或整型，`math.fabs(-10)`将返回10.0 |
@@ -499,7 +499,7 @@ True
 | 8 | [radians()](#radians) | 将`角度转换为弧度`,如`math.radians(180)`，返回3.141592653589793 |
 
 
-##### [Python的random模块](#Python-random模块)
+##### [Python的random模块](#Python-random模块方法)
 | 序号 | 函数 | 返回值 / 描述  |
 | :-: |:--: | :------------ |
 | 1 | [choice()](#choice) | 从`序列`的元素中`随机挑选一个元素`，比如`random.choice(range(10))`，返回从0到9中随机挑选的一个整数。 |
@@ -2360,6 +2360,10 @@ hello, world
 
 Python 提供了 input() 内置函数从标准输入读入一行文本，默认的标准输入是键盘。
 
+***********************************************
+
+## Python文件读写操作
+
 ### 读和写文件
 
 [open()](#open)函数将会返回一个file对象，其基本语法如下：  
@@ -2741,7 +2745,352 @@ except:
 在文本文件中 (那些打开文件的模式下没有 b 的), 只会相对于文件起始位置进行定位。  
 当你处理完一个文件后, 调用 f.close() 来关闭文件并释放系统的资源，如果尝试再调用该文件，则会抛出异常。
 
+
+### pickle模块
+
+python的pickle模块实现了基本的数据序列和反序列化。  
+通过pickle模块的序列化操作我们能够将程序中运行的对象信息保存到文件中去，永久存储。  
+通过pickle模块的反序列化操作，我们能够从文件中创建上一次程序保存的对象。  
+
+下面通过一个简单实例来说明pickle模块：  
+```python
+import pickle
+
+# 使用pickle模块将数据对象保存到文件
+data1 = {"a": [1, 2.0, 3, 4 + 6j], "b": ("string", u"Unicode string"), "c": None}
+
+output = open("data.pkl", "wb")
+
+selfref_list = [1, 2, 3]
+selfref_list.append(selfref_list)
+
+# Pickle dictionary using protocol 0.
+pickle.dump(data1, output)
+
+# Pickle the list using the highest protocol available.
+pickle.dump(selfref_list, output, 1)
+
+output.close()
+```
+
+上面的实例使用pickle模块将数据对象保存到文件，使用到的方法是：  
+```python
+pickle.dump(obj, file, [,protocol])
+```
+
+它的作用是序列化对象，并将结果数据流写入到文件对象中。参数protocol是序列化模式，默认值为0，表示以文本的形式序列化。protocol的值还可以是1或2，表示以二进制的形式序列化。
+
+```python
+import pickle
+
+pkl_file = open("data.pkl", "rb")
+
+# 使用pickle模块从文件中重构python对象
+data1 = pickle.load(pkl_file)
+print(data1)
+data2 = pickle.load(pkl_file)
+print(data2)
+
+pkl_file.close()
+```
+
+以上代码的输出结果为：  
+> {'a': [1, 2.0, 3, (4+6j)], 'b': ('string', 'Unicode string'), 'c': None}  
+> [1, 2, 3]
+
+上面的实例使用pickle模块从文件中重构python对象，使用到的接口是：  
+```python
+any_x = pickle.load(file)
+```
+
 *************************
+
+## Python os模块
+<!-- TODO: OS模块方法 -->
+[os模块](#Python-os模块方法)提供了非常丰富的方法用来处理文件和目录。常用的方法如下表所示：  
+
+<table>
+<thead>
+<tr>
+<th style = "text-align : center">
+方法
+</th>
+<th style = "text-align : center">
+实例
+</th>
+<th style = "text-align : center">
+输出
+</th>
+<th style = "text-align : center">
+描述
+</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[access()](#access)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+print(os.access("./testpy/test.txt", os.F_OK))
+print(os.access("./testpy/test.txt1111", os.F_OK))
+print(os.access("./testpy/data.pkl", os.R_OK))
+print(os.access("./testpy/test.pkl", os.W_OK))
+print(os.access("./testpy/test.pkl", os.X_OK))
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+True
+False
+True
+False
+False
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+检验文件/路径的权限模式
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[getcwd()](#getcwd)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+# 返回你的当前工作目录
+print(os.getcwd())
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+g:\Codes\Python\testpy
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+返回当前工作目录
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[chdir()](#chdir)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+print(os.getcwd())
+os.chdir("../")
+print(os.getcwd())
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+g:\Codes\Python\testpy
+g:\Codes\Python\
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+改变当前工作目录
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[chmod()](#chmod)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os, stat
+
+print(os.access("./testpy/data.pkl", os.W_OK))
+os.chmod("./testpy/data.pkl", stat.S_IREAD)
+print(os.access("./testpy/data.pkl", os.W_OK))
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+True
+False
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+更改文件或目录的权限
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[open()](#open)
+</td>
+<td rowspan="4" style = "vertical-align : middle;">
+
+```python
+import os
+
+fd = os.open("./testpy/test3.txt", os.O_CREAT | os.O_RDWR)
+os.write(fd, str.encode("This is test\n"))
+os.close(fd)
+
+fd = os.open("./testpy/test3.txt", os.O_RDONLY)
+print(os.read(fd, 10))
+os.close(fd)
+```
+</td>
+<td rowspan="4" style = "vertical-align : middle;">
+
+```python
+b'This is te'
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+打开一个文件，并且设置需要的打开选项
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[write()](#write)
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+写入字符串到文件描述符 fd中. 返回实际写入的字符串长度
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[read()](#read)
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+从文件描述符 fd 中读取最多 n 个字节，返回包含读取字节的字符串，文件描述符 fd对应文件已达到结尾, 返回一个空字符串。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[close()](#close)
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+关闭指定的文件描述符 fd
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[chflags()](#chflags)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+设置路径的标记为数字标记,只支持在 Unix 下使用。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[chown()](#chown)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+更改文件所有者,只支持在 Unix 下使用。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[chroot()](#chroot)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+更改当前进程的根目录为指定的目录，在Unix中有效
+</td>
+</tr>
+
+</tbody>
+</table>
+
+***************************
 
 <!-- TODO: _变量 -->
 
@@ -3292,9 +3641,11 @@ print(tup)
 
 *************************************************
 
+## Python os模块方法
 
+********************************
 
-## Python math模块
+## Python math模块方法
 <!-- TODO:三角函数 -->
 
 > 导入模块
@@ -3780,7 +4131,7 @@ xxxxxxxxxx
 
 
 
-## Python random模块
+## Python random模块方法
 > 导入模块
 > ```python
 > import random
