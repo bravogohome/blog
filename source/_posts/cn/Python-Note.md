@@ -2806,7 +2806,9 @@ any_x = pickle.load(file)
 *************************
 
 ## Python os模块
-<!-- TODO: OS模块方法 -->
+<!-- TODO: os模块方法 -->
+
+### os模块常用方法
 [os模块](#Python-os模块方法)提供了非常丰富的方法用来处理文件和目录。常用的方法如下表所示：  
 
 <table>
@@ -3564,11 +3566,97 @@ os.renames() 方法用于递归重命名目录或文件。
 </td>
 </tr>
 
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[walk()](#walk)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+for root, dirs, files in os.walk(".", topdown=False):
+    for name in files:
+        print(os.path.join(root, name))
+    for name in dirs:
+        print(os.path.join(root, name))
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+.\.vscode\settings.json
+.\testpy\data.pkl
+.\testpy\quick.py
+.\testpy\quick2.py
+.\testpy\test1.txt
+.\testpy\test2.txt
+.\testpy\test3.txt
+.\testpy\test_unicode.txt
+.\test_pack\test_py.py
+.\test_pack\__init__.py
+.\unable\__pycache__\un_test.cpython-39.pyc
+.\unable\un_test.py
+.\unable\__pycache__
+.\__pycache__\test_module.cpython-39.pyc
+.\auto.py
+.\data.pkl
+.\dp1.py
+.\foo.txt
+.\test.py
+.\test.txt
+.\test_module.py
+.\workspace.code-workspace
+.\.vscode
+.\testpy
+.\test_pack
+.\test_popen
+.\unable
+.\__pycache__
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+os.walk() 方法用于通过在目录树中游走输出在目录中的文件名，向上或者向下。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[pardir()](#pardir)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+ 
+# 输出默认值 ..
+print(os.pardir)
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+..
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+获取当前目录的父目录
+</td>
+</tr>
+
 
 </tbody>
 </table>
 
 ### os.path模块
+os.path 模块主要用于获取文件的属性。  
+以下是 os.path 模块的几种常用方法：  
 
 ### os.open()与open()的区别
 ### os.popen()与os.system()的区别
