@@ -3221,6 +3221,113 @@ st_atime=1642992982, st_mtime=1642992982, st_ctime=1642908751)
 </td>
 </tr>
 
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[link()](#link)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+os.link(src, dst)
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+创建硬链接，名为参数 dst，指向参数 src.该方法对于创建一个已存在文件的拷贝是非常有用的。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[listdir()](#listdir)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+path = "./"
+print(os.listdir(path))
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+['.vscode', 'auto.py', 'data.pkl', 'dp1.py', 'foo.txt', 'test.py', 'test.txt', 'testpy', 'test_module.py', 'test_pack', 'unable', 'workspace.code-workspace', '__pycache__']
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+返回path指定的文件夹包含的文件或文件夹的名字的列表。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[makedirs()](#makedirs)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+path = "./testpy/test_makedirs1/test_makedirs2/"
+
+os.makedirs(path, 0o777)
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+递归文件夹创建函数。像mkdir(), 但创建的所有intermediate-level文件夹需要包含子文件夹。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[mkdir()](#mkdir)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+path = "./testpy/test_makedirs1/test_makedirs2/test_mkdir"
+
+os.mkdir(path)
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+os.mkdir() 方法用于以数字权限模式创建目录。默认的模式为 0777 (八进制)。
+如果目录有多级，则创建最后一级，如果最后一级目录的上级目录有不存在的
+</td>
+</tr>
+
 
 </tbody>
 </table>
@@ -3229,6 +3336,7 @@ st_atime=1642992982, st_mtime=1642992982, st_ctime=1642908751)
 
 <!-- TODO: _变量 -->
 
+******************************
 
 ## Python内置函数
 <!-- TODO  函数汇总--> 
