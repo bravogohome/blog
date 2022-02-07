@@ -3328,9 +3328,250 @@ os.mkdir() 方法用于以数字权限模式创建目录。默认的模式为 07
 </td>
 </tr>
 
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[pipe()](#pipe)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+r,w = os.pipe()
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+os.pipe() 方法用于创建一个管道, 返回一对文件描述符(r, w) 分别为读和写。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[popen()](#popen)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+with os.popen("mkdir test_popen","r",1) as f:
+    print(f)
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+<os._wrap_close object at 0x000001D8FC929430>
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+os.popen() 方法用于从一个命令command打开一个管道。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[system()](#system)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+os.system(r"adb devices")
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+system()用于简单执行一个系统命令
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[remove()](#remove)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+# 列出目录
+print("目录为: %s" % os.listdir(os.getcwd() + "/testpy/"))
+
+os.remove("./testpy/test.txt")
+
+# 移除后列出目录
+print("目录为: %s" % os.listdir(os.getcwd() + "/testpy/"))
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+目录为: ['data.pkl', 'quick.py', 'quick2.py', 'test.txt', 'test1.txt', 'test2.txt', 'test3.txt', 'test_makedirs1', 'test_unicode.txt']
+目录为: ['data.pkl', 'quick.py', 'quick2.py', 'test1.txt', 'test2.txt', 'test3.txt', 'test_makedirs1', 'test_unicode.txt']
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+删除路径为path的文件。如果path 是一个文件夹，将抛出OSError; 查看下面的rmdir()删除一个 directory。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[removedirs()](#removedirs)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+os.removedirs(r"./testpy/test_makedirs1/test_makedirs2/test_mkdir")
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+递归删除目录。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[rmdir()](#rmdir)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+os.rmdir(r"./testpy/test_makedirs1/test_makedirs2/test_mkdir")
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+删除path指定的空目录，如果目录非空，则抛出一个OSError异常。
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[rename()](#rename)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+
+print(os.listdir())
+
+os.rename("test_pack", "test_rename")
+
+print(os.listdir())
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+['.vscode', 'auto.py', 'data.pkl', 'dp1.py', 'foo.txt', 'test.py', 'test.txt', 'testpy', 'test_module.py', 'test_pack', 'test_popen', 'unable', 'workspace.code-workspace', '__pycache__']
+['.vscode', 'auto.py', 'data.pkl', 'dp1.py', 'foo.txt', 'test.py', 'test.txt', 'testpy', 'test_module.py', 'test_popen', 'test_rename', 'unable', 'workspace.code-workspace', '__pycache__']
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+
+</td>
+</tr>
+
+<tr>
+<td style = "vertical-align : middle;
+            text-align :center;
+            white-space: nowrap;">
+
+[renames()](#renames)
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+import os
+print ("当前目录为: %s" %os.getcwd())
+
+# 列出目录
+print ("目录为: %s"%os.listdir(os.getcwd()))
+
+# 重命名 "aa1.txt"
+os.renames("aa1.txt","newdir/aanew.txt")
+
+print ("重命名成功。")
+
+# 列出重命名的文件 "aa1.txt"
+print ("目录为: %s" %os.listdir(os.getcwd()))
+```
+</td>
+<td style = "vertical-align : middle;">
+
+```python
+当前目录为: /tmp
+目录为:
+ [  'a1.txt','resume.doc','a3.py','aa1.txt','Administrator','newdir','amrood.admin' ]
+重命名成功。
+目录为:
+ [  'a1.txt','resume.doc','a3.py','Administrator','newdir','amrood.admin' ]
+```
+</td>
+<td style = "vertical-align : middle; text-align : left;white-space: nowrap;">
+os.renames() 方法用于递归重命名目录或文件。
+</td>
+</tr>
+
 
 </tbody>
 </table>
+
+### os.path模块
+
+### os.open()与open()的区别
+### os.popen()与os.system()的区别
 
 ***************************
 
