@@ -2481,7 +2481,7 @@ except:
 
 > 这里有几个需要注意的点: 
 > + 文件的路径，由于带有反斜杠\\，会被转义，所以需要使用r-string
-> + 打开的文件需要使用f.close()关闭或者使用with...as...代码块
+> + 打开的文件需要使用f.close()关闭或者使用[with...as...](#with关键字)代码块
 > + 读写文件通常需要在try...except里进行
 
 如果你点开刚刚创建的这个test.txt，你可能会遇到下面的情况：  
@@ -3853,14 +3853,120 @@ raise MyError("MyError")
 
 > 大多数的异常的名字都以"Error"结尾，就跟标准的异常命名一样。
 
-<!-- TODO: ### assert(断言) -->
+### assert(断言)
 
-<!-- TODO: ### with关键字 -->
+Python assert（断言）用于判断一个表达式，在表达式条件为 false 的时候触发异常。  
+断言可以在条件不满足程序运行的情况下直接返回错误，而不必等待程序运行后出现崩溃的情况。  
 
+语法格式为：  
+```python
+assert expression
+```
 
-<!-- TODO: 添加前文with指向 -->
+等价于
+```python
+if not expression:
+    raise AssertionError
+```
+
+assert 后面也可以紧跟参数:  
+```python
+assert expression [, arguments]
+```
+
+等价于
+```python
+if not expression:
+    raise AssertionError(arguments)
+```
+
+下面是实例：  
+```python
+assert True
+print("正常运行")
+assert False
+```
+
+输出结果为：  
+```python
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+    assert False
+AssertionError
+```
+
+带参数的实例：  
+```python
+assert 1>2, "1大于2是错误的"
+```
+
+```python
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+    assert 1 > 2, "1大于2是错误的"
+AssertionError: 1大于2是错误的
+```
+
+以下实例判断当前系统是否为 Linux，如果不满足条件则直接触发异常，不必执行接下来的代码：
+```python
+import sys
+assert ('linux' in sys.platform), "该代码只能在 Linux 下执行"
+
+# 接下来要执行的代码
+```
+
+### with关键字
+
+Python 中的 with 语句用于异常处理，封装了 try…except…finally 编码范式，提高了易用性。  
+with 语句使代码更清晰、更具可读性， 它简化了文件流等公共资源的管理。  
+在处理文件对象时使用 with 关键字是一种很好的做法。  
+我们可以看下以下几种代码实例：  
+不使用 with，也不使用 try…except…finally
+```python
+file = open('./test.txt', 'w')
+file.write('hello world !')
+file.close()
+```
+
+以上代码如果在调用 write 的过程中，出现了异常，则 close 方法将无法被执行，因此资源就会一直被该程序占用而无法被释放。 接下来我们呢可以使用 try…except…finally 来改进代码：  
+
+```python
+file = open('./test.txt', 'w')
+try:
+    file.write('hello world')
+finally:
+    file.close()
+```
+
+以上代码我们对可能发生异常的代码处进行 try 捕获，发生异常时执行 except 代码块，finally 代码块是无论什么情况都会执行，所以文件会被关闭，不会因为执行异常而占用资源。
+
+使用 with 关键字：
+```python
+with open('./test.txt', 'w') as file:
+    file.write('hello world !')
+```
+
+使用 with 关键字系统会自动调用 f.close() 方法， with 的作用等效于 try/finally 语句是一样的。  
+我们可以在执行 with 关键字后检验文件是否关闭：
+```python
+with open("./test.txt") as f:
+    print(f.closed)
+print(f.closed)
+```
+
+以上代码输出结果为：  
+> False  
+> True
+
+with 语句实现原理建立在上下文管理器之上。  
+上下文管理器是一个实现 \_\_enter\_\_ 和 \_\_exit\_\_ 方法的类。  
+使用 with 语句确保在嵌套块的末尾调用 \_\_exit\_\_ 方法。  
+这个概念类似于 try...finally 块的使用。
+
+> 在文件对象中定义了 \_\_enter\_\_ 和 \_\_exit\_\_ 方法，即文件对象也实现了上下文管理器，首先调用 \_\_enter\_\_ 方法，然后执行 with 语句中的代码，最后调用 \_\_exit\_\_ 方法。 即使出现错误，也会调用 \_\_exit\_\_ 方法，也就是会关闭文件流。
 
 <!-- TODO：traceback模块 -->
+<!-- TODO: logging模块 -->
 
 *****************************
 
