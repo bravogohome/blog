@@ -3700,7 +3700,7 @@ os.path 模块主要用于获取文件的属性。
 ## Python错误与异常处理
 
 Python有两种错误：语法错误和异常。  
-Python assert（断言）用于判断一个表达式，在表达式条件为 False 的时候触发异常。
+Python [assert](#assert-断言)（断言）用于判断一个表达式，在表达式条件为 False 的时候触发异常。
 
 ### 语法错误
 Python 的语法错误或者称之为解析错，会报出以下的错误：  
@@ -3776,9 +3776,9 @@ except:
 异常处理的工作流程如下：
 + try代码块为要执行的代码，被先执行;
 + 如果在try代码块产生了异常，程序根据异常类型去到对应except处理区;
-+ 如果没有对应处理区则会继续将异常向上抛出到主程序块，并被结束程序产生异常;
++ 如果没有对应处理区则会继续将异常向上抛出到主程序块，异常会在finally语句执行后被执行结束程序产生异常;
 + 如果try代码块没有产生异常则执行else代码块(如果有);
-+ 最后执行finally代码块。
++ 最后执行finally代码块, finally 语句无论异常是否发生都会执行。
 
 > 一个except子句可以同时处理多个异常，这些异常将被放在一个括号里成为一个元组，例如:
 > ```python
@@ -3786,16 +3786,93 @@ except:
 >     pass
 > ```
 
+### 抛出异常
+
+python使用raise关键字向上层抛出异常:  
+
+```python
+try:
+    x = int(input("请输入一个小于10的数字"))
+    if x >= 10:
+        raise ValueError
+except ValueError:
+    print("输入数字大于等于10")
+else:
+    print("正确")
+```
+
+上面的例子中，如果输入的数字大于等于10就会自定义产生一个异常，被except检测处理。 
+raise后面如果跟了具体的参数，它必须是一个异常的实例或者是异常的类（也就是 Exception 的子类）。  
+raise后面如果不跟具体异常，这样会向上抛出`RuntimeError`:  
+```python
+try:
+    x = int(input("请输入一个小于10的数字"))
+    if x >= 10:
+        raise
+except RuntimeError:
+    print("输入数字大于等于10")
+else:
+    print("正确")
+```
+
+异常输出：  
+```python
+Traceback (most recent call last):
+  File "<stdin>" , line 4, in <module>
+    raise
+RuntimeError: No active exception to reraise
+```
+
+### 自定义异常
+
+用户可以通过[继承](#继承)Exception类创建一个新的异常类。异常类继承自 Exception 类，可以直接继承，或者间接继承，例如:  
+```Python
+class MyError(Exception):
+    def __init__(self, value):
+        self.value = value
+
+    def __str__(self):
+        return repr(self.value)
+
+
+try:
+    raise MyError(0)
+except MyError as e:
+    print("error code:", e.value)
+
+raise MyError("MyError")
+```
+
+以上代码的输出结果为：  
+> error code: 0
+> Traceback (most recent call last):
+  File "&lt;stdin>", line 14, in &lt;module>
+    raise MyError("MyError")
+> \_\_main\_\_.MyError: 'MyError'  
+
+
+> 大多数的异常的名字都以"Error"结尾，就跟标准的异常命名一样。
+
+<!-- TODO: ### assert(断言) -->
+
+<!-- TODO: ### with关键字 -->
+
+
+<!-- TODO: 添加前文with指向 -->
+
+<!-- TODO：traceback模块 -->
+
 *****************************
 
 <!-- TODO: _变量 -->
+<!-- TODO: as关键字 -->
 
 ******************************
 
 ## Python内置函数
 <!-- TODO  函数汇总--> 
 <!-- TODO: int() tuple()等 -->
-<!-- TODO: type()  instance() -->
+<!-- TODO: type()  isinstance() -->
 
 ### abs()
 
