@@ -3697,12 +3697,94 @@ os.path 模块主要用于获取文件的属性。
 
 ***************************
 
-## Python异常处理
+## Python错误与异常处理
 
 Python有两种错误：语法错误和异常。  
 Python assert（断言）用于判断一个表达式，在表达式条件为 False 的时候触发异常。
 
+### 语法错误
+Python 的语法错误或者称之为解析错，会报出以下的错误：  
 
+```python
+print('a)
+
+```
+
+```python
+line 1
+    print('a)
+             ^
+SyntaxError: EOL while scanning string literal
+```
+
+```python
+print('a') print('b')
+```
+
+```python
+line 1
+    print('a') print('b')
+               ^
+SyntaxError: invalid syntax
+```
+
+如上，程序会报出语法错误`SyntaxError`，后面跟着的是错误的提示信息。  
+语法分析器会指出出错的一行，并且在最先找到的错误的位置标记上箭头。
+
+### 异常
+
+即便 Python 程序的语法是正确的，在运行它的时候，也有可能发生错误。运行期检测到的错误被称为异常。  
+大多数的异常都不会被程序处理，都以错误信息的形式展现在这里:  
+
+```Python
+>>> 10 * (1/0)             # 0 不能作为除数，触发异常
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+ZeroDivisionError: division by zero
+>>> 4 + spam*3             # spam 未定义，触发异常
+Traceback (most recent call last):
+  File "<stdin>", line 1, in ?
+NameError: name 'spam' is not defined
+>>> '2' + 2               # int 不能与 str 相加，触发异常
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: can only concatenate str (not "int") to str
+```
+
+异常类型和异常信息会显示出来，例子中的异常类型有：`ZeroDivisionError`、`NameError`、`TypeError`  
+程序打印出异常发生的上下文的后面是错误信息，以调用栈的形式显示具体信息。
+程序在运行到第一个错误或异常就会停止并打印出错误/异常信息，如果希望程序运行时遇到异常继续运行或者对异常做出反应，就要使用异常处理。
+
+### 异常处理
+
+异常处理的格式是：  
+```python
+try:
+    <code_segment>
+except [ErrorType]:
+    <solute_segment>
+[...
+except:
+    <solute_segment>
+]
+[else:
+    <code_segment>]
+[finally:
+    <code_segment>]
+```
+
+异常处理的工作流程如下：
++ try代码块为要执行的代码，被先执行;
++ 如果在try代码块产生了异常，程序根据异常类型去到对应except处理区;
++ 如果没有对应处理区则会继续将异常向上抛出到主程序块，并被结束程序产生异常;
++ 如果try代码块没有产生异常则执行else代码块(如果有);
++ 最后执行finally代码块。
+
+> 一个except子句可以同时处理多个异常，这些异常将被放在一个括号里成为一个元组，例如:
+> ```python
+> except (RuntimeError, TypeError, NameError):
+>     pass
+> ```
 
 *****************************
 

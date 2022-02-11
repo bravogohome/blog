@@ -380,5 +380,5 @@ gitter:
 ##
 deploy:
   type: git
-  repo: https://github.com/<yourAccount>/<repo> # or https://gitee.com/<yourAccount>/<repo>
-  branch: <your-branch>
+  repo: git@120.79.121.107:/home/git/blog.git    # https://github.com/<yourAccount>/<repo> # or https://gitee.com/<yourAccount>/<repo>
+  branch: master
