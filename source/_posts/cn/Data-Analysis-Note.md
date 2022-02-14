@@ -291,3 +291,198 @@ SQL中最常见的操作是查询，它是通过陈述性SELECT语句执行的�
 
 ## Excel
 
+### 表格概述
+
+表格是数据表达的一种形式。
+
+![表格概述](表格概述.png)
+
+### Excel概述
+
+Office的电子报表软件。
+
+用户页面友好，具有强大数据计算和管理功能，能够使用图表直观显示数据，进行数据分析，并能够与各种流行的PC数据库连接。
+
+### Excel相关组件及工具认知
+
+Power Query简介：  
+Power Query是微软提供的工具，Excel 2013版作为插件加载使用，从 office 2016版开始，PowerQuery的功能集成到Excel中，可以直接使用。微软推出Power BI Desktop后，一系列的工具，比如Power Query, Power Pivot, Power View等，都集成在其中。Power Query定位查询，中文一般翻译为超级查询，主要作用是连接不同种类的数据源，进行数据的转换。
+
+![power_query.png](power_query.png)
+
+Power Pivot简介:  
+Power Pivot中文名是超级透视表，其简称是PP。它与Excel中的透视表类似，只是多了“超级"两个字，功能却强大了好几倍，主要用于数据分析和数据建模。PP是一种列示数据库。
+
+![power_pivot.png](power_pivot.png)
+
+### 公式、函数与制表
+
+#### Excel常用公式、函数
+
+`IF条件公式`
+
+IF函数是Excel中最常用的函数之一，它可以对值和期待值进行逻辑比较。因此IF语句可能有两个结果。第一个结果是比较结果为TRUE，第二个结果是比较结果为FALSE。  
+
+```
+IF (logical_test,value_if_true,value_if_false)  
+```
+
+判断是否满足某个条件，如果满足返回一个值，如果不满足则返回另一个值.  
+
++ Logical_test条件测试，表示计算结果为TRUE或FALSE的任意值或表达式;
++ Value_if_true，若logical_test为TRUE是（条件测试为真时）返回的值;
++ Value_if_false，若logical_test为FALSE是（条件测试为假时）返回的值。
+
+IF函数常见问题如下：  
+
+| 问题 | 哪里出了问题 |
+| :--: | :----- |
+| 单元格中的0 | value_if_true 或 value_if_False参数无参数值。若要查看返回的正确值，应为两个参数添加参数文本，或者为参数添加TRUE或FALSE。|
+| #NAME? (显示在单元格中) | 这通常意味着公式存在拼写错误 |
+
+`IFS条件公式`
+
+IFS 函数检查是否满足一个或多个条件，且返回符合第一个TRUE条件的值。IFS可以取代多个嵌套IF语句，并且有多个条件时更方便阅读。  
+
+```
+IFS (logical_test, value_if_true,...)
+```
+
+检查是否满足一个或多个条件并返回与第一个TRUE条件对应的值.  
+
+请注意，IFS 函数允许测试最多127个不同的条件。但不建议在IF或IFS语句中嵌套过多条件。这是因为多个条件需要按正确顺序输入，并且可能非常难构建、测试和更新。
+
+`SUMIF条件公式`
+
+```
+SUMIF (range, criteria,[sum_range])
+```
+
+对满足条件的单元格求和
+
++ range范围（必需)。希望通过标准评估的单元格范围。每个范围内的单元格必须是数字或名称、数组或包含数字的引用。空白和文本值将被忽略。选定的范围可以包含标准Excel格式的日期。
++ criteria(必需)。criteria以数字、表达式、单元格参考、文本或函数的形式来定义将添加哪些单元格。可包括的通配符字符有:`问号`(?)以匹配任意单个字符，`星号`(*)以匹配任意字符序列。如果要查找实际的问号或星号，请在该字符前键入波形符(~)。注:任何文本条件或任何含有逻辑或数学符号的条件都必须使用双引号(")括起来。如果条件为数字，则无需使用双引号。
++ sum_range(可选)。要添加的实际单元格。如果省略sum_range参数，Excel就会添加范围参数中指定的单元格（与应用标准的单元格相同)。sum_range的大小和形状应该与范围相同。如果不这样做，性能可能会受到影响，而且该公式将对从sum_range中第一个单元格开始的单元格范围进行求和，但其尺寸与范围相同。
+
+`SUMIFS条件公式`
+
+```
+SUMIFS (sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ..)
+```
+
+| 参数名称 | 说明 |
+| :--: | :------- |
+| sum_range(必需) | 要求和的单元格区域 |
+| criteria_range1(必需) | 使用criteria1测试的区域。Criteria _range1和Criteria1设置用于搜索某个区域是否符合特定条件的搜索对。一旦在该区域中找到了项，将计算sum_range 中的相应值的和。 |
+| criteria1(必需) | 定义将计算criteria_range1中的哪些单元格的和的条件。 |
+| criteria_range2, criteria2,...(可选) | 附加的区域及其关联条件。s最多可以输入127个区域/条件对 |
+
+> $ 加上区域表示绝对引用
+
+`VLOOKUP查询公式`
+
+```
+VLOOKUP (lookup_value,table_array,col_index_num,range_lookup)
+```
+
+需要四条信息才可构建VLOOKUP语法:  
++ 要查找的值，也被称为查阅值。
++ 查阅值所在的区域。请记住，查阅值应该始终位于所在区域的第一列，这样VLOOKUP才能正常工作。例如，如果查阅值位于单元格c2内，那么区域应该以c开头。
++ 区域中包含返回值的列号。例如，如果指定B2:D11作为区域，则应该将B计为第一列，将c作为第二列，以此类比。
++ (可选)如果需要返回值的近似匹配，可以指定 TRUE;如果需要返回值的精确匹配，则指定FALSE。如果没有指定任何内容，默认值将始终为TRUE或近似匹配。
+
+上述内容集合，如下所示:  
+= VLOOKUP(要查找的项、要查找位置、区域中包含要返回的值的列号、返回近似匹配或精确匹配指示为1/TRUE或o/FALSE)
+
+`INDEX查询公式`
+
+```
+INDEX (array,row_num,[column_num])
+```
+
+在给定的单元格区域中，返回特定行列交叉处单元格的值或引用  
++ array (必需)。单元格区域或数组常量。
+  - 如果数组仅包含一行或一列，则相应的row_num或
+column_num参数是可选的。
+  - 如果数组具有多行和多列，并且row_num或 column_num，INDEX返回数组中整个行或列的数组。
++ row_num(必需)。除非column_num存在。选择数组中的某行，函数从该行返回数值。如row_num,column_num参数。
++ column_num(可选）。选择数组中的某列，函数从该列返回数值。如column_num, row_num参数
+
+`MATCH查询公式`
+
+```
+MATCH (lookup_value,lookup_array,match_type)
+```
+
+返回符合特定值特定顺序的项在数组中的相对位置
+
++ lookup_value(必需)。要在lookup_array中匹配的值。例如，如果要在电话簿中查找某人的电话号码，则应该将姓名作为查找值，但实际上需要的是电话号码。lookup_value参数可以为值(数字、文本或逻辑值）或对数字、文本或逻辑值的单元格引用。
++ lookup_array (必需)。要搜索的单元格区域。
++ match_type (可选)。参数指定Excel如何将lookup_value与lookup_array中的值匹配。此参数可取o、1、-1，分别表示精确匹配、升序查找、降序查找模式。
+
+match_type行为：
+
+| match_type值 | 说明 |
+| :--: | :----- |
+| 1或者省略 | MATCH查找小于或等于lookup_value的最大值。lookup_array参数中的值必须以升序排序，例如:...-2,-1,0,1, 2,...,A-Z,FALSE,TRUE。 |
+| 0 |MATCH查找完全等于lookup_value的第一个值。lookup_array参数中的值可按任何顺序排列。 |
+| -1 | MATCH查找大于或等于lookup_value的最小值。lookup_array参数中的值必须按降序排列，例如:TRUE,FALSE,Z-A,...2,1,o,-1,-2,...等等。 |
+
+`LEFT提取公式`
+
+```
+LEFT (text,[num_chars])
+```
+
+从一个文本字符串的第一个字符开始返回指定个数的字符
+
++ text文本(必需)。包含要提取的字符的文本字符串。
++ num_chars(可选)。指定要由LEFT提取的字符的数量。
+  + Num_chars 必须大于或等于零。
+  + 如果num_chars大于文本长度，则LEFT返回全部文本。
+  + 如果省略num_chars，则假定其值为1。
+
+`MID提取公式`
+
+```
+MID (text,start_num,num_chars)
+```
+
+从文本字符串中指定的起始位置起返回制定长度的字符  
+
++ text文本(必需)。包含要提取的字符的文本字符串。
++ start num(必需)。文本中要提取的第一个字符的位置。文本中第一个字符的start_num为1，以此类推。
+  + 如果start_num大于文本长度，则MID/MIDB返回空文本(")。
+  + 如果start_num小于文本长度，但start_num加num_chars超过文本长度，则MID/MIDB将返回直到文本末尾的字符。如果省略num_chars，则假定其值为1。
+  + 如果start_num小于1，则MID/MIDB返回#VALUE!错误值。
++ num_chars(必需)。指定希望MID从文本中返回字符的个数
+  + 如果num_chars为负数，则MID返回#VALUE!错误值。
+
+`RIGHT提取公式`
+
+```
+RIGHT (text，num_chars)
+```
+
+从一个文本字符串的最后一个字符开始返回指定个数的字符
+
++ text文本(必需)。包含要提取的字符的文本字符串。
++ num_chars (可选)。指定希望RIGHT提取的字符数。
+  + Num_chars必须大于或等于零。
+  + 如果num_chars大于文本长度，则RIGHT返回所有文本。
+  + 如果省略num_chars，则假定其值为1。
+
+#### Excel数据透视表
+
+是一种可以快速汇总大量数据的交互式方法。可用于深入分析数值数据和回答有关数据的一些预料之外的问题。
+
+数据透视表专门针对以下用途设计:  
++ 以多种用户友好的方式查询大量数据;
++ 分类汇总和聚合数值数据，按类别和子类别汇总数据，以及创建自定义计算和公式;
++ 展开和折叠数据级别以重点关注结果，以及深入查看感兴趣的区域的汇总数据的详细信息;
++ 可以通过将行移动到列或将列移动到行（也称为"透视")，查看源数据的不同汇总;
++ 通过对最有用、最有趣的一组数据执行筛选、排序、分组和条件格式设置，可以重点关注所需信息;
++ 提供简明、有吸引力并且带有批注的联机报表或打印报表。
+
+![数据透视表](数据透视表.png)
+
