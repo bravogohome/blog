@@ -10,7 +10,7 @@ tags:
 categories:
 - Note
 - Algorithm
-sticky: 999
+sticky: 800
 ---
 ## 动态规划 Dynamic Programming，DP
 动态规划是计算机中解决最优化问题的一种方法

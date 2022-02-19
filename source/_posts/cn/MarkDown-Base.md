@@ -9,7 +9,7 @@ tags:
 - markdown
 categories:
 - Note
-sticky: 999
+sticky: 700
 ---
 <!-- TODO: \ 和 & < 的使用 -->
 

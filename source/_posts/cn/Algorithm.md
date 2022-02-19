@@ -11,7 +11,7 @@ tags:
 categories:
 - Note
 - Algorithm
-sticky: 999
+sticky: 900
 ---
 
 ## 猜数字游戏

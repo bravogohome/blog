@@ -3985,7 +3985,354 @@ with 语句实现原理建立在上下文管理器之上。
 + 实例化：创建一个类的实例，类的具体对象。
 + 对象：通过类定义的数据结构实例。对象包括两个数据成员（类变量和实例变量）和方法。
 
+### 定义类
 
+```python
+class ClassName:
+    <statement-1>
+    .
+    .
+    .
+    <statement-N>
+```
+
+类实例化后，可以使用其属性，实际上，创建一个类之后，可以通过类名访问其属性。
+
+### 类对象
+
+类对象支持两种操作：属性引用和实例化。
+属性引用使用和 Python 中所有的属性引用一样的标准语法：obj.name。
+类对象创建后，类命名空间中所有的命名都是有效属性名。所以如果类定义是这样:  
+
+```Python
+class MyClass:
+    """一个简单的类实例"""
+    i = 12345
+    def f(self):
+        return 'hello world'
+
+# 实例化类
+x = MyClass()
+ 
+# 访问类的属性和方法
+print("MyClass 类的属性 i 为：", x.i)
+print("MyClass 类的方法 f 输出为：", x.f())
+```
+
+以上代码的运行结果是：  
+> MyClass 类的属性 i 为： 12345  
+> MyClass 类的方法 f 输出为： hello world
+
+类有一个名为 \_\_init\_\_() 的特殊方法（构造方法），该方法在类实例化时会自动调用，像下面这样：  
+
+```python
+def __init__(self):
+    self.data = []
+```
+
+类定义了 \_\_init\_\_() 方法，类的实例化操作会自动调用 \_\_init\_\_() 方法。  
+当然， \_\_init\_\_() 方法可以有参数，参数通过 \_\_init\_\_() 传递到类的实例化操作上。例如:
+
+```python 
+class Complex:
+    def __init__(self, realpart, imagpart):
+        self.r = realpart
+        self.i = imagpart
+x = Complex(3.0, -4.5)
+print(x.r, x.i)   # 输出结果：3.0 -4.5
+```
+
+***self代表类的实例，而非类***
+类的方法与普通的函数只有一个特别的区别——它们必须有一个额外的第一个参数名称, 按照惯例它的名称是 self。
+
+```python
+class Test:
+    def prt(self):
+        print(self)
+        print(self.__class__)
+ 
+t = Test()
+t.prt()
+```
+
+以上代码的运行结果为：  
+> &lt;\_\_main\_\_.Test instance at 0x0000025D089CCFD0>
+> \_\_main\_\_.Test
+
+从执行结果可以很明显的看出，self 代表的是类的实例，代表当前对象的地址，而 self.class 则指向类。
+
+self 不是 python 关键字，我们把他换成其他也是可以正常执行的
+
+### 类的方法
+
+在类的内部，使用 def 关键字来定义一个方法，与一般函数定义不同，类方法必须包含参数 self, 且为第一个参数，self 代表的是类的实例。
+
+```python
+#类定义
+class people:
+    #定义基本属性
+    name = ''
+    age = 0
+    #定义私有属性,私有属性在类外部无法直接进行访问
+    __weight = 0
+    #定义构造方法
+    def __init__(self,n,a,w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+    def speak(self):
+        print("%s 说: 我 %d 岁。" %(self.name,self.age))
+ 
+# 实例化类
+p = people('sam',10,30)
+p.speak()
+```
+
+以上代码的输出结果为：  
+> sam 说: 我 10 岁。
+
+### 继承
+
+派生类的定义语法如下：  
+
+```python
+class DerivedClassName(BaseClassName):
+    <statement-1>
+    .
+    .
+    .
+    <statement-N>
+```
+
+子类（派生类 DerivedClassName）会继承父类（基类 BaseClassName）的属性和方法。
+
+BaseClassName（实例中的基类名）必须与派生类定义在一个作用域内。除了类，还可以用表达式，基类定义在另一个模块中时这一点非常有用:  
+```python
+class DerivedClassName(modname.BaseClassName):
+```
+
+单继承：  
+
+```python
+#类定义
+class people:
+    #定义基本属性
+    name = ''
+    age = 0
+    #定义私有属性,私有属性在类外部无法直接进行访问
+    __weight = 0
+    #定义构造方法
+    def __init__(self,n,a,w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+    def speak(self):
+        print("%s 说: 我 %d 岁。" %(self.name,self.age))
+ 
+#单继承示例
+class student(people):
+    grade = ''
+    def __init__(self,n,a,w,g):
+        #调用父类的构函
+        people.__init__(self,n,a,w)
+        self.grade = g
+    #覆写父类的方法
+    def speak(self):
+        print("%s 说: 我 %d 岁了，我在读 %d 年级"%(self.name,self.age,self.grade))
+ 
+
+s = student('ken',10,60,3)
+s.speak()
+```
+
+以上代码的输出结果为：  
+> ken 说: 我 10 岁了，我在读 3 年级
+
+### 多继承
+
+Python同样有限的支持多继承形式。多继承的类定义形如下例:  
+```python
+class DerivedClassName(Base1, Base2, Base3):
+    <statement-1>
+    .
+    .
+    .
+    <statement-N>
+```
+
+需要注意圆括号中父类的顺序，若是父类中有相同的方法名，而在子类使用时未指定，python从左至右搜索 即方法在子类中未找到时，从左到右查找父类中是否包含方法。
+
+```python
+# 类定义
+class people:
+    # 定义基本属性
+    name = ""
+    age = 0
+    # 定义私有属性,私有属性在类外部无法直接进行访问
+    __weight = 0
+    # 定义构造方法
+    def __init__(self, n, a, w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+
+    def speak(self):
+        print("%s 说: 我 %d 岁。" % (self.name, self.age))
+
+
+# 单继承示例
+class student(people):
+    grade = ""
+
+    def __init__(self, n, a, w, g):
+        # 调用父类的构函
+        people.__init__(self, n, a, w)
+        self.grade = g
+
+    # 覆写父类的方法
+    def speak(self):
+        print("%s 说: 我 %d 岁了，我在读 %d 年级" % (self.name, self.age, self.grade))
+
+
+# 另一个类，多重继承之前的准备
+class speaker:
+    topic = ""
+    name = ""
+
+    def __init__(self, n, t):
+        self.name = n
+        self.topic = t
+
+    def speak(self):
+        print("我叫 %s，我是一个演说家，我演讲的主题是 %s" % (self.name, self.topic))
+
+
+# 多重继承
+class sample(speaker, student):
+    a = ""
+
+    def __init__(self, n, a, w, g, t):
+        student.__init__(self, n, a, w, g)
+        speaker.__init__(self, n, t)
+
+
+test = sample("Tim", 25, 80, 4, "Python")
+test.speak()  # 方法名同，默认调用的是在括号中参数位置排前父类的方法
+```
+
+以上代码的运行结果为：  
+> 我叫 Tim，我是一个演说家，我演讲的主题是 Python
+
+### 方法重写
+
+如果你的父类方法的功能不能满足你的需求，你可以在子类重写你父类的方法，实例如下：
+
+```python
+class Parent:        # 定义父类
+   def myMethod(self):
+      print ('调用父类方法')
+ 
+class Child(Parent): # 定义子类
+   def myMethod(self):
+      print ('调用子类方法')
+ 
+c = Child()          # 子类实例
+c.myMethod()         # 子类调用重写方法
+super(Child,c).myMethod() # 用子类对象调用父类已被覆盖的方法
+```
+<!-- TODO: super() -->
+[`super()`](#super) 函数是用于调用父类(超类)的一个方法。  
+执行以上程序输出结果为：
+> 调用子类方法  
+> 调用父类方法
+
+### 类属性和方法
+
+**类的私有属性**
+\_\_private\_attrs：两个下划线开头，声明该属性为私有，不能在类的外部被使用或直接访问。在类内部的方法中使用时 self.\_\_private\_attrs。
+
+**类的方法**
+在类的内部，使用 def 关键字来定义一个方法，与一般函数定义不同，类方法必须包含参数 self，且为第一个参数，self 代表的是类的实例。  
+self 的名字并不是规定死的，也可以使用 this，但是最好还是按照约定使用 self。
+
+**类的私有方法**
+\_\_private\_method：两个下划线开头，声明该方法为私有方法，只能在类的内部调用 ，不能在类的外部调用。self.\_\_private\_methods。
+
+```python
+class JustCounter:
+    __secretCount = 0  # 私有变量
+    publicCount = 0    # 公开变量
+ 
+    def count(self):
+        self.__secretCount += 1
+        self.publicCount += 1
+        print (self.__secretCount)
+ 
+counter = JustCounter()
+counter.count()
+counter.count()
+print (counter.publicCount)
+print (counter.__secretCount)  # 报错，实例不能访问私有变量
+```
+
+以上代码的输出结果为：  
+> 1  
+> 2  
+> 2  
+> Traceback (most recent call last):    
+>   File "test.py", line 16, in &lt;module>  
+>     print (counter.__secretCount)  # 报错，实例不能访问私有变量  
+> AttributeError: 'JustCounter' object has no attribute '__secretCount'  
+
+### 私有变量
+
+那种仅限从一个对象内部访问的“私有”实例变量在 Python 中并不存在。 但是，大多数 Python 代码都遵循这样一个约定：带有一个下划线的名称 (例如 \_spam) 应该被当作是 API 的非公有部分 (无论它是函数、方法或是数据成员)。 这应当被视为一个实现细节，可能不经通知即加以改变。  
+由于存在对于类私有成员的有效使用场景（例如避免名称与子类所定义的名称相冲突），因此存在对此种机制的有限支持，称为 名称改写。 任何形式为 \_\_spam 的标识符（至少带有两个前缀下划线，至多一个后缀下划线）的文本将被替换为 \_classname\_\_spam，其中 classname 为去除了前缀下划线的当前类名称。 这种改写不考虑标识符的句法位置，只要它出现在类定义内部就会进行。
+
+名称改写有助于让子类重载方法而不破坏类内方法调用。
+
+<!-- TODO：私有变量 -->
+
+### 类的专有方法
+
++ \_\_init\_\_ : 构造函数，在生成对象时调用
++ \_\_del\_\_ : 析构函数，释放对象时使用
++ \_\_repr\_\_ : 打印，转换
++ \_\_setitem\_\_ : 按照索引赋值
++ \_\_getitem\_\_: 按照索引获取值
++ \_\_len\_\_: 获得长度
++ \_\_cmp\_\_: 比较运算
++ \_\_call\_\_: 函数调用
++ \_\_add\_\_: 加运算
++ \_\_sub\_\_: 减运算
++ \_\_mul\_\_: 乘运算
++ \_\_truediv\_\_: 除运算
++ \_\_mod\_\_: 求余运算
++ \_\_pow\_\_: 乘方
+
+### 运算符重载
+
+Python同样支持运算符重载，我们可以对类的专有方法进行重载，实例如下：
+
+```python
+class Vector:
+   def __init__(self, a, b):
+      self.a = a
+      self.b = b
+ 
+   def __str__(self):
+      return 'Vector (%d, %d)' % (self.a, self.b)
+   
+   def __add__(self,other):
+      return Vector(self.a + other.a, self.b + other.b)
+ 
+v1 = Vector(2,10)
+v2 = Vector(5,-2)
+print (v1 + v2)
+```
+
+以上代码的运行结果为：  
+> Vector(7,8)
 
 ********************************
 

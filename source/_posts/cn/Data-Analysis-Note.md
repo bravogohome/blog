@@ -10,7 +10,7 @@ tags:
 - Excel
 categories:
 - Note
-sticky: 999
+sticky: 998
 ---
 
 # 数据分析思维和方法
