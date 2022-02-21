@@ -4336,8 +4336,382 @@ print (v1 + v2)
 
 ********************************
 
+## Python命名空间和作用域
+
+### 命名空间
+
+先看看官方文档的一段话：
+
+> A namespace is a mapping from names to objects.Most namespaces are currently implemented as Python dictionaries。
+> 
+> 命名空间(Namespace)是从名称到对象的映射，大部分的命名空间都是通过 Python 字典来实现的。
+
+命名空间提供了在项目中避免名字冲突的一种方法。各个命名空间是独立的，没有任何关系的，所以一个命名空间中不能有重名，但不同的命名空间是可以重名而没有任何影响。  
+我们举一个计算机系统中的例子，一个文件夹(目录)中可以包含多个文件夹，每个文件夹中不能有相同的文件名，但不同文件夹中的文件可以重名。
+
+一般有三种命名空间：  
+
++ 内置名称（built-in names）， Python 语言内置的名称，比如函数名 abs、char 和异常名称 BaseException、Exception 等等。
++ 全局名称（global names），模块中定义的名称，记录了模块的变量，包括函数、类、其它导入的模块、模块级的变量和常量。
++ 局部名称（local names），函数中定义的名称，记录了函数的变量，包括函数的参数和局部定义的变量。（类中定义的也是）
+
+![命名空间](命名空间.png)
+
+命名空间查找顺序:  
+假设我们要使用变量 test，则 Python 的查找顺序为：**局部的命名空间去 -> 全局命名空间 -> 内置命名空间**。
+如果找不到变量 test，它将放弃查找并引发一个 NameError 异常:
+
+```python
+NameError: name 'test' is not defined。
+```
+
+命名空间的生命周期：  
+命名空间的生命周期取决于对象的作用域，如果对象执行完成，则该命名空间的生命周期就结束。   
+因此，我们无法从外部命名空间访问内部命名空间的对象。
+
+```python
+# var1 是全局名称
+var1 = 5
+def some_func():
+ 
+    # var2 是局部名称
+    var2 = 6
+    def some_inner_func():
+ 
+        # var3 是内嵌的局部名称
+        var3 = 7
+```
+
+如下图所示，相同的对象名称可以存在于多个命名空间中。
+
+![命名空间-2](命名空间-2.png)
+
+### 作用域
+
+> A scope is a textual region of a Python program where a namespace is directly accessible. "Directly accessible" here means that an unqualified reference to a name attempts to find the name in the namespace.
+
+作用域就是一个 Python 程序可以直接访问命名空间的正文区域。  
+在一个 python 程序中，直接访问一个变量，会从内到外依次访问所有的作用域直到找到，否则会报未定义的错误。  
+Python 中，程序的变量并不是在哪个位置都可以访问的，访问权限决定于这个变量是在哪里赋值的。  
+
+变量的作用域决定了在哪一部分程序可以访问哪个特定的变量名称。Python 的作用域一共有4种，分别是：
+
++ L（Local）：最内层，包含局部变量，比如一个函数/方法内部。
++ E（Enclosing）：包含了非局部(non-local)也非全局(non-global)的变量。比如两个嵌套函数，一个函数（或类） A 里面又包含了一个函数 B ，那么对于 B 中的名称来说 A 中的作用域就为 nonlocal。
++ G（Global）：当前脚本的最外层，比如当前模块的全局变量。
++ B（Built-in）： 包含了内建的变量/关键字等，最后被搜索。
+
+在局部找不到，便会去局部外的局部找（例如闭包），再找不到就会去全局找，再者去内置中找。
+
+![作用域](作用域.png)
+
+```python
+g_count = 0  # 全局作用域
+def outer():
+    o_count = 1  # 闭包函数外的函数中
+    def inner():
+        i_count = 2  # 局部作用域
+```
+
+内置作用域是通过一个名为 builtin 的标准模块来实现的，但是这个变量名自身并没有放入内置作用域内，所以必须导入这个文件才能够使用它。在Python3.0中，可以使用以下的代码来查看到底预定义了哪些变量:  
+
+```python
+import builtins
+print(dir(builtins))
+```
+
+以上代码的输出结果为：  
+> ['ArithmeticError', 'AssertionError', 'AttributeError', 'BaseException', 'BlockingIOError', 'BrokenPipeError', 'BufferError', 'BytesWarning', 'ChildProcessError', 'ConnectionAbortedError', 'ConnectionError', 'ConnectionRefusedError', 'ConnectionResetError', 'DeprecationWarning', 'EOFError', 'Ellipsis', 'EnvironmentError', 'Exception', 'False', 'FileExistsError', 'FileNotFoundError', 'FloatingPointError', 'FutureWarning', 'GeneratorExit', 'IOError', 'ImportError', 'ImportWarning', 'IndentationError', 'IndexError', 'InterruptedError', 'IsADirectoryError', 'KeyError', 'KeyboardInterrupt', 'LookupError', 'MemoryError', 'ModuleNotFoundError', 'NameError', 'None', 'NotADirectoryError', 'NotImplemented', 'NotImplementedError', 'OSError', 'OverflowError', 'PendingDeprecationWarning', 'PermissionError', 'ProcessLookupError', 'RecursionError', 'ReferenceError', 'ResourceWarning', 'RuntimeError', 'RuntimeWarning', 'StopAsyncIteration', 'StopIteration', 'SyntaxError', 'SyntaxWarning', 'SystemError', 'SystemExit', 'TabError', 'TimeoutError', 'True', 'TypeError', 'UnboundLocalError', 'UnicodeDecodeError', 'UnicodeEncodeError', 'UnicodeError', 'UnicodeTranslateError', 'UnicodeWarning', 'UserWarning', 'ValueError', 'Warning', 'WindowsError', 'ZeroDivisionError', '\_\_build_class\_\_', '\_\_debug\_\_', '\_\_doc\_\_', '\_\_import\_\_', '\_\_loader\_\_', '\_\_name\_\_', '\_\_package\_\_', '\_\_spec\_\_', 'abs', 'all', 'any', 'ascii', 'bin', 'bool', 'breakpoint', 'bytearray', 'bytes', 'callable', 'chr', 'classmethod', 'compile', 'complex', 'copyright', 'credits', 'delattr', 'dict', 'dir', 'divmod', 'enumerate', 'eval', 'exec', 'exit', 'filter', 'float', 'format', 'frozenset', 'getattr', 'globals', 'hasattr', 'hash', 'help', 'hex', 'id', 'input', 'int', 'isinstance', 'issubclass', 'iter', 'len', 'license', 'list', 'locals', 'map', 'max', 'memoryview', 'min', 'next', 'object', 'oct', 'open', 'ord', 'pow', 'print', 'property', 'quit', 'range', 'repr', 'reversed', 'round', 'set', 'setattr', 'slice', 'sorted', 'staticmethod', 'str', 'sum', 'super', 'tuple', 'type', 'vars', 'zip']
+
+Python 中只有模块（module），类（class）以及函数（def、lambda）才会引入新的作用域，其它的代码块（如 if/elif/else/、try/except、for/while等）是不会引入新的作用域的，也就是说这些语句内定义的变量，外部也可以访问.
+
+```python
+if True:
+    test = "test"
+print(test)
+```
+
+以上代码的输出结果为：  
+> test
+
+实例中 test 变量定义在 if 语句块中，但外部还是可以访问的。  
+如果将 test 定义在函数中，则它就是局部变量，外部不能访问：
+
+```python
+def test_func():
+    test = "test"
+    return None
+
+print(test)
+```
+
+以上代码的运行结果为：  
+> Traceback (most recent call last):
+>   File "&lt;stdin>", line 1, in &lt;module>
+> NameError: name 'test' is not defined
+
+从报错的信息上看，说明了 test 未定义，无法使用，因为它是局部变量，只有在函数内可以使用。
+
+### 全局变量和局部变量
+
+定义在函数内部的变量拥有一个局部作用域，定义在函数外的拥有全局作用域。  
+局部变量只能在其被声明的函数内部访问，而全局变量可以在整个程序范围内访问。调用函数时，所有在函数内声明的变量名称都将被加入到作用域中。  
+
+```python
+total = 0 # 这是一个全局变量
+# 可写函数说明
+def sum( arg1, arg2 ):
+    #返回2个参数的和."
+    total = arg1 + arg2 # total在这里是局部变量.
+    print ("函数内是局部变量 : ", total)
+    return total
+ 
+#调用sum函数
+sum( 10, 20 )
+print ("函数外是全局变量 : ", total)
+```
+
+以上实例输出结果：
+> 函数内是局部变量 :  30   
+> 函数外是全局变量 :  0
+
+### global和nonlocal关键字
+
+当内部作用域想修改外部作用域的变量时，就要用到 global 和 nonlocal 关键字了。
+
+```python
+num = 1
+def fun1():
+    global num  # 需要使用 global 关键字声明
+    print(num) 
+    num = 123
+    print(num)
+fun1()
+print(num)
+```
+
+以上代码的运行结果为：  
+> 1  
+> 123  
+> 123
+
+如果要修改嵌套作用域（enclosing 作用域，外层非全局作用域）中的变量则需要 nonlocal 关键字了，如下实例：
+
+```python
+def outer():
+    num = 10
+    def inner():
+        nonlocal num   # nonlocal关键字声明
+        num = 100
+        print(num)
+    inner()
+    print(num)
+outer()
+```
+
+以上代码的运行结果为：  
+> 100  
+> 100
+
+************************************
+
+## Python标准库概览
+
+### 操作系统接口
+
+`os模块`提供了不少与操作系统相关联的函数。更多请参见：[Python os模块](#Python-os模块)和[Python os模块方法](#Python-os模块方法)
+
+> 建议使用 "import os" 风格而非 "from os import *"。这样可以保证随操作系统不同而有所变化的 os.open() 不会覆盖内置函数 open()。
+
+针对日常的文件和目录管理任务，`shutil模块`提供了一个易于使用的高级接口，更多请见：[Python shutil模块](Python-shutil模块方法)
+
+### 文件通配符
+
+`glob模块`提供了一个函数用于从目录通配符搜索中生成文件列表：  
+
+```python
+import glob
+print(glob.glob('*.py'))
+```
+
+```python
+['quick.py', 'quick2.py']
+```
+
+### 命令行参数
+
+通用工具脚本经常调用命令行参数。这些命令行参数以链表形式存储于 sys 模块的 argv 变量。例如在命令行中执行 "python demo.py one two three" 后可以得到以下输出结果:  
+
+```python
+>>> import sys
+>>> print(sys.argv)
+['demo.py', 'one', 'two', 'three']
+```
+
+### 错误输出重定向和程序终止
+
+sys 还有 stdin，stdout 和 stderr 属性，即使在 stdout 被重定向时，后者也可以用于显示警告和错误信息。   
+大多脚本的定向终止都使用 "sys.exit()"。
+
+```python
+import sys
+
+sys.stderr.write("stderr.write_test\n")
+
+sys.exit()
+
+print(0)
+```
+
+```
+stderr.write_test
+
+```
+
+### 字符串正则匹配
+
+`re模块`为高级字符串处理提供了正则表达式工具。对于复杂的匹配和处理，正则表达式提供了简洁、优化的解决方案:
+
+```python
+import re
+print(re.findall(r'\bf[a-z]*', 'which foot or hand fell fastest'))
+print(re.sub(r'(\b[a-z]+) \1', r'\1', 'cat in the the hat'))
+```
+
+以上代码的运行结果为：  
+> ['foot', 'fell', 'fastest']   
+> 'cat in the hat'
+
+如果只需要简单的功能，应该首先考虑字符串方法，因为它们非常简单，易于阅读和调试:
+
+```python
+>>> 'tea for too'.replace('too', 'two')
+'tea for two'
+```
+
+更多关于正则表达式表达见后文[正则表达式](#Python正则表达式)
+
+### 数学
+
+python提供了`math模块`对简单数学支持，以及`random模块`对随机数的支持。
+
+### 访问互联网
+
+有几个模块用于访问互联网以及处理网络通信协议。其中最简单的两个是用于处理从 urls 接收的数据的 urllib.request 以及用于发送电子邮件的 smtplib。
+
+### 日期和时间
+
+`datetime模块`为日期和时间处理同时提供了简单和复杂的方法。  
+支持日期和时间算法的同时，实现的重点放在更有效的处理和格式化输出。
+该模块还支持时区处理:  
+
+```python
+# dates are easily constructed and formatted
+import datetime
+
+now = datetime.date.today()
+print(now)
+print(datetime.date(2023, 12, 2))
+print(now.strftime("%m-%d-%y. %d %b %Y is a %A on the %d day of %B."))
+
+# dates support calendar arithmetic
+birthday = datetime.date(1964, 7, 31)
+age = now - birthday
+print(age.days)
+```
+
+```
+2022-02-21
+2023-12-02
+02-21-22. 21 Feb 2022 is a Monday on the 21 day of February.
+21024
+```
+
+### 数据压缩
+
+以下模块直接支持通用的数据打包和压缩格式：zlib，gzip，bz2，zipfile，以及 tarfile。
+
+```python
+import zlib
+
+s = b"witch which has which witches wrist watch"
+print(len(s))
+
+t = zlib.compress(s)
+print(len(t))
+
+print(zlib.decompress(t))
+print(zlib.crc32(s))
+```
+
+```
+41
+37
+b'witch which has which witches wrist watch'
+226805979
+```
+
+### 性能度量
+
+有些用户对了解解决同一问题的不同方法之间的性能差异很感兴趣。Python 提供了一个度量工具，为这些问题提供了直接答案。
+例如，使用元组封装和拆封来交换元素看起来要比使用传统的方法要诱人的多,timeit 证明了现代的方法更快一些。
+
+```python
+>>> from timeit import Timer
+>>> Timer('t=a; a=b; b=t', 'a=1; b=2').timeit()
+0.57535828626024577
+>>> Timer('a,b = b,a', 'a=1; b=2').timeit()
+0.54962537085770791
+```
+
+相对于 timeit 的细粒度，profile 和 pstats 模块提供了针对更大代码块的时间度量工具。
+
+### 测试模块
+
+开发高质量软件的方法之一是为每一个函数开发测试代码，并且在开发过程中经常进行测试  
+`doctest模块`提供了一个工具，扫描模块并根据程序中内嵌的文档字符串执行测试。  
+测试构造如同简单的将它的输出结果剪切并粘贴到文档字符串中。   
+通过用户提供的例子，它强化了文档，允许 doctest 模块确认代码的结果是否与文档一致:
+
+```python
+def average(values):
+    """Computes the arithmetic mean of a list of numbers.
+
+    >>> print(average([20, 30, 70]))
+    40.0
+    """
+    return sum(values) / len(values)
+
+import doctest
+doctest.testmod()   # 自动验证嵌入测试
+```
+
+以上代码的运行结果为：  
+> TestResults(failed=0, attempted=1)
+
+`unittest模块`不像 doctest模块那么容易使用，不过它可以在一个独立的文件里提供一个更全面的测试集:
+
+```python
+import unittest
+
+class TestStatisticalFunctions(unittest.TestCase):
+
+    def test_average(self):
+        self.assertEqual(average([20, 30, 70]), 40.0)
+        self.assertEqual(round(average([1, 5, 7]), 1), 4.3)
+        self.assertRaises(ZeroDivisionError, average, [])
+        self.assertRaises(TypeError, average, 20, 30, 70)
+
+unittest.main() # Calling from the command line invokes all tests
+```
+
+
+
+*************************************
+
 <!-- TODO: _变量 -->
 <!-- TODO: as关键字 -->
+<!-- TODO: dir() 和 help() -->
 
 ******************************
 
@@ -5555,6 +5929,11 @@ random.uniform(1,2)
 
 *****************************************
 
+## Python shutil模块方法
+
+
+
+**************************************
 
 <!-- TODO：新建文章记录错误 -->
 
