@@ -391,6 +391,125 @@ def maxProduct(self, words: List[str]) -> int:
 
 -------------------------------------------------------------------
 
+
+## 各位相加
+leetcode链接：<https://leetcode-cn.com/problems/add-digits/>
+
+> 
+  
+示例：  
+> 
+> 
+> **输入**：num = 38
+> **输出**：2 
+> **解释**：  
+> 各位相加的过程为：   
+> 38 --> 3 + 8 --> 11   
+> 11 --> 1 + 1 --> 2   
+> 由于 2 是一位数，所以返回 2。  
+> 
+
+
+### 解题思路
+
+#### 循环相加
+
+##### 复杂度分析
++ 时间复杂度： 
++ 空间复杂度： 
+
+#### 数学
+
+##### 复杂度分析
++ 时间复杂度： 
++ 空间复杂度： 
+
+
+
+### 题解
+#### `Python`
+```python
+class Solution:
+    def addDigits(self, num: int) -> int:
+        while num >= 10:
+            lst = list(map(int,str(num)))  # [int(x) for x in str(num)]
+            num = 0
+            for n in lst:
+                num += n
+        return num
+```
+
+```python
+class Solution:
+    def addDigits(self, num: int) -> int:
+        # 数学方法
+        if num==0 : return 0
+        if num%9==0 : return 9
+        else : return num%9
+```
+
+```python
+class Solution:
+    def addDigits(self, num: int) -> int:
+        # 数学方法2
+        if num==0 : return 0
+        return (num-1)%9+1
+```
+
+#### `C#`
+```csharp
+
+```
+
+**********************************
+
+## 构造 K 个回文字符串
+leetcode链接：<https://leetcode-cn.com/problems/construct-k-palindrome-strings/>
+
+> 给你一个字符串 s 和一个整数 k 。请你用 s 字符串中 所有字符 构造 k 个非空 回文串 。   
+> 如果你可以用 s 中所有字符构造 k 个回文字符串，那么请你返回 True ，否则返回 False 。
+  
+示例：  
+> 
+> 
+> **输入**：s = "annabelle", k = 2   
+> **输出**：true  
+> **解释**：  
+> 一些可行的构造方案包括："anna" + "elble"，"anbna" + "elle"，"anellena" + "b"  
+> 
+> 
+
+
+
+### 解题思路
+#### 
+
+##### 复杂度分析
++ 时间复杂度： 
++ 空间复杂度： 
+
+### 题解
+#### `Python`
+```python
+class Solution:
+    def canConstruct(self, s: str, k: int) -> bool:
+        if len(s)<k : return False
+        m = {x: s.count(x) for x in set(s)}
+        i = 0
+        for key in m:
+            if m[key] % 2 == 1:
+                i += 1
+        if i>k: return False
+        else : return True
+```
+
+#### `C#`
+```csharp
+
+```
+
+**********************************
+
 ## new problem
 leetcode链接：<>
 
@@ -425,3 +544,4 @@ leetcode链接：<>
 
 ```
 
+**********************************
