@@ -5263,6 +5263,42 @@ mongoDB下载：<https://www.mongodb.com/try/download/community>
 
 *************************************
 
+## Python request
+
+
+
+*********************************
+
+## Python网络编程
+
+Python提供了两个级别访问的网络服务：  
+
++ 低级别的网络服务支持基本的 Socket，它提供了标准的 BSD Sockets API，可以访问底层操作系统Socket接口的全部方法。
++ 高级别的网络服务模块 SocketServer， 它提供了服务器中心类，可以简化网络服务器的开发。
+
+> Socket又称"套接字"，应用程序通常通过"套接字"向网络发出请求或者应答网络请求，使主机间或者一台计算机上的进程间可以通讯。
+
+
+********************************
+
+## Python Json数据解析
+
+Python3 中可以使用 json 模块来对 JSON 数据进行编解码。
+
+> import json
+
+它包含了两个函数：
+
++ json.dumps() 对数据进行`编码`。将Python String转换成Json Object。
++ json.loads()  对数据进行`解码`。将Json string解析成Python Object。
+
+
+
+
+
+
+********************************
+
 <!-- TODO: argparse -->
 <!-- TODO: _变量 -->
 <!-- TODO: as关键字 -->

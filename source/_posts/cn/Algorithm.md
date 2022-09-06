@@ -15,7 +15,7 @@ sticky: 900
 ---
 
 ## 猜数字游戏
-leetcode链接：<https://leetcode-cn.com/problems/bulls-and-cows>
+leetcode链接：<https://leetcode.cn/problems/bulls-and-cows>
 
 > 你在和朋友一起玩 猜数字（Bulls and Cows）游戏，该游戏规则如下：  
 > 写出一个秘密数字，并请朋友猜这个数字是多少。朋友每猜测一次，你就会给他一个包含下述信息的提示：  
@@ -36,8 +36,8 @@ leetcode链接：<https://leetcode-cn.com/problems/bulls-and-cows>
 + 时间复杂度：` O(N) `，其中` N `是字符串 ` secret ` 的长度。
 + 空间复杂度：` O(C) `。需要常数个空间统计字符出现次数，由于我们统计的是数字字符，因此` C=10 `。  
 
-### 题解
-#### `Python`
+##### 方法
+###### `Python`
 ```python
 # 使用两个数组两次遍历
 class Solution:
@@ -75,7 +75,7 @@ class Solution:
         return f'{bulls}A{cows}B'
 ```
 
-#### `C#`
+###### `C#`
 ```csharp
 // 使用两个数组两次遍历
 public class Solution {
@@ -124,7 +124,7 @@ public class Solution {
 -------------------------------------------------------------------
 
 ## 猜数字大小Ⅱ
-leetcode链接：<https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/>
+leetcode链接：<https://leetcode.cn/problems/guess-number-higher-or-lower-ii/>
 
 > 我们正在玩一个猜数游戏，游戏规则如下：
 > + 我从 1 到 n 之间选择一个数字。
@@ -142,13 +142,13 @@ leetcode链接：<https://leetcode-cn.com/problems/guess-number-higher-or-lower-
 ##### 复杂度分析
 
 
-### 题解
-#### `Python`
+##### 代码
+###### `Python`
 ```python
 
 ```
 
-#### `C#`
+###### `C#`
 ```csharp
 
 ```
@@ -156,7 +156,7 @@ leetcode链接：<https://leetcode-cn.com/problems/guess-number-higher-or-lower-
 -------------------------------------------------------------------
 
 ## 检测大写字母
-leetcode链接：<https://leetcode-cn.com/problems/detect-capital/>
+leetcode链接：<https://leetcode.cn/problems/detect-capital/>
 
 > 我们定义，在以下情况时，单词的大写用法是正确的：
 > + 全部字母都是大写，比如 "USA" 。
@@ -172,15 +172,15 @@ leetcode链接：<https://leetcode-cn.com/problems/detect-capital/>
 ##### 复杂度分析
 
 
-### 题解
-#### `Python`
+##### 代码
+###### `Python`
 ```python
 class Solution:
     def detectCapitalUse(self, word: str) -> bool:
         return word.islower() or word.isupper() or word.istitle()
 ```
 
-#### `C#`
+###### `C#`
 ```csharp
 
 ```
@@ -188,7 +188,7 @@ class Solution:
 -------------------------------------------------------------------
 
 ## 键值映射
-leetcode链接：<https://leetcode-cn.com/problems/map-sum-pairs/>
+leetcode链接：<https://leetcode.cn/problems/map-sum-pairs/>
 
 > 实现一个 MapSum 类，支持两个方法，insert 和 sum：
 > + MapSum() 初始化 MapSum 对象
@@ -208,7 +208,6 @@ leetcode链接：<https://leetcode-cn.com/problems/map-sum-pairs/>
 > mapSum.insert("app", 2);      
 > mapSum.sum("ap");           // return 5 (apple + app = 3 + 2 = 5)
 
-
 ### 解题思路
 #### 暴力扫描
 将所有的key-val键值存储，在需要搜索给定前缀的和时，依次搜索所有键值，如果key以prefix为前缀，把对应的val累加并返回。
@@ -217,8 +216,8 @@ leetcode链接：<https://leetcode-cn.com/problems/map-sum-pairs/>
 + 时间复杂度： insert操作为`O(1)`。 sum操作为`O(NM)`，其中N是插入的key的数目，M是给定前缀prefix的长度。
 + 空间复杂度： `O(NM)`，其中 NN 是插入的key的数目，MM是字符串key的最大长度。
 
-### 题解
-#### `Python`
+##### 代码
+###### `Python`
 ```python
 class MapSum:
     def __init__(self):
@@ -236,7 +235,7 @@ class MapSum:
         return sum
 ```
 
-#### `C#`
+###### `C#`
 ```csharp
 
 ```
@@ -244,7 +243,7 @@ class MapSum:
 -------------------------------------------------------------------
 
 ## 灯泡开关
-leetcode链接：<https://leetcode-cn.com/problems/bulb-switcher/>
+leetcode链接：<https://leetcode.cn/problems/bulb-switcher/>
 
 > 初始时有 n 个灯泡处于关闭状态。第一轮，你将会打开所有灯泡。接下来的第二轮，你将会每两个灯泡关闭一个。  
 > 第三轮，你每三个灯泡就切换一个灯泡的开关（即，打开变关闭，关闭变打开）。第 i 轮，你每 i 个灯泡就切换一个灯泡的开关。直到第 n 轮，你只需要切换最后一个灯泡的开关。  
@@ -284,8 +283,8 @@ leetcode链接：<https://leetcode-cn.com/problems/bulb-switcher/>
 + 时间复杂度： `O(1)`
 + 空间复杂度： `O(1)`
 
-### 题解
-#### `Python`
+##### 代码
+###### `Python`
 ```python
 class Solution:
     # 暴力、n = 10000时超出时间限制
@@ -327,7 +326,7 @@ class Solution:
         return int(sqrt(n))
 ```
 
-#### `C#`
+###### `C#`
 ```csharp
 
 ```
@@ -335,7 +334,7 @@ class Solution:
 -------------------------------------------------------------------
 
 ## 最大单词长度乘积
-leetcode链接：<https://leetcode-cn.com/problems/maximum-product-of-word-lengths/>
+leetcode链接：<https://leetcode.cn/problems/maximum-product-of-word-lengths/>
 
 > 给定一个字符串数组 words，找到 length(word[i]) * length(word[j]) 的最大值，并且这两个单词不含有公共字母。你可以认为每个单词只包含小写字母。如果不存在这样的两个单词，返回 0。
   
@@ -347,8 +346,6 @@ leetcode链接：<https://leetcode-cn.com/problems/maximum-product-of-word-lengt
 > "abcw", "xtfn"  
 > 4 * 4 = 16   
 
-
-
 ### 解题思路
 #### 暴力遍历
 遍历每一对字符串，如果这对不含有公共字母，则计算length(word[i]) * length(word[j]) 并得到最大值。
@@ -357,11 +354,9 @@ leetcode链接：<https://leetcode-cn.com/problems/maximum-product-of-word-lengt
 + 时间复杂度： 
 + 空间复杂度： 
 
-#### 位运算
-详见力扣题解：<https://leetcode-cn.com/problems/maximum-product-of-word-lengths/solution/zui-da-dan-ci-chang-du-cheng-ji-by-leetc-lym9/>
 
-### 题解
-#### `Python`
+##### 代码
+###### `Python`
 ```python
 def maxProduct(self, words: List[str]) -> int:
     result = 0
@@ -383,17 +378,20 @@ def maxProduct(self, words: List[str]) -> int:
     return result
 ```
 
-#### `C#`
+###### `C#`
 ```csharp
 
 ```
+
+#### 位运算
+详见力扣题解：<https://leetcode.cn/problems/maximum-product-of-word-lengths/solution/zui-da-dan-ci-chang-du-cheng-ji-by-leetc-lym9/>
 
 
 -------------------------------------------------------------------
 
 
 ## 各位相加
-leetcode链接：<https://leetcode-cn.com/problems/add-digits/>
+leetcode链接：<https://leetcode.cn/problems/add-digits/>
 
 > 
   
@@ -418,16 +416,9 @@ leetcode链接：<https://leetcode-cn.com/problems/add-digits/>
 + 时间复杂度： 
 + 空间复杂度： 
 
-#### 数学
+##### 代码
+###### `Python`
 
-##### 复杂度分析
-+ 时间复杂度： 
-+ 空间复杂度： 
-
-
-
-### 题解
-#### `Python`
 ```python
 class Solution:
     def addDigits(self, num: int) -> int:
@@ -438,6 +429,21 @@ class Solution:
                 num += n
         return num
 ```
+
+###### `C#`
+
+```csharp
+
+```
+
+#### 数学
+
+##### 复杂度分析
++ 时间复杂度： 
++ 空间复杂度： 
+
+##### 代码
+###### `Python`
 
 ```python
 class Solution:
@@ -456,7 +462,7 @@ class Solution:
         return (num-1)%9+1
 ```
 
-#### `C#`
+###### `C#`
 ```csharp
 
 ```
@@ -464,7 +470,7 @@ class Solution:
 **********************************
 
 ## 构造 K 个回文字符串
-leetcode链接：<https://leetcode-cn.com/problems/construct-k-palindrome-strings/>
+leetcode链接：<https://leetcode.cn/problems/construct-k-palindrome-strings/>
 
 > 给你一个字符串 s 和一个整数 k 。请你用 s 字符串中 所有字符 构造 k 个非空 回文串 。   
 > 如果你可以用 s 中所有字符构造 k 个回文字符串，那么请你返回 True ，否则返回 False 。
@@ -488,8 +494,8 @@ leetcode链接：<https://leetcode-cn.com/problems/construct-k-palindrome-string
 + 时间复杂度： 
 + 空间复杂度： 
 
-### 题解
-#### `Python`
+##### 代码
+###### `Python`
 ```python
 class Solution:
     def canConstruct(self, s: str, k: int) -> bool:
@@ -503,7 +509,98 @@ class Solution:
         else : return True
 ```
 
-#### `C#`
+###### `C#`
+```csharp
+
+```
+
+**********************************
+
+## 商品折扣后的最终价格
+leetcode链接：<https://leetcode.cn/problems/final-prices-with-a-special-discount-in-a-shop/>
+
+> 给你一个数组 prices ，其中 prices\[i] 是商店里第 i 件商品的价格。  
+> 商店里正在进行促销活动，如果你要买第 i 件商品，那么你可以得到与 prices\[j] 相等的折扣，其中 j 是满足 j > i 且 prices\[j] <= prices\[i] 的 最小下标 ，如果没有满足条件的 j ，你将没有任何折扣。  
+> 请你返回一个数组，数组中第 i 个元素是折扣后你购买商品 i 最终需要支付的价格。
+  
+示例：  
+> 
+> 
+> **输入**：prices = [8,4,6,2,3]
+> **输出**：[4,2,4,2,3]
+> **解释**：
+> 商品 0 的价格为 price[0]=8 ，你将得到 prices[1]=4 的折扣，所以最终价格为 8 - 4 = 4 。  
+> 商品 1 的价格为 price[1]=4 ，你将得到 prices[3]=2 的折扣，所以最终价格为 4 - 2 = 2 。  
+> 商品 2 的价格为 price[2]=6 ，你将得到 prices[3]=2 的折扣，所以最终价格为 6 - 2 = 4 。  
+> 商品 3 和 4 都没有折扣。  
+> 
+
+
+### 解题思路
+#### 模拟
+
+##### 复杂度分析
++ 时间复杂度： O(n^2)，其中 nn 为数组的长度。
++ 空间复杂度： O(n) 。返回值不计入空间复杂度。
+
+##### 代码
+###### `Python`
+```python
+class Solution:
+    def finalPrices(self, prices: List[int]) -> List[int]:
+    # 暴力法/模拟
+        result = []
+        for i in range(len(prices)):
+            temp=0
+            for j in range(i+1,len(prices)):
+                if prices[i]>=prices[j] :
+                    temp=prices[j]
+                    break
+            result.append(prices[i]-temp)
+        return result
+```
+
+###### `C#`
+```csharp
+
+```
+
+#### 单调栈
+
+
+
+*******************************************
+
+## 最长同值路径
+leetcode链接：<https://leetcode.cn/problems/longest-univalue-path/>
+
+> 
+  
+示例：  
+> 
+> 
+> **输入**：
+> **输出**：
+> **解释**：
+> 
+> 
+
+
+
+### 解题思路
+#### 
+
+##### 复杂度分析
++ 时间复杂度： 
++ 空间复杂度： 
+
+##### 代码
+###### `Python`
+```python
+
+```
+
+###### `C#`
 ```csharp
 
 ```
@@ -533,13 +630,13 @@ leetcode链接：<>
 + 时间复杂度： 
 + 空间复杂度： 
 
-### 题解
-#### `Python`
+##### 代码
+###### `Python`
 ```python
 
 ```
 
-#### `C#`
+###### `C#`
 ```csharp
 
 ```
