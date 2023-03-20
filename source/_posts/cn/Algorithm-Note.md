@@ -12,6 +12,9 @@ categories:
 - Algorithm
 sticky: 800
 ---
+ <!-- <embed src="\file\电源思维导图V4.pdf" width="1500" height="600"  
+ type="application/pdf"> -->
+
 ## 动态规划 Dynamic Programming，DP
 动态规划是计算机中解决最优化问题的一种方法
 
