@@ -439,6 +439,7 @@ hr {
 /* ==================================================== Post Start ========================================================= */
 .body--light {
   --color-default: #404040;
+  --color-h: #f1a129;
   --blockquote-color: gray;
   --post-container-a-color: #337ab7;
   --post-container-a-color-hover: #0085a1;
@@ -550,12 +551,14 @@ blockquote {
 }
 
 .post-container>h1,
-.post-container>h2,
+.post-container>h2{
+  color: var(--color-default);
+}
 .post-container>h3,
 .post-container>h4,
 .post-container>h5,
 .post-container>h6 {
-  color: var(--color-default);
+  color: var(--color-h);
 }
 
 .post-container>p {

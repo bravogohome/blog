@@ -640,6 +640,12 @@ class Test(models.Model):
 
 以上的类名代表了数据库表名，且继承了models.Model，类里面的字段代表数据表中的字段(name)，数据类型则由CharField（相当于varchar）、DateField（相当于datetime）， max_length 参数限定长度。
 
+> ForeignKey：外键,on_delete  
+> + models.CASCADE
+> + models.PROTECT
+> + models.SET_NULL
+> + models.DO_NOTHING
+
 在命令行中运行：
 
 ```bash
